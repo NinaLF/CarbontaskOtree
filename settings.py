@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
   
      dict(
          name='carbontask',
-         app_sequence=[  'Nina_questionnaire','Nina_survey', 'Nina_carbontask', 'Nina_footprint_calculator'],
+         app_sequence=[  'Nina_survey', 'Nina_carbontask', 'Nina_footprint_calculator', 'Nina_questionnaire'],
          num_demo_participants=10,
      ),
 
