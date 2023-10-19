@@ -75,7 +75,8 @@ class pol_orientation(Page):
 # Page sequence
 page_sequence = [
     policy_support, 
+    policy,
+
     cc_concern,
-    pol_orientation,
-    policy
+    pol_orientation
 ]
