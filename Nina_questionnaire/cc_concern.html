@@ -1,0 +1,55 @@
+{{ block title }}Climate change concern{{ endblock }}
+{{ block content }}
+
+<style>
+
+    .radio-column{
+        width:10%;
+        min-width:63px;
+        max-width:93px;
+        text-align: left;
+    }
+    
+    th, td {
+        padding: 1vh;
+        text-align: left;
+      }
+    
+      #choicetable{
+        margin-left: auto;
+        margin-right:auto;
+      }
+      
+    </style>
+
+<p>
+    Please indicate how much you agree or disagree with the following statements:
+
+</p>
+
+
+
+<table class="radiotable">
+    <tr> <th></th>  <th    class="radio-column"> Completely disagree</th>  <th class="radio-column" > Disagree  </th> <th class="radio-column"> Somewhat disagree </th> <th class="radio-column"  > Somewhat agree  </th> <th class="radio-column"> Agree </th>  <th class="radio-column"> Agree completely </th>    </tr>
+
+
+    {{ for field in form }}
+        <tr>
+            <th style="font-weight:normal;">{{ field.label }}</th>
+            {{ for choice in field }}
+                <td>{{ choice }}</td>
+            {{ endfor }}
+        </tr>
+    {{ endfor }}
+</table>
+
+
+<div class="next-btn radiotable">  
+    <div style="float: right; padding-top: 2vh;">
+         {% next_button %} 
+    </div>
+</div> 
+
+
+{% endblock %}
+
