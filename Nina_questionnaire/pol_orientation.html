@@ -5,16 +5,17 @@
 {{ block title }}Political orientation{{ endblock }}
 {{ block content }}
 
-LIBERAL and CONSERVATIVE are terms commonly used to characterize political orientation. Please indicate on the following scale ranging from 1 (extremely liberal) to 10 (extremely conservative) how you would classify yourself in terms of political orientation.
+Some people describe political affiliation on a left to right spectrum.
+Please indicate on the following scale ranging from 1 (extremely left) to 10 (extremely right) how you would classify yourself in terms of political ideology
 
 <div class="radiotable" style="padding-top:2vh; padding-left:1vw;">
 <p> Overall, how would you describe your political attitudes and beliefs? </p>
 <p style="text-indent: 7vw;">
-    very liberal &nbsp;
+    extremely left &nbsp;
     {{ for choice in form.conservative_liberal}}
         {{ choice }}
     {{ endfor }}
-    &nbsp; very conservative
+    &nbsp; extremely right
 </p>
 </div>
 
