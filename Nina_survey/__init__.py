@@ -56,7 +56,6 @@ class introduction_consent(Page):
     @staticmethod
     def vars_for_template(player: Player):
         # while testing this experiment do not check for prolificID (replace False with commented code) (make nolabel and prolificID Missing false for testing)
-        player.prolificIDMissing = False # player.participant.label == None
         return {
             "particpantlabel": player.participant.label,
             }
