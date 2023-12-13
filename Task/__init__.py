@@ -1,15 +1,11 @@
 from otree.api import *
 import random
-import itertools
-import json
-
 
 author = 'Christian König gen. Kersting'
 
 doc = """
 Demo of element hover tracking using oTree 2.6b0
 """
-
 
 attributes_listA_small = [
     {
