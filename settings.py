@@ -9,7 +9,12 @@ SESSION_CONFIGS = [
        num_demo_participants=5,
        app_sequence=['tracking_intro', 'Task', 'Questionnaires']
     ),
-
+    dict(
+        name='test',
+        display_name="Study Pilot",
+        num_demo_participants=5,
+        app_sequence=['Task', 'Questionnaires']
+    ),
 
 ]
 
