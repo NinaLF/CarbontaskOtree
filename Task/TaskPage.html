@@ -6,6 +6,7 @@
 <style type="text/css">
 
     .my_flipcards {
+        position:relative;
         display: flex;
         margin-top: 0px;
         justify-content: center;
@@ -110,16 +111,28 @@
         margin-bottom: {% if policy_block %}10px{% else %}10px{% endif %}; /* Adjust as needed */
     }
 
-   .block-instruction-card {
+    .white-screen-overlay {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        z-index: 999;
+        display: flex;
+    }
+
+ .block-instruction-card {
     position: absolute;
-    top: 50px;
+    top: 50%;
     left: 0;
     width: 100%;
+    transform: translateY(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, .95);
-    z-index: 1000; /* Set a high z-index to ensure it appears above other elements */
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 1000;
 }
 
 .card-content {
@@ -130,10 +143,21 @@
     border: 2px solid #000000;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack child elements vertically */
-    align-items: center; /* Center child elements horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: large;
+}
+
+@media (max-height: 600px) {
+    .block-instruction-card {
+        top: 0;
+        transform: translateY(0);
+    }
+
+    .card-content {
+        max-width: 100%;
+    }
 }
 
 .block-instruction-card p {
@@ -172,6 +196,7 @@
 
 {% block content %}
 {% if is_first_trial_of_block %}
+<div class="white-screen-overlay" id="whiteScreenOverlay"></div>
     <div class="block-instruction-card" id="blockInstructionCard" style="display: none;">
         <div class="card-content">
             {% if completed_block %}
@@ -342,14 +367,6 @@ $(".tracked_element").mouseleave(function () {
 // Initially hide the buttons
 updateButtonStatus();
 
-// Function to hide the instruction card
-function hideInstructionCard() {
-    const instructionCard = document.getElementById("blockInstructionCard");
-    if (instructionCard.style.display !== "none") {
-        instructionCard.style.display = "none";
-    }
-}
-
 // Function to trigger the next button
 function triggerNext() {
     console.log("Next button clicked");
@@ -369,13 +386,15 @@ choiceNoButton.addEventListener("click", function () {
 
 // Show block instruction card on the first trial of each block
     {% if is_first_trial_of_block %}
-        $(document).ready(function () {
-            $("#blockInstructionCard").fadeIn();
-            $("#hideInstructionButton").click(function () {
-                $("#blockInstructionCard").fadeOut();
-            });
+    $(document).ready(function () {
+        $("#blockInstructionCard").fadeIn();
+        $("#whiteScreenOverlay").fadeIn();  // Show the white-screen overlay
+        $("#hideInstructionButton").click(function () {
+            $("#blockInstructionCard").fadeOut();
+            $("#whiteScreenOverlay").fadeOut();  // Hide the white-screen overlay
         });
-    {% endif %}
+    });
+{% endif %}
 
 </script>
 {% endblock %}
