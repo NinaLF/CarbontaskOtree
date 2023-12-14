@@ -324,8 +324,6 @@ $(".tracked_element").mouseenter(function() {
             enter_time: enter_time,
             leave_time: undefined
         };
-        console.log("hallo printe enter");
-        console.log(hover_events[currentlyHoveredElement]);
 
         if (!flipCardHovered) {
             enableButtons();
@@ -351,8 +349,6 @@ $(".tracked_element").mouseleave(function () {
 
 
     liveSend(hover_events[elementId]);
-    console.log("hallo printe leave");
-    console.log(hover_events[elementId]);
 
     delete hover_events[elementId];
 }
@@ -361,8 +357,6 @@ $(".tracked_element").mouseleave(function () {
     const choiceNoButton = document.getElementById("choiceNoButton");
     const choiceYesRadio = document.getElementById("choiceYes");
     const choiceNoRadio = document.getElementById("choiceNo");
-    const nextButton = document.getElementById("nextButton");
-    const hideInstructionButton = document.getElementById("hideInstructionButton"); // Add this line to get the Hide Instruction button
 
 // Initially hide the buttons
 updateButtonStatus();
