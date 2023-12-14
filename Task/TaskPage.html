@@ -4,12 +4,37 @@
 
 {% block styles %}
 <style type="text/css">
-        .flip-card {
+
+    .my_flipcards {
+        display: flex;
+        margin-top: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col-12 {
+        /* Adjust the max-width and other styles as needed */
+        max-width: 800px; /* Example value, adjust based on your design */
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Set cards to stack vertically */
+        align-items: center; /* Center cards horizontally within the column */
+    }
+
+    .flip-card {
             perspective: 1000px;
             width: 300px;
             height: 100px;
             min-width: 350px;
-            margin: 10px;
+            margin: 6px;
         }
 
         .flip-card-inner {
@@ -74,15 +99,22 @@
     }
 
     .button-container {
-        margin-left: 120px; /* Adjust the margin  */
+        margin-top: {% if policy_block %}10px{% else %}10px{% endif %}; /* Adjust as needed */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .question-container {
+        margin-top: {% if policy_block %}10px{% else %}10px{% endif %}; /* Adjust as needed */
+        margin-bottom: {% if policy_block %}10px{% else %}10px{% endif %}; /* Adjust as needed */
     }
 
    .block-instruction-card {
     position: absolute;
-    top: 0;
+    top: 50px;
     left: 0;
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,7 +124,7 @@
 
 .card-content {
     max-width: 80%;
-    text-align: center;
+    text-align: left;
     padding: 20px;
     background-color: #ffffff;
     border: 2px solid #000000;
@@ -170,7 +202,7 @@
     </div>
 {% endif %}
 
-<div class="container">
+<div class="container my_flipcards">
     <div class="row">
         <div class="col-12 my_flipcards">
         {% if policy_block %}
@@ -192,21 +224,18 @@
 {% endfor %}
         </div>
     </div>
-</div>
+    </div>
 
-
-
-<div class="row mt-4">
+<div class="row">
     <div class="col-12">
+        <div class="question-container">
 
         {% if policy_block %}
         <span id="choiceQuestionPolicy" style="font-size: 18px; text-align: center">Would you support this policy package?</span>
-            <br>
-            <br>
+
         {% else %}
-        <span id="choiceQuestion" style="font-size: 18px; text-align: center"">Would you buy this electric vehicle?</span>
-            <br>
-            <br>
+        <span id="choiceQuestion" style="font-size: 18px; text-align: center">Would you buy this electric vehicle?</span>
+
         {% endif %}
 
         <div class="button-container">
@@ -218,8 +247,10 @@
         <input class="form-check-input" type="radio" name="choice" id="choiceYes" style="display: none" value="Yes">
         <input class="form-check-input" type="radio" name="choice" id="choiceNo" style="display: none" value="No">
         {{ formfield_errors 'choice' }}
+        </div>
     </div>
-</div>
+    </div>
+
 
 <div class="row mt-4">
     <div class="col-6 offset-3 text-center">
