@@ -6,7 +6,11 @@
 
 {% block content %}
 
-<p>Please answer the following questions about electric vehicles.</p>
+<p> Please consider the following definition for electric vehicles:<br>
+    <b>Electric vehicles are cars that run on electricity.</b>
+    They use rechargeable batteries to power electric motors,
+    eliminating the need for gas and reducing or eliminating tailpipe emissions.
+    <br><br>Please answer the following questions.</p>
 
 <div>
     {% if player.field_maybe_none('car_type') and player.car_type != "gasoline" %}
