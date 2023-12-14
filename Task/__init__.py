@@ -1678,10 +1678,12 @@ class Constants(BaseConstants):
     block_texts = {
         'A': 'Please note the following change in governmental policy: In addition to the above attributes, '
              'take into account that the government has introduced a carbon tax on gasoline. '
-             'This tax increases the savings of an electric car compared to a gasoline car per 100 miles.',
+             'This tax increases the savings of an electric car compared to a gasoline car per 100 miles. '
+             'You can find the tax amount within the <b>Savings on Driving</b> attribute',
         'B': 'Please note the following change in governmental policy: In addition to the above attributes,'
              ' take into account that the government has introduced a carbon tax on gasoline. '
-             'This tax increases the savings of an electric car compared to a gasoline car per 100 miles.',
+             'This tax increases the savings of an electric car compared to a gasoline car per 100 miles. '
+             'You can find the tax amount within the <b>Savings on Driving</b> attribute',
         'C': '',
         'D': '',
     }
