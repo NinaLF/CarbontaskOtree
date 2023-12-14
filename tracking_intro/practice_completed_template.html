@@ -10,3 +10,20 @@
 
 {{ next_button }}
 {{ endblock }}
+
+
+{% block scripts %}
+<script>
+
+
+    enablebtn = function () {
+        document.getElementById("nextst").disabled = false;
+    }
+
+
+
+    window.onload = function () {
+        setTimeout(function () { enablebtn() }, 7 * 1000);
+    }
+</script>
+{% endblock %}
