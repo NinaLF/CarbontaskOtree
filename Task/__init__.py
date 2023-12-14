@@ -1676,10 +1676,10 @@ class Constants(BaseConstants):
 
     # Add block-specific texts
     block_texts = {
-        'A': 'Please note the following decisions: In addition to the above attributes, '
+        'A': 'Please note the following change in governmental policy: In addition to the above attributes, '
              'take into account that the government has introduced a carbon tax on gasoline. '
              'This tax increases the savings of an electric car compared to a gasoline car per 100 miles.',
-        'B': 'Please note the following decisions: In addition to the above attributes,'
+        'B': 'Please note the following change in governmental policy: In addition to the above attributes,'
              ' take into account that the government has introduced a carbon tax on gasoline. '
              'This tax increases the savings of an electric car compared to a gasoline car per 100 miles.',
         'C': '',
