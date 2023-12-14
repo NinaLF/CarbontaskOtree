@@ -1,0 +1,16 @@
+{% block styles %}
+    <link href="{{ static 'global/css/Carbontask.css'}}" rel="stylesheet">
+{% endblock %}
+
+{{ block title }}Car-related questions{{ endblock }}
+
+{% block content %}
+
+<p>Please answer the following questions about your car.</p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}
+

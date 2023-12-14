@@ -53,9 +53,9 @@ class Player(BasePlayer):
     )
     region = models.StringField(
         label='In which type of region do you live?',
-        choices=[['1', 'Urban'],
-                 ['2', 'Suburban'],
-                 ['3', 'Rural']],
+        choices=[['1', 'Urban (more than 50,000 inhabitants)'],
+                 ['2', 'Suburban (between 5,000 and 50,000 inhabitants)'],
+                 ['3', 'Rural (less than 5,000 inhabitants)']],
         widget=widgets.RadioSelect,
     )
 
@@ -220,8 +220,7 @@ class Demographics(Page):
 
 class Car_questions(Page):
     form_model = 'player'
-    form_fields = ['drivers_license', 'own_car', 'car_model', 'car', 'car_type', 'car_number', 'car_age', 'car_replace',
-                   'km_week']
+    form_fields = ['drivers_license', 'own_car', 'car']
 
     def before_next_page(player: Player, timeout_happened):
         # Store car value in participant.vars
@@ -230,6 +229,13 @@ class Car_questions(Page):
         # Add console log statement
         print(f"DEBUG: Car value stored - {player.participant.vars['car']}")
 
+
+class car_owner(Page):
+    form_model = 'player'
+    form_fields = ['car_number', 'car_type', 'car_model', 'car_age', 'car_replace', 'km_week']
+
+    def is_displayed(player):
+        return player.own_car == 'Yes'
 
 class WoM(Page):
     form_model = 'player'
@@ -259,6 +265,7 @@ page_sequence = [
     introduction_consent,
     Demographics,
     Car_questions,
+    car_owner,
     WoM,
     affect,
     instructions,
