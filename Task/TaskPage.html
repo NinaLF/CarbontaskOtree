@@ -206,7 +206,7 @@
                 {{ include_sibling 'instruction_product.html' }}
                 <br>
                 <br>
-                <p><b>{{ block_text }}</b></p>
+                <p style="color: red;">{{ block_text }}</p>
             {% elif policy_block %}
                 {{ include_sibling 'instruction_policy.html' }}
             {% elif product_second and first_block_was_policy %}
