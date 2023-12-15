@@ -116,6 +116,5 @@ page_sequence = [
     neighbors,
     cc_concern,
     pol_orientation,
-    comments,
     end
 ]
