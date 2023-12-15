@@ -1683,9 +1683,17 @@ class Constants(BaseConstants):
         'B': 'Please note the following change in governmental policy: In addition to the above attributes,'
              ' take into account that the government has introduced a carbon tax on gasoline. '
              'This tax increases the savings of an electric car compared to a gasoline car per 100 miles. '
-             'You can find the tax amount within the <b>Savings on Driving</b> attribute',
+             'You can find the tax amount within the <b>Savings on Driving</b> attribute. <br> The information '
+             'about the greenhouse gas emissions is in this block presented as a <b>percentage label, that compares '
+             'the emissions of the electric vehicle to those of a gasoline car</b>. Therefore it is the percentage of '
+             'emissions that are saved by choosing the electric vehicle compared to choosing a similar sized'
+             'gas car.',
         'C': '',
-        'D': '',
+        'D': 'Please note the following change in governmental policy: The information '
+             'about the greenhouse gas emissions is in this block presented as a <b>percentage label, that compares '
+             'the emissions of the electric vehicle to those of a gasoline car</b>. Therefore it is the percentage of '
+             'emissions that are saved by choosing the electric vehicle compared to choosing a similar sized'
+             'gas car.',
     }
 
     affirmative_text = 'Well done on completing the block!'
