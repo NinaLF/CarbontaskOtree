@@ -62,8 +62,6 @@ class Player(BasePlayer):
             widget=widgets.RadioSelect,
         )
 
-    comment = models.StringField(label='Please insert your comments, if you have any?', blank = True)
-
 
 # FUNCTIONS
 # PAGES
