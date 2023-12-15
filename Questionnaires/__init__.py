@@ -62,6 +62,10 @@ class Player(BasePlayer):
             widget=widgets.RadioSelect,
         )
 
+    comment = models.StringField(
+        blank=True,
+    )
+
 
 # FUNCTIONS
 # PAGES
@@ -102,7 +106,8 @@ class neighbors(Page):
     form_model = 'player'
     form_fields = ['neighborhood1', 'neighborhood2', 'neighborhood3', 'neighborhood4']
 
-class comments (Page):
+
+class comments(Page):
     form_model = 'player'
     form_fields = ['comment']
 
@@ -114,5 +119,6 @@ page_sequence = [
     neighbors,
     cc_concern,
     pol_orientation,
+    comments,
     end
 ]
