@@ -10,7 +10,7 @@ Demo of element hover tracking using oTree 2.6b0
 attributes_listA_small = [
     {
         "Investment Costs": "$30,000",
-        "Savings compared to Gasoline Car": "$4.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$4.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "30kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -38,14 +38,14 @@ attributes_listA_small = [
     },
     {
         "Investment Costs": "$6,000",
-        "Savings compared to Gasoline Car": "$5.3 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.3 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
     },
     {
         "Investment Costs": "$18,000",
-        "Savings compared to Gasoline Car": "$6.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -66,7 +66,7 @@ attributes_listA_small = [
     },
     {
         "Investment Costs": "$6,000",
-        "Savings compared to Gasoline Car": "$6.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "20kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -87,7 +87,7 @@ attributes_listA_small = [
     },
     {
         "Investment Costs": "$30,000",
-        "Savings compared to Gasoline Car": "$5.3 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.3 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -101,7 +101,7 @@ attributes_listA_small = [
     },
     {
         "Investment Costs": "$6,000",
-        "Savings compared to Gasoline Car": "$5.3 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.3 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "30kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -115,7 +115,7 @@ attributes_listA_small = [
     },
     {
         "Investment Costs": "$18,000",
-        "Savings compared to Gasoline Car": "$4.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$4.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "20kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -139,7 +139,7 @@ attributes_listA_small = [
 attributes_listA_medium = [
     {
         "Investment Costs": "$24,000",
-        "Savings compared to Gasoline Car": "$5.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "30kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -167,14 +167,14 @@ attributes_listA_medium = [
     },
     {
         "Investment Costs": "$48,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
     },
     {
         "Investment Costs": "$36,000",
-        "Savings compared to Gasoline Car": "$7.7 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.7 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -195,7 +195,7 @@ attributes_listA_medium = [
     },
     {
         "Investment Costs": "$48,000",
-        "Savings compared to Gasoline Car": "$7.7 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.7 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "20kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -216,7 +216,7 @@ attributes_listA_medium = [
     },
     {
         "Investment Costs": "$24,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -230,7 +230,7 @@ attributes_listA_medium = [
     },
     {
         "Investment Costs": "$48,000",
-        "Savings compared to Gasoline Car": "$5.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "30kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -244,7 +244,7 @@ attributes_listA_medium = [
     },
     {
         "Investment Costs": "$36,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "20kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -268,7 +268,7 @@ attributes_listA_medium = [
 attributes_listA_large = [
     {
         "Investment Costs": "$70,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "30kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -296,14 +296,14 @@ attributes_listA_large = [
     },
     {
         "Investment Costs": "$94,000",
-        "Savings compared to Gasoline Car": "$7.6 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.6 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
     },
     {
         "Investment Costs": "$82,000",
-        "Savings compared to Gasoline Car": "$9.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$9.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -324,7 +324,7 @@ attributes_listA_large = [
     },
     {
         "Investment Costs": "$94,000",
-        "Savings compared to Gasoline Car": "$9.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$9.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "20kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -345,7 +345,7 @@ attributes_listA_large = [
     },
     {
         "Investment Costs": "$70,000",
-        "Savings compared to Gasoline Car": "$7.6 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.6 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "10kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -359,7 +359,7 @@ attributes_listA_large = [
     },
     {
         "Investment Costs": "$94,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "30kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -373,7 +373,7 @@ attributes_listA_large = [
     },
     {
         "Investment Costs": "$82,000",
-        "Savings compared to Gasoline Car": "$7.6 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.6 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "20kg emissions per 100 vehicle miles",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -397,7 +397,7 @@ attributes_listA_large = [
 attributes_listB_small = [
     {
         "Investment Costs": "$30,000",
-        "Savings compared to Gasoline Car": "$4.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$4.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -425,14 +425,14 @@ attributes_listB_small = [
     },
     {
         "Investment Costs": "$6,000",
-        "Savings compared to Gasoline Car": "$5.3 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.3 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
     },
     {
         "Investment Costs": "$18,000",
-        "Savings compared to Gasoline Car": "$6.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -453,7 +453,7 @@ attributes_listB_small = [
     },
     {
         "Investment Costs": "$6,000",
-        "Savings compared to Gasoline Car": "$6.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 65% emission saved",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -474,7 +474,7 @@ attributes_listB_small = [
     },
     {
         "Investment Costs": "$30,000",
-        "Savings compared to Gasoline Car": "$5.3 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.3 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -488,7 +488,7 @@ attributes_listB_small = [
     },
     {
         "Investment Costs": "$6,000",
-        "Savings compared to Gasoline Car": "$5.3 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.3 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 65% emission saved",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -502,7 +502,7 @@ attributes_listB_small = [
     },
     {
         "Investment Costs": "$18,000",
-        "Savings compared to Gasoline Car": "$4.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$4.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 55% emission saved",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -526,7 +526,7 @@ attributes_listB_small = [
 attributes_listB_medium = [
     {
         "Investment Costs": "$24,000",
-        "Savings compared to Gasoline Car": "$5.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -554,14 +554,14 @@ attributes_listB_medium = [
     },
     {
         "Investment Costs": "$48,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
     },
     {
         "Investment Costs": "$36,000",
-        "Savings compared to Gasoline Car": "$7.7 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.7 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -582,7 +582,7 @@ attributes_listB_medium = [
     },
     {
         "Investment Costs": "$48,000",
-        "Savings compared to Gasoline Car": "$7.7 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.7 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 65% emission saved",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -603,7 +603,7 @@ attributes_listB_medium = [
     },
     {
         "Investment Costs": "$24,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -617,7 +617,7 @@ attributes_listB_medium = [
     },
     {
         "Investment Costs": "$48,000",
-        "Savings compared to Gasoline Car": "$5.5 per 100 miles",
+        "Savings compared to Gasoline Car": "$5.5 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 65% emission saved",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -631,7 +631,7 @@ attributes_listB_medium = [
     },
     {
         "Investment Costs": "$36,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 55% emission saved",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -655,7 +655,7 @@ attributes_listB_medium = [
 attributes_listB_large = [
     {
         "Investment Costs": "$70,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -683,14 +683,14 @@ attributes_listB_large = [
     },
     {
         "Investment Costs": "$94,000",
-        "Savings compared to Gasoline Car": "$7.6 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.6 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
     },
     {
         "Investment Costs": "$82,000",
-        "Savings compared to Gasoline Car": "$9.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$9.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "3% of neighbors drive EVs",
@@ -711,7 +711,7 @@ attributes_listB_large = [
     },
     {
         "Investment Costs": "$94,000",
-        "Savings compared to Gasoline Car": "$9.2 per 100 miles",
+        "Savings compared to Gasoline Car": "$9.2 per 100 miles + $3 carbon tax savings",
         "Battery Range": "120 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 65% emission saved",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -732,7 +732,7 @@ attributes_listB_large = [
     },
     {
         "Investment Costs": "$70,000",
-        "Savings compared to Gasoline Car": "$7.6 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.6 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 45% emission saved",
         "Adopters in the Neighborhood": "24% of neighbors drive EVs",
@@ -746,7 +746,7 @@ attributes_listB_large = [
     },
     {
         "Investment Costs": "$94,000",
-        "Savings compared to Gasoline Car": "$6.4 per 100 miles",
+        "Savings compared to Gasoline Car": "$6.4 per 100 miles + $3 carbon tax savings",
         "Battery Range": "280 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 65% emission saved",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
@@ -760,7 +760,7 @@ attributes_listB_large = [
     },
     {
         "Investment Costs": "$82,000",
-        "Savings compared to Gasoline Car": "$7.6 per 100 miles",
+        "Savings compared to Gasoline Car": "$7.6 per 100 miles + $3 carbon tax savings",
         "Battery Range": "440 miles",
         "Lifecycle Greenhouse Gas Emissions": "Per 100 miles: 55% emission saved",
         "Adopters in the Neighborhood": "67% of neighbors drive EVs",
