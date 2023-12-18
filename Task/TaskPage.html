@@ -201,7 +201,7 @@
     <div class="block-instruction-card" id="blockInstructionCard" style="display: none;">
         <div class="card-content">
             {% if completed_block %}
-                <p><b>{{ Constants.affirmative_text }}</b></p>
+                <p style="font-size: 1rem"><b>{{ Constants.affirmative_text }}</b></p>
             {% endif %}
             {% if product_first %}
                 {{ include_sibling 'instruction_product.html' }}
