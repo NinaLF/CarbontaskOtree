@@ -212,8 +212,8 @@
             {% elif product_second and first_block_was_policy %}
                 {{ include_sibling 'instruction_product.html' }}
             {% else %}
-                    <p>On the next pages, we ask you again to decide for or against electric vehicle offers. As before, please consider the following attributes that vary across the offers:</p>
-                    <ul style="text-align:left">
+                    <p style="font-size: 1rem">On the next pages, we ask you again to decide for or against electric vehicle offers. As before, please consider the following attributes that vary across the offers:</p>
+                    <ul style="text-align:left; font-size: 1rem">
                         <li><b>Investment Costs:</b> This monetary attribute defines the total investment costs of the electric car. Citizens may be eligible for government subsidies (tax credits), which reduce the costs. The costs depend on the make and subsidies received.</li>
                         <li><b>Savings on Driving:</b> Electric vehicles cost less to drive than traditional gasoline cars. The savings are calculated compared to the costs of driving a gasoline car and are based on electricity prices and efficiency for 100 miles.</li>
                         <li><b>Life Cycle Emissions:</b> This refers to the greenhouse gas emissions associated with the electric vehicle over its entire life cycle, measured per 100 miles driven. It includes emissions from manufacturing, electricity production, and disposal.  </li>
@@ -231,9 +231,9 @@
     <div class="row">
         <div class="col-12 my_flipcards">
         {% if policy_block %}
-            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/policy.webp' %}">
+            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/policyhand.webp' %}">
         {% else %}
-            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/EV.webp' %}">
+            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/electric.webp' %}">
         {% endif %}
             {% for attribute, level in attributes.items %}
                 <div class="flip-card tracked_element" data-loop-counter="{{ forloop.counter }}" id="att_{{ attribute }}">
