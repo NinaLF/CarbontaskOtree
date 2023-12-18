@@ -1,10 +1,7 @@
-{% block styles %}
-    <link href="{{ static 'global/css/Carbontask.css'}}" rel="stylesheet">
-{% endblock %}
+{{block content}}
+<h3 style="font-size: 1.4rem">Do you have any comments before finishing the study?</h3><br>
 
-{{ block title }}Do you have any comments before finishing the study?{{ endblock }}
-{{ block content }}
-
+Write down your comments in the box or leave this box blank. <br><br>
     {{ formfields }}
 
     {{ next_button }}

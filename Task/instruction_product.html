@@ -1,7 +1,12 @@
-<h3 style="color: #007bff;">Please read carefully: Instructions on the product choice task</h3>
+{% load otree static %}
+{% block styles %}
+<link href="{% static 'global/css/Carbontask.css' %}" rel="stylesheet">
+{% endblock %}
+
+<h3 style="color: #007bff; font-size: 1.4rem">Please read carefully: Instructions on the product choice task</h3>
 <br>
 <div>
-<p style="text-align:left">
+<p style="text-align:left; font-size: 0.95rem;">
     In the upcoming pages, you will be presented with various hypothetical investment scenarios.
     <b>Please imagine that you are contemplating to purchase a new car.</b>
     <br><br>
@@ -12,7 +17,7 @@
 </div>
 
 <div>
-<ul style="text-align:left">
+<ul style="text-align:left;  font-size: 0.95rem">
     <li><b>Investment Costs:</b> This monetary attribute defines the <b>total investment costs of the electric car</b>. Citizens may be eligible for government subsidies (tax credits), which reduce the costs. The costs depend on the make and subsidies received.</li>
     <br><li><b>Savings on Driving:</b> Electric vehicles have lower running costs than traditional gasoline cars. The <b>savings are calculated compared to the costs of driving a gasoline car </b> and are based on electricity prices and efficiency for 100 miles.</li>
     <br><li><b>Life Cycle Emissions:</b> This refers to the <b>greenhouse gas emissions associated with the electric vehicle over its entire life cycle, measured per 100 miles driven</b>. It includes emissions from manufacturing, electricity production, and disposal.</li>
@@ -22,7 +27,7 @@
 </div>
 
 <div>
-<p style="text-align:left">
+<p style="text-align:left; font-size: 0.95rem;">
     <b>Each electric car presented in an offer is designed to match the characteristics of a car you would
         consider buying. This includes factors such as model, size, engine power, and the number of doors.</b>
     <br>

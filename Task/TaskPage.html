@@ -8,7 +8,6 @@
     .my_flipcards {
         position:relative;
         display: flex;
-        margin-top: 0px;
         justify-content: center;
         align-items: center;
     }
@@ -32,9 +31,9 @@
 
     .flip-card {
             perspective: 1000px;
-            width: 300px;
-            height: 100px;
-            min-width: 350px;
+            width: 200px;
+            height: 90px;
+            min-width: 300px;
             margin: 6px;
         }
 
@@ -65,6 +64,7 @@
             height: 100%;
             margin-left: 10px;
             margin-right: 10px;
+            font-size: 0.9rem;
         }
 
         .flip-card-front,
@@ -146,7 +146,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: large;
+    font-size: 0.9rem;
 }
 
 @media (max-height: 600px) {
@@ -204,8 +204,7 @@
             {% endif %}
             {% if product_first %}
                 {{ include_sibling 'instruction_product.html' }}
-                <br>
-                <br>
+
                 <p style="color: red;">{{ block_text }}</p>
             {% elif policy_block %}
                 {{ include_sibling 'instruction_policy.html' }}
@@ -231,9 +230,9 @@
     <div class="row">
         <div class="col-12 my_flipcards">
         {% if policy_block %}
-            <img style="width:100%; margin: 10px; max-width:350px;" src="{% static 'global/images/policy.webp' %}">
+            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/policy.webp' %}">
         {% else %}
-            <img style="width:100%; margin: 10px; max-width:350px;" src="{% static 'global/images/EV.webp' %}">
+            <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/EV.webp' %}">
         {% endif %}
             {% for attribute, level in attributes.items %}
                 <div class="flip-card tracked_element" data-loop-counter="{{ forloop.counter }}" id="att_{{ attribute }}">
@@ -256,10 +255,10 @@
         <div class="question-container">
 
         {% if policy_block %}
-        <span id="choiceQuestionPolicy" style="font-size: 18px; text-align: center">Would you support this policy package?</span>
+        <span id="choiceQuestionPolicy" style="font-size: 16px; text-align: center">Would you support this policy package?</span>
 
         {% else %}
-        <span id="choiceQuestion" style="font-size: 18px; text-align: center">Would you buy this electric vehicle?</span>
+        <span id="choiceQuestion" style="font-size: 16px; text-align: center">Would you buy this electric vehicle?</span>
 
         {% endif %}
 

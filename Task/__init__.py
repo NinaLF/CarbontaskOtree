@@ -1898,28 +1898,12 @@ class TaskPage(Page):
             print("DEBUG: KeyError occurred. Available blocks:", attributes_list.keys())
             raise
 
-        if 'shuffled_order_product' not in player.participant.vars:
-            # Shuffle the indices for product tasks once and store in participant's data
-            indices_product = list(range(len(attributes_list[player.block])))
-            random.shuffle(indices_product)
-            player.participant.vars['shuffled_order_product'] = indices_product
-
-        if 'shuffled_order_policy' not in player.participant.vars:
-            # Shuffle the indices for policy tasks once and store in participant's data
-            indices_policy = list(range(len(attributes_list['E'])))
-            random.shuffle(indices_policy)
-            player.participant.vars['shuffled_order_policy'] = indices_policy
-
-            # Use the appropriate shuffled order based on the block type
-        if player.block in ['A', 'B', 'C', 'D']:
-            indices_list = player.participant.vars['shuffled_order_product']
-            attributes = attributes_list[player.block][indices_list[trial_number - 1]]
-        else:
-            indices_list = player.participant.vars['shuffled_order_policy']
-            attributes = attributes_list['E'][indices_list[trial_number - 1]]
+        keys_list = list(attributes.keys())
+        random.shuffle(keys_list)
+        shuffled_attributes = {key: attributes[key] for key in keys_list}
 
         return {
-            "attributes": attributes,
+            "attributes": shuffled_attributes,
             "current_task": trial_number,  # Set current_task to the extracted trial_number
             "block": block,  # Include the block information
             "block_text": block_text,  # Include the block-specific text,

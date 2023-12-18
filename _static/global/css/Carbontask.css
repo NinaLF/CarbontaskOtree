@@ -1,7 +1,7 @@
 
 .otree-body{
-  max-width: 950px;
-  font-size: 1.1rem;
+  width: 100%;
+  font-size: 1rem;
   text-align: justify;
   margin-left:auto;
   margin-right:auto;
@@ -9,7 +9,7 @@
 
 
 .otree-title{
-  font-size: 1.5rem;
+  font-size: 14px;
 
 }
 
