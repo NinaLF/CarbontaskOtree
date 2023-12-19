@@ -210,6 +210,7 @@
                 {{ include_sibling 'instruction_policy.html' }}
             {% elif product_second and first_block_was_policy %}
                 {{ include_sibling 'instruction_product.html' }}
+                <p style="color: red;">{{ block_text }}</p>
             {% else %}
                     <p style="font-size: 1rem">On the next pages, we ask you again to decide for or against electric vehicle offers. As before, please consider the following attributes that vary across the offers:</p>
                     <ul style="text-align:left; font-size: 1rem">
