@@ -50,6 +50,7 @@ class Player(BasePlayer):
 
     neighborhood1 = make_field('I am interested in what my neighbors are doing.')
     neighborhood2 = make_field('I enjoy meeting and chatting with my neighbors.')
+    attention = make_field('If you are still paying attention, choose response number 2.')
     neighborhood3 = make_field('It is easy to make friends with my neighbors.')
     neighborhood4 = make_field('In my neighborhood, we often borrow things from each other.')
 
@@ -104,7 +105,7 @@ class risks(Page):
 
 class neighbors(Page):
     form_model = 'player'
-    form_fields = ['neighborhood1', 'neighborhood2', 'neighborhood3', 'neighborhood4']
+    form_fields = ['neighborhood1', 'neighborhood2', 'attention', 'neighborhood3', 'neighborhood4']
 
 
 class comments(Page):
