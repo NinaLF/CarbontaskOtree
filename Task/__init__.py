@@ -1885,22 +1885,33 @@ class TaskPage(Page):
         try:
             if block == 'E':
                 attributes = attributes_listE[trial_number - 1]
+                if 'shuffled_attributes_policy' not in player.participant.vars:
+                    keys_list_policy = list(attributes.keys())
+                    random.shuffle(keys_list_policy)
+                    player.participant.vars['keys_list_policy'] = keys_list_policy
+                    shuffled_attributes = {key: attributes[key] for key in keys_list_policy}
+                    player.participant.vars['shuffled_attributes_policy'] = shuffled_attributes
+                else:
+                    shuffled_attributes = {key: attributes[key] for key in player.participant.vars['keys_list_policy']}
             else:
                 # Retrieve the attributes_list for the given block
                 current_attributes_list = attributes_list[block]
                 if not current_attributes_list:
                     print("DEBUG: current_attributes_list is empty. Available blocks:", attributes_list.keys())
                     raise KeyError(f"Block {block} not found in attributes_list")
-
                 # Retrieve the attributes for the given trial_number
                 attributes = current_attributes_list[trial_number - 1]
+                if 'shuffled_attributes_product' not in player.participant.vars:
+                    keys_list = list(attributes.keys())
+                    random.shuffle(keys_list)
+                    player.participant.vars['keys_list'] = keys_list
+                    shuffled_attributes = {key: attributes[key] for key in keys_list}
+                    player.participant.vars['shuffled_attributes_product'] = shuffled_attributes
+                else:
+                    shuffled_attributes = {key: attributes[key] for key in player.participant.vars['keys_list']}
         except KeyError:
             print("DEBUG: KeyError occurred. Available blocks:", attributes_list.keys())
             raise
-
-        keys_list = list(attributes.keys())
-        random.shuffle(keys_list)
-        shuffled_attributes = {key: attributes[key] for key in keys_list}
 
         return {
             "attributes": shuffled_attributes,
