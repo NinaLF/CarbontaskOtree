@@ -123,13 +123,11 @@
         display: flex;
     }
 
- .block-instruction-card {
+.block-instruction-card {
     position: absolute;
-     top:50%;
-     margin-top:3%;
+    top: 0;
     left: 0;
     width: 100%;
-    transform: translateY(-50%);
     display: flex;
     justify-content: center;
     background-color: rgba(255, 255, 255, .9);
@@ -205,12 +203,12 @@
             {% endif %}
             {% if product_first %}
                 {{ include_sibling 'instruction_product.html' }}
-                <p style="color: red;">{{ block_text }}</p>
+                <p style="color: red; font-size: 1rem">Please be aware of the following: {{ block_text }}</p>
             {% elif policy_block %}
                 {{ include_sibling 'instruction_policy.html' }}
             {% elif product_second and first_block_was_policy %}
                 {{ include_sibling 'instruction_product.html' }}
-                <p style="color: red;">{{ block_text }}</p>
+                <p style="color: red; font-size: 1rem"> Please be aware of the following: {{ block_text }}</p>
             {% else %}
                     <p style="font-size: 1rem">On the next pages, we ask you again to decide for or against electric vehicle offers. As before, please consider the following attributes that vary across the offers:</p>
                     <ul style="text-align:left; font-size: 1rem">
@@ -220,7 +218,7 @@
                         <li><b>Battery Range:</b> Battery range indicates the distance an electric vehicle can travel on a single charge. It defines how far you can drive before needing to recharge the vehicle's battery.</li>
                         <li><b>Adopters in the Neighborhood:</b> This attribute represents the percentage of people in your neighborhood or community who currently own electric cars. It indicates the number of residents who have already adopted electric vehicles. </li>
                     </ul>
-                    <p style="color: red;">{{ block_text }}</p>
+                    <p style="color: red;font-size: 1rem"> Please be aware of a recent government policy change: {{ block_text }}</p>
             {% endif %}
             <div id="hideInstructionButton" class="btn btn-primary" >Start Task</div>
         </div>

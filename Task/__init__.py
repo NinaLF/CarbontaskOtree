@@ -1676,19 +1676,19 @@ class Constants(BaseConstants):
 
     # Add block-specific texts
     block_texts = {
-        'A': 'Please note the following change in governmental policy: <br>In addition to the above attributes, '
-             'take into account that the government has introduced a carbon tax on gasoline. '
+        'A': '<br>A new carbon tax on gasoline is now in effect.'
              'This tax increases the savings of an electric car compared to a gasoline car per 100 miles. '
-             'You can find the tax amount within the <b>Savings on Driving</b> attribute',
-        'B': 'Please be aware of a recent government policy change:<br> '
+             'Find the tax amount in the <b>Savings on Driving</b> attribute. <br>',
+        'B': '<br> '
              'A new carbon tax on gasoline is now in effect. '
              'This tax increases the savings of electric cars compared to gasoline cars per 100 miles. '
              'Find the tax amount in the <b>Savings on Driving</b> attribute. <br>'
-             'Additionally, government introduced a manufacturer label on cars. '
+             'Additionally, the government introduced a manufacturer label on cars. '
              'The greenhouse gas emissions information is presented as a percentage label. '
              'It reflects the <b>emission savings of electric vehicles compared to similar-sized gasoline cars per 100 miles</b>.',
-        'C': '',
-        'D': 'Please be aware of a recent government policy change: <br>'
+        'C': '<br>'
+             'There are no additional government policies.',
+        'D': '<br>'
              'The government introduced a manufacturer label on cars. '
              'The greenhouse gas emissions information is presented as a percentage label. '
              'It reflects the <b>emission savings of electric vehicles compared to similar-sized gasoline cars per 100 miles</b>.',
