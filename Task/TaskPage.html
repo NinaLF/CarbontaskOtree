@@ -205,7 +205,6 @@
             {% endif %}
             {% if product_first %}
                 {{ include_sibling 'instruction_product.html' }}
-
                 <p style="color: red;">{{ block_text }}</p>
             {% elif policy_block %}
                 {{ include_sibling 'instruction_policy.html' }}
