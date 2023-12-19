@@ -1676,7 +1676,7 @@ class Constants(BaseConstants):
 
     # Add block-specific texts
     block_texts = {
-        'A': '<br>A new carbon tax on gasoline is now in effect.'
+        'A': '<br>A new carbon tax on gasoline is now in effect. '
              'This tax increases the savings of an electric car compared to a gasoline car per 100 miles. '
              'Find the tax amount in the <b>Savings on Driving</b> attribute. <br>',
         'B': '<br> '
