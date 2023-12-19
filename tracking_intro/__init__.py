@@ -78,7 +78,6 @@ class Player(BasePlayer):
                  ['ev', 'Electric car'],
                  ['hev', 'Hybrid car']],
         widget=widgets.RadioSelect,
-        blank=True,
     )
     car_model = models.StringField(
         label='What size is that car?',
@@ -86,7 +85,6 @@ class Player(BasePlayer):
                  ['Medium', 'Medium sized car (e.g., VW Golf, Audi A6)'],
                  ['Luxury', 'Luxury car / Sports car / SUV (e.g., Range Rover, Porsche, Mercedes-Benz S-Class)']],
         widget=widgets.RadioSelect,
-        blank=True,
     )
     car_number = models.StringField(
         label='How many cars does your household own in total?',
@@ -95,7 +93,6 @@ class Player(BasePlayer):
                  ['3', '3 cars'],
                  ['4', 'More than 3 cars']],
         widget=widgets.RadioSelect,
-        blank=True,
     )
     car_age = models.IntegerField(label='How old is your main car (in years)?', min=0, max=30, blank=True)
     car_replace = models.StringField(
@@ -105,7 +102,6 @@ class Player(BasePlayer):
                  ['every eight years', 'Every 8 years'],
                  ['every twelve years', 'Every 12 years or when it needs replacement']],
         widget=widgets.RadioSelect,
-        blank=True,
     )
     car = models.StringField(
         label='Whether or not you currently own a car, envisioning a scenario where you are purchasing a new one, '
@@ -115,7 +111,7 @@ class Player(BasePlayer):
                  ['Luxury', 'Luxury car / Sports car / SUV (e.g., Range Rover, Porsche, Mercedes-Benz S-Class)']],
         widget=widgets.RadioSelect,
     )
-    km_week = models.IntegerField(label='How many miles do you drive in a typical week?', min=0, max=500, blank=True)
+    km_week = models.IntegerField(label='How many miles do you drive in a typical week?', min=0, max=500,)
 
     wom_owner = models.StringField(
         label='If someone you know asks you for your opinion on your electric car, do you give... ',
@@ -124,7 +120,7 @@ class Player(BasePlayer):
                  ['negative', 'a negative response'],
                  ['mixed', 'a mixed response']],
         widget=widgets.RadioSelect,
-        blank=True,
+        blank = True,
     )
     wom_number = models.IntegerField(label='How many people do you know who own an electric vehicle?',
                                      min=0, max=50)
