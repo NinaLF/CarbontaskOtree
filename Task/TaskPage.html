@@ -323,9 +323,6 @@ $(".tracked_element").mouseenter(function() {
             leave_time: undefined
         };
 
-        if (!flipCardHovered) {
-            enableButtons();
-        }
     }
 });
 
@@ -335,6 +332,9 @@ $(".tracked_element").mouseleave(function () {
     currentlyHoveredElement = null;
 
     handleMouseLeave(previousElement, leave_time);
+
+    flipCardHovered = true;
+    updateButtonStatus();
 });
     function handleMouseLeave(elementId, leave_time) {
     if (hover_events[elementId]) {
