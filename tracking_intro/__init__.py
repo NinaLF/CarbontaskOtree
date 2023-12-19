@@ -150,6 +150,8 @@ class Player(BasePlayer):
     dataScience = models.BooleanField(initial=False)
     dataTeach = models.BooleanField(initial=False)
 
+    is_mobile = models.BooleanField()
+
     # Additional fields for Tracker_demo
     def store_tracking_data(self, payload):
         HoverEvent.create(
@@ -208,6 +210,15 @@ class introduction_consent(Page):
         }  # add ?participant_label={{%PROLIFIC_PID%}} to link on prolific
 
 
+class MobileCheck(Page):
+    form_model = 'player'
+    form_fields = ['is_mobile']
+
+    def error_message(player: Player, values):
+        if values['is_mobile']:
+            return "Sorry, this experiment does not allow mobile browsers."
+
+
 # Demographics Page class
 class Demographics(Page):
     form_model = 'player'
@@ -258,6 +269,7 @@ class practice_completed_template(Page):
 
 # Page sequence
 page_sequence = [
+    MobileCheck,
     introduction_consent,
     Demographics,
     Car_questions,
