@@ -20,21 +20,13 @@ Start
         return toMatch.some((item) => navigator.userAgent.match(item));
     }
 
+    // here is an alternative technique that checks screen resolution
+    // function isMobile() {
+    //     return ((window.innerWidth <= 800) && (window.innerHeight <= 600));
+    // }
+
     forminputs.is_mobile.value = isMobile() ? 1 : 0;
 
-    // Check if the user is on a mobile device
-    if (isMobile()) {
-        // Append the existing error message
-        const errorMessage = document.createElement('p');
-        errorMessage.innerHTML = "Sorry, this experiment does not allow mobile browsers. Please return to the Prolific website and paste this code: CY7RG1SD";
-        document.body.appendChild(errorMessage);
-
-        // Add a button to return to Prolific
-        const returnToProlificButton = document.createElement('a');
-        returnToProlificButton.href = "https://app.prolific.com/submissions/complete?cc=CY7RG1SD";
-        returnToProlificButton.textContent = "Return to Prolific";
-        document.body.appendChild(returnToProlificButton);
-    }
 </script>
 
 {{ endblock }}
