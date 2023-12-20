@@ -216,7 +216,8 @@ class MobileCheck(Page):
 
     def error_message(player: Player, values):
         if values['is_mobile']:
-            return "Sorry, this experiment does not allow mobile browsers."
+            return ("Sorry, this experiment does not allow mobile browsers. "
+                    "Please return to the Prolific website and paste this code: CY7RG1SD")
 
 
 # Demographics Page class
