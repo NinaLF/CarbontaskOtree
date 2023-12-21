@@ -38,7 +38,7 @@ class Player(BasePlayer):
     ev_prob_benefits1 = make_field('...considerably reduce my expenses.')
     ev_prob_benefits2 = make_field('...considerably increase my independence.')
     ev_prob_benefits3 = make_field('...considerably decrease my impact on the climate.')
-    ev_prob_benefits4 = make_field('...be part of a collective action.')
+    ev_prob_benefits4 = make_field('be part of a common goal or action that others are also involved in.')
 
     ev_prob_risks1 = make_field('...high initial costs.')
     ev_prob_risks2 = make_field('...too low a return of investment.')
