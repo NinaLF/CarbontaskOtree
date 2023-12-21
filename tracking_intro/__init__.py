@@ -125,7 +125,7 @@ class Player(BasePlayer):
     wom_number = models.IntegerField(label='How many people do you know who own an electric vehicle?',
                                      min=0, max=50)
     wom_positive = models.StringField(
-        label='In the past month, how often have you heard <b>positive</b> comments about electric vehicles?',
+        label='In general, how often do you hear <b>positive</b> comments about electric vehicles?',
         choices=[['every day', 'More than once a week'],
                  ['once week', 'Once a week'],
                  ['once month', 'Once a month'],
@@ -133,7 +133,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
         )
     wom_negative = models.StringField(
-        label='In the past month, how often have you heard <b>negative</b> comments about electric vehicles?',
+        label='In general, how often do you hear <b>negative</b> comments about electric vehicles?',
         choices=[['every day', 'More than once a week'],
                  ['once week', 'Once a week'],
                  ['once month', 'Once a month'],
