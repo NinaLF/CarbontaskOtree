@@ -1849,6 +1849,8 @@ class TaskPage(Page):
         product_first = player.round_number == 1 and player.block in ['A', 'B', 'C', 'D']
         product_second = not product_first and player.round_number == 19 and player.block in ['A', 'B', 'C', 'D']
 
+        round_number = player.round_number
+
         if player.round_number == 1 and policy_block:
             player.participant.vars['first_block_was_policy'] = True
 
@@ -1922,6 +1924,7 @@ class TaskPage(Page):
             "attributes": shuffled_attributes,
             "current_task": trial_number,  # Set current_task to the extracted trial_number
             "block": block,  # Include the block information
+            "round_number": round_number,
             "block_text": block_text,  # Include the block-specific text,
             "is_first_trial_of_block": is_first_trial_of_block,
             "completed_block": completed_block,

@@ -7,7 +7,7 @@
 
     .my_flipcards {
         position:relative;
-        margin-top:-30px;
+        margin-top:-20px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -224,13 +224,14 @@
         </div>
     </div>
 {% endif %}
-
 <div class="container my_flipcards">
     <div class="row">
         <div class="col-12 my_flipcards">
         {% if policy_block %}
+            <p id="offerTitle">Policy Package No. 1</p>
             <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/policyhand.webp' %}">
         {% else %}
+            <p id="offerTitle">Electric Vehicle Offer No. 1</p>
             <img style="width:100%; margin: 10px; max-width:300px;" src="{% static 'global/images/electric.webp' %}">
         {% endif %}
             {% for attribute, level in attributes.items %}
@@ -285,6 +286,23 @@
 
 {% block scripts %}
 <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+    // Get the title element
+    var titleElement = document.getElementById("offerTitle");
+
+    // Get the round number
+    var roundNumber = {{ round_number }};
+
+    // Use a modulo operation to map round_number to values 1-18
+    var pageLoadCount = (roundNumber - 1) % 18 + 1;
+
+    // Set the title with the updated count
+    titleElement.textContent = "Electric Vehicle Offer No. " + pageLoadCount;
+
+    // Save the updated pageLoadCount to localStorage
+    localStorage.setItem("pageLoadCount", pageLoadCount.toString());
+});
+
     let hover_events = {};
     let currentlyHoveredElement = null;
 
