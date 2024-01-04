@@ -38,18 +38,105 @@
 
 
 
+
 <table class="radiotable">
-    <tr> <th></th>  <th    class="radio-column"> Completely disagree (1)</th>  <th class="radio-column" > 2  </th> <th class="radio-column"> 3 </th> <th class="radio-column"  > 4  </th> <th class="radio-column"> 5 </th>  <th class="radio-column"> Completely agree  (6) </th>    </tr>
+    <tr> <th></th>
+        <th class="radio-column"> Completely disagree (1) </th>
+        <th class="radio-column"> 2 </th>
+        <th class="radio-column"> 3 </th>
+        <th class="radio-column"> 4 </th>
+        <th class="radio-column"> 5 </th>
+        <th class="radio-column"> Completely agree (6) </th>
+    </tr>
+    <tr>
+    <th style="font-weight:normal;">{{ form.neighborhood1.label }}</th>
+    <td>{{ form.neighborhood1.0 }}</td>
+    <td>{{ form.neighborhood1.1 }}</td>
+    <td>{{ form.neighborhood1.2 }}</td>
+    <td>{{ form.neighborhood1.3 }}</td>
+    <td>{{ form.neighborhood1.4 }}</td>
+    <td>{{ form.neighborhood1.5 }}</td>
+</tr>
+<tr>
+    <th style="font-weight:normal;">{{ form.neighborhood2.label }}</th>
+    <td>{{ form.neighborhood2.0 }}</td>
+    <td>{{ form.neighborhood2.1 }}</td>
+    <td>{{ form.neighborhood2.2 }}</td>
+    <td>{{ form.neighborhood2.3 }}</td>
+    <td>{{ form.neighborhood2.4 }}</td>
+    <td>{{ form.neighborhood2.5 }}</td>
+</tr>
+<tr>
+    <th style="font-weight:normal;">{{ form.attention.label }}</th>
+    <td>{{ form.attention.0 }}</td>
+    <td>{{ form.attention.1 }}</td>
+    <td>{{ form.attention.2 }}</td>
+    <td>{{ form.attention.3 }}</td>
+    <td>{{ form.attention.4 }}</td>
+    <td>{{ form.attention.5 }}</td>
+</tr>
+<tr>
+    <th style="font-weight:normal;">{{ form.neighborhood3.label }}</th>
+    <td>{{ form.neighborhood3.0 }}</td>
+    <td>{{ form.neighborhood3.1 }}</td>
+    <td>{{ form.neighborhood3.2 }}</td>
+    <td>{{ form.neighborhood3.3 }}</td>
+    <td>{{ form.neighborhood3.4 }}</td>
+    <td>{{ form.neighborhood3.5 }}</td>
+</tr>
+    <tr>
+    <th style="font-weight:normal;">{{ form.neighborhood4.label }}</th>
+    <td>{{ form.neighborhood4.0 }}</td>
+    <td>{{ form.neighborhood4.1 }}</td>
+    <td>{{ form.neighborhood4.2 }}</td>
+    <td>{{ form.neighborhood4.3 }}</td>
+    <td>{{ form.neighborhood4.4 }}</td>
+    <td>{{ form.neighborhood4.5 }}</td>
+</tr>
+    </table>
+<br>
+<br>
+<p>
+    When you think about your friends and neighbors, would you say they are similar to you regarding...
+    <br>
 
-
-    {{ for field in form }}
-        <tr>
-            <th style="font-weight:normal;">{{ field.label }}</th>
-            {{ for choice in field }}
-                <td>{{ choice }}</td>
-            {{ endfor }}
-        </tr>
-    {{ endfor }}
+</p>
+<table class="radiotable">
+    <tr> <th></th>
+        <th class="radio-column"> Not similar (1) </th>
+        <th class="radio-column"> 2 </th>
+        <th class="radio-column"> 3 </th>
+        <th class="radio-column"> 4 </th>
+        <th class="radio-column"> 5 </th>
+        <th class="radio-column"> Very similar (6) </th>
+    </tr>
+<tr>
+    <th style="font-weight:normal;">{{ form.homophily1.label }}</th>
+    <td>{{ form.homophily1.0 }}</td>
+    <td>{{ form.homophily1.1 }}</td>
+    <td>{{ form.homophily1.2 }}</td>
+    <td>{{ form.homophily1.3 }}</td>
+    <td>{{ form.homophily1.4 }}</td>
+    <td>{{ form.homophily1.5 }}</td>
+</tr>
+<tr>
+    <th style="font-weight:normal;">{{ form.homophily2.label }}</th>
+    <td>{{ form.homophily2.0 }}</td>
+    <td>{{ form.homophily2.1 }}</td>
+    <td>{{ form.homophily2.2 }}</td>
+    <td>{{ form.homophily2.3 }}</td>
+    <td>{{ form.homophily2.4 }}</td>
+    <td>{{ form.homophily2.5 }}</td>
+</tr>
+    <tr>
+    <th style="font-weight:normal;">{{ form.homophily3.label }}</th>
+    <td>{{ form.homophily3.0 }}</td>
+    <td>{{ form.homophily3.1 }}</td>
+    <td>{{ form.homophily3.2 }}</td>
+    <td>{{ form.homophily3.3 }}</td>
+    <td>{{ form.homophily3.4 }}</td>
+    <td>{{ form.homophily3.5 }}</td>
+</tr>
 </table>
 
 

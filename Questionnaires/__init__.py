@@ -54,6 +54,10 @@ class Player(BasePlayer):
     neighborhood3 = make_field('It is easy to make friends with my neighbors.')
     neighborhood4 = make_field('In my neighborhood, we often borrow things from each other.')
 
+    homophily1 = make_field('...their political orientation and opinions?')
+    homophily2 = make_field('...their social and economic status?')
+    homophily3 = make_field('...their lifestyle and consumption choices?')
+
     EVreason = models.StringField(
             label='If you said you would not want to buy an EV, what was the reason?',
             choices=[['I would buy a gasoline car instead', 'I would buy a gasoline car instead'],
@@ -105,7 +109,8 @@ class risks(Page):
 
 class neighbors(Page):
     form_model = 'player'
-    form_fields = ['neighborhood1', 'neighborhood2', 'attention', 'neighborhood3', 'neighborhood4']
+    form_fields = ['neighborhood1', 'neighborhood2', 'attention', 'neighborhood3', 'neighborhood4', 'homophily1',
+                   'homophily2', 'homophily3']
 
 
 class comments(Page):
