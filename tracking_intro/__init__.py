@@ -68,8 +68,8 @@ class Player(BasePlayer):
     )
     own_car = models.StringField(
         label='Does your household own a car (or lease a car)?',
-        choices=[['No', 'No'],
-                 ['Yes', 'Yes']],
+        choices=[['Yes', 'Yes'],
+                 ['No', 'No']],
         widget=widgets.RadioSelect,
     )
     car_type = models.StringField(
