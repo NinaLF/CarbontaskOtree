@@ -1,7 +1,7 @@
 from otree.api import *
 import random
 
-author = 'Christian König gen. Kersting'
+author = 'Anne Guenther'
 
 doc = """
 Demo of element hover tracking using oTree 2.6b0
