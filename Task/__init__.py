@@ -1678,12 +1678,12 @@ class Constants(BaseConstants):
     block_texts = {
         'A': '<br>A carbon tax on gasoline is now in effect. '
              'This tax increases the savings of an electric car compared to a gasoline car per 100 miles. '
-             'Find the tax amount in the <b>Savings on Driving</b> box. <br>',
+             'Find the tax amount in the <b>Savings Compared to Gasoline Car</b> box. <br>',
 
         'B': '<br> '
              'A carbon tax on gasoline is now in effect. '
              'This tax increases the savings of electric cars compared to gasoline cars per 100 miles. '
-             'Find the tax amount in the <b>Savings on Driving</b> box. <br>'
+             'Find the tax amount in the <b>Savings Compared to Gasoline Car</b> box. <br>'
              'Additionally, the government introduced a manufacturer label on cars. '
              'The greenhouse gas emissions information is presented as a percentage label. '
              'It reflects the <b>emission savings of electric vehicles compared to similar-sized gasoline cars '
