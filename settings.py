@@ -4,12 +4,11 @@ from os import environ
 SESSION_CONFIGS = [
 
      dict(
-       name='Mouselab_04',
+       name='Pilot',
        display_name="Study Pilot",
        num_demo_participants=5,
-       app_sequence=['tracking_intro', 'Task', 'Questionnaires']
-    ),
-
+       app_sequence=['tracking_intro', 'Task', 'Questionnaires', 'End']
+     ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

@@ -86,11 +86,6 @@ class pol_orientation(Page):
     form_fields = ['conservative_liberal']
 
 
-class end(Page):
-    form_model = 'player'
-    form_fields = []
-
-
 class EVreason(Page):
     form_model = 'player'
     form_fields = ['EVreason']
@@ -125,6 +120,5 @@ page_sequence = [
     neighbors,
     cc_concern,
     pol_orientation,
-    comments,
-    end
+    comments
 ]
