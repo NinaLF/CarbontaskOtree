@@ -4,14 +4,14 @@ SESSION_CONFIGS = [
      dict(
          name='Order_Zahra_Nina_Jessi_zh',
   #      app_sequence=['survey','task'],
-         app_sequence=['FirstBlock', 'CCsampling_intro', 'CCsampling', 'Nina_instructions', 'Nina_carbontask',  'Jessi_Instructions',  'Jessi_carbonTax',  'Scales','CCsampling_Debrief', 'Goodbye'],
+         app_sequence=['FirstBlock', 'CCsampling_intro', 'CCsampling', 'Nina_instructions', 'Nina_carbontask',  'Jessi_Instructions',  'Jessi_carbonTax',  'Scales','CCsampling_Debrief'],
          language = "zh_hans",
          num_demo_participants=10,
      ),
     dict(
          name='chinese_Zahras_part',
   #      app_sequence=['survey','task'],
-         app_sequence=[ 'FirstBlock','CCsampling_intro', 'CCsampling', 'Scales','CCsampling_Debrief', 'Goodbye'],
+         app_sequence=[ 'FirstBlock','CCsampling_intro', 'CCsampling', 'Scales','CCsampling_Debrief'],
          language = "zh_hans",
 
          num_demo_participants=10,
