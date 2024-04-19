@@ -1,0 +1,53 @@
+
+
+{% block styles %}
+<link href="{{ static 'global/css/SamplingPilotgeneral.css'}}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    {{ Lexicon.studyInformation }}
+{% endblock %}
+
+{% block content %}
+
+
+
+<body>
+
+
+  <p>    {{Lexicon.instructionCondition_telling_box_label_false}} </p> 
+
+
+ <p> {{Lexicon.instructionUnconditional1}}  {{C.GAME_ROUNDS}}  {{Lexicon.instructionUnconditional2}}</p>
+
+   
+
+
+<div >
+    <button id="nextst" style=" margin-top: 4vh;" disabled class="otree-btn-next btn btn-primary">{{Lexicon.next}}</button>
+
+</div>
+
+
+</body>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+
+    enablebtn = function () {
+        document.getElementById("nextst").disabled = false;
+    }
+
+
+
+    window.onload = function () {
+        // todo #### increase timeout
+        //setTimeout(function () { enablebtn() }, 3 * 1000);
+        setTimeout(function () { enablebtn() }, 3 );
+    }
+</script>
+{% endblock %}

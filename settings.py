@@ -1,15 +1,21 @@
 from os import environ
 
-
 SESSION_CONFIGS = [
-
      dict(
-       name='Mouselab_04',
-       display_name="Study Pilot",
-       num_demo_participants=5,
-       app_sequence=['tracking_intro', 'Task', 'Questionnaires']
-    ),
+         name='Order_Zahra_Nina_Jessi_zh',
+  #      app_sequence=['survey','task'],
+         app_sequence=['FirstBlock', 'CCsampling_intro', 'CCsampling', 'Nina_instructions', 'Nina_carbontask',  'Jessi_Instructions',  'Jessi_carbonTax',  'Scales','CCsampling_Debrief', 'Goodbye'],
+         language = "zh_hans",
+         num_demo_participants=10,
+     ),
+    dict(
+         name='chinese_Zahras_part',
+  #      app_sequence=['survey','task'],
+         app_sequence=[ 'FirstBlock','CCsampling_intro', 'CCsampling', 'Scales','CCsampling_Debrief', 'Goodbye'],
+         language = "zh_hans",
 
+         num_demo_participants=10,
+     )
 
 ]
 
@@ -23,40 +29,60 @@ SESSION_CONFIG_DEFAULTS = dict(
 )
 
 PARTICIPANT_FIELDS = [
+
+    ## Overall Structure
+    'order_tasks',
+    'pLangCode',
+    'task_counter',
+
+     #CC SAMPLING FIELDS
+    'randomInfoArray',
+    'randomMisinfoArray', 
+    'reverseBoxes',
+    'seenMisinfo',
+    'seenMislInfo',
+     #'telling_box_label',
+
+    ## carbon footprint task
     'task_rounds',
-    'car'
-]
 
-
+    # carbonTaxTask
+    'task_rounds_J'
+    
+    ]
 SESSION_FIELDS = [
+    'introLexi',
+    'firstBlockLexi',
+    
+    'samplingLexi',
+    'samplingIntroLexi',
+
+    'introNinaLexi',
+    'carbonTaskLexi',
+
+    'JessiTaskLexicon',
+    'JessiIntroLexi',
+    
+    'scalesLexi',
+    'debriefLexi',
+
+    'GoodbyeLexi',
+
+    'myLangCode'
 ]
 
 # ISO-639 code
-
+# for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'GBP'
+REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = False
-
-ROOMS = [
-    dict(
-        name='econ101',
-        display_name='Econ 101 class',
-        participant_label_file='_rooms/econ101.txt',
-    ),
-    dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
-]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """
-Here are some oTree games.
-"""
+DEMO_PAGE_INTRO_HTML = """ """
 
-
-SECRET_KEY = '3153268574945'
-
-INSTALLED_APPS = ['otree']
+SECRET_KEY = '5553960384234'

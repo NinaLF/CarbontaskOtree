@@ -1,0 +1,178 @@
+{% block title %}
+{{Lexicon.box_rating_instruction}}
+{% endblock %}
+
+
+{% block styles %}
+<!-- Compiled and minified CSS -->
+<link href="{{ static 'global/css/SamplingPilotgeneral.css'}}" rel="stylesheet">
+<style>
+   label {
+      padding-top: 20pt;
+      font-weight: bold;
+   }
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<body>
+
+
+
+   <div style="padding-top:2vh; text-align: center; padding-left:1vw;">
+      <table style="text-align: center; margin-left: auto; margin-right:auto">
+         <tr>
+            <label for="id_boxlikingInfo"> {{Lexicon.box_rating_liking_A}} </label>
+         </tr>
+         <tr>
+            <td> {{Lexicon.not_at_all}} &nbsp;</td>
+            {{ for choice in form.boxlikingInfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_much}} </td>
+         </tr>
+
+         <tr>
+            <td colspan="11">
+               <label for="id_boxrecommendationInfo"> {{Lexicon.box_rating_would_follow_A}} </label>
+            </td>
+         </tr>
+
+         <tr>
+            <td> {{Lexicon.very_unlikely}} &nbsp;</td>
+            {{ for choice in form.boxrecommendationInfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_likely}} </td>
+         </tr>
+
+         {{if round_number == C.NUM_ROUNDS}}
+         <tr>
+            <td colspan="11">
+               <label for="id_boxpoliticsInfo"> {{Lexicon.box_rating_polOrientation_A}} </label>
+            </td>
+         </tr>
+         <tr>
+            <td> {{Lexicon.very_liberal}} &nbsp;</td>
+            {{ for choice in form.boxpoliticsInfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_conservative}} </td>
+         </tr>
+
+
+         <tr>
+            <td colspan="11">
+               <label for="id_boxImpactInfo"> {{Lexicon.box_rating_impact_A}} </label>
+            </td>
+         </tr>
+         <tr>
+            <td> {{Lexicon.not_at_all}} &nbsp;</td>
+            {{ for choice in form.boxImpactInfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_much}} </td>
+         </tr>
+         {{endif}}
+
+      </table>
+   </div>
+
+
+   <hr>
+
+   <div style="padding-top:2vh; text-align: center; padding-left:1vw;">
+      <table style="text-align: center; margin-left: auto; margin-right:auto">
+         <tr>
+            <label for="id_boxlikingMisinfo"> {{Lexicon.box_rating_liking_B}} </label>
+        
+         </tr>
+         <tr>
+            <td> {{Lexicon.not_at_all}} &nbsp;</td>
+            {{ for choice in form.boxlikingMisinfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_much}} </td>
+         </tr>
+
+         <tr>
+            <td colspan="11">
+               <label for="id_boxrecommendationMisinfo"> {{Lexicon.box_rating_would_follow_B}} </label>
+            </td>
+         </tr>
+         <tr>
+            <td> {{Lexicon.very_unlikely}} &nbsp;</td>
+            {{ for choice in form.boxrecommendationMisinfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_likely}} </td>
+         </tr>
+         {{if round_number == C.NUM_ROUNDS}}
+         <tr>
+            <td colspan="11">
+               <label for="id_boxpoliticsMisinfo"> {{Lexicon.box_rating_polOrientation_B}} </label>
+            </td>
+         </tr>
+         <tr>
+            <td> {{Lexicon.very_liberal}} &nbsp;</td>
+            {{ for choice in form.boxpoliticsMisinfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_conservative}} </td>
+         </tr>
+
+
+         <tr>
+            <td colspan="11">
+               <label for="id_boxImpactMisinfo"> {{Lexicon.box_rating_impact_B}} </label>
+            </td>
+         </tr>
+         <tr>
+            <td> {{Lexicon.not_at_all}} &nbsp;</td>
+            {{ for choice in form.boxImpactMisinfo }}
+            <td> {{ choice }} </td>
+            {{ endfor }}
+            <td> &nbsp; {{Lexicon.very_much}} </td>
+         </tr>
+
+         {{ formfield_errors 'boxpoliticsMisinfo' }}
+         {{ formfield_errors 'boxpoliticsInfo' }}
+         {{ formfield_errors 'boxImpactInfo' }}
+         {{ formfield_errors 'boxImpactMisinfo' }}
+         {{endif}}
+
+      </table>
+   </div>
+
+
+   <div style="max-width: 750px;">
+      <button id="nextst" style=" margin-top: 4vh;" class="otree-btn-next btn btn-primary">{{Lexicon.next}}</button>
+
+   </div>
+
+
+</body>
+
+{{ formfield_errors 'boxlikingInfo' }}
+{{ formfield_errors 'boxlikingMisinfo' }}
+{{ formfield_errors 'boxrecommendationInfo' }}
+{{ formfield_errors 'boxrecommendationMisinfo' }}
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<!-- Compiled and minified JavaScript -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+
+
+
+</script>
+
+{% endblock %}
