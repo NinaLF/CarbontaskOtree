@@ -15,6 +15,14 @@ SESSION_CONFIGS = [
          language = "zh_hans",
 
          num_demo_participants=10,
+     ),
+    dict(
+         name='english_Zahras_part',
+  #      app_sequence=['survey','task'],
+         app_sequence=['CCsampling_intro', 'CCsampling'],
+         language = "en",
+
+         num_demo_participants=10,
      )
 
 ]
