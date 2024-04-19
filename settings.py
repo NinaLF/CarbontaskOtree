@@ -11,7 +11,7 @@ SESSION_CONFIGS = [
     dict(
          name='chinese_Zahras_part',
   #      app_sequence=['survey','task'],
-         app_sequence=['CCsampling_intro', 'CCsampling', 'Scales','CCsampling_Debrief'],
+         app_sequence=['CCsampling_intro', 'CCsampling'],
          language = "zh_hans",
 
          num_demo_participants=10,
