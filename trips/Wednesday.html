@@ -1,0 +1,249 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<h3>Trip Diary: Wednesday</h3>
+<br>
+<br>
+<form method="post">
+
+    <div class="inline-label-input">
+        <label>{{ form.wed_first_trip.label }}</label>
+        {{ form.wed_first_trip }}
+    </div>
+    <br><br>
+
+    <table id="additional-trips-table">
+        <thead id="additional-trips-table-thead" >
+            <tr>
+                <th>Destination</th>
+                <th>Start Time</th>
+                <th>Distance (km)</th>
+                <th>Duration (mins)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="additional_trip_1" style="display: {% if initial_values.wed_additional_trip_1 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_1 }}</td>
+                <td>{{ form.wed_start_time_1 }}</td>
+                <td>{{ form.wed_distance_1 }}</td>
+                <td>{{ form.wed_duration_1 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="1">-</button></td>
+            </tr>
+            <tr id="additional_trip_2" style="display: {% if initial_values.wed_additional_trip_2 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_2 }}</td>
+                <td>{{ form.wed_start_time_2 }}</td>
+                <td>{{ form.wed_distance_2 }}</td>
+                <td>{{ form.wed_duration_2 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="2">-</button></td>
+            </tr>
+            <tr id="additional_trip_3" style="display: {% if initial_values.wed_additional_trip_3 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_3 }}</td>
+                <td>{{ form.wed_start_time_3 }}</td>
+                <td>{{ form.wed_distance_3 }}</td>
+                <td>{{ form.wed_duration_3 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="3">-</button></td>
+            </tr>
+            <tr id="additional_trip_4" style="display: {% if initial_values.wed_additional_trip_4 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_4 }}</td>
+                <td>{{ form.wed_start_time_4 }}</td>
+                <td>{{ form.wed_distance_4 }}</td>
+                <td>{{ form.wed_duration_4 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="4">-</button></td>
+            </tr>
+            <tr id="additional_trip_5" style="display: {% if initial_values.wed_additional_trip_5 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_5 }}</td>
+                <td>{{ form.wed_start_time_5 }}</td>
+                <td>{{ form.wed_distance_5 }}</td>
+                <td>{{ form.wed_duration_5 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="5">-</button></td>
+            </tr>
+            <tr id="additional_trip_6" style="display: {% if initial_values.wed_additional_trip_6 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_6 }}</td>
+                <td>{{ form.wed_start_time_6 }}</td>
+                <td>{{ form.wed_distance_6 }}</td>
+                <td>{{ form.wed_duration_6 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="6">-</button></td>
+            </tr>
+            <tr id="additional_trip_7" style="display: {% if initial_values.wed_additional_trip_7 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_7 }}</td>
+                <td>{{ form.wed_start_time_7 }}</td>
+                <td>{{ form.wed_distance_7 }}</td>
+                <td>{{ form.wed_duration_7 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="7">-</button></td>
+            </tr>
+            <tr id="additional_trip_8" style="display: {% if initial_values.wed_additional_trip_8 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_8 }}</td>
+                <td>{{ form.wed_start_time_8 }}</td>
+                <td>{{ form.wed_distance_8 }}</td>
+                <td>{{ form.wed_duration_8 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="8">-</button></td>
+            </tr>
+            <tr id="additional_trip_9" style="display: {% if initial_values.wed_additional_trip_9 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_9 }}</td>
+                <td>{{ form.wed_start_time_9 }}</td>
+                <td>{{ form.wed_distance_9 }}</td>
+                <td>{{ form.wed_duration_9 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="9">-</button></td>
+            </tr>
+            <tr id="additional_trip_10" style="display: {% if initial_values.wed_additional_trip_10 %}table-row{% else %}none{% endif %};">
+                <td>{{ form.wed_additional_trip_10 }}</td>
+                <td>{{ form.wed_start_time_10 }}</td>
+                <td>{{ form.wed_distance_10 }}</td>
+                <td>{{ form.wed_duration_10 }}</td>
+                <td><button type="button" class="remove-trip styled-red-button" data-trip-id="10">-</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="button" id="add-trip" class="styled-green-button">+ Add trip</button>
+    <br><br>
+
+    <div class="inline-label-input">
+        <label>{{ form.wed_last_trip.label }}</label>
+        {{ form.wed_last_trip }}
+    </div>
+    <br><br>
+</form>
+<p>Are there other days of the week on which you typically did exactly the same trips as the above? Select all that apply.</p>
+
+{% if not participant.vars.Thursday and not participant.vars.Thursday_tue %}
+    <label id="label_Thursday_wed">
+        <input type="checkbox" name="Thursday_wed" value="1">
+        Thursday
+    </label><br>
+{% endif %}
+
+{% if not participant.vars.Friday and not participant.vars.Friday_tue%}
+    <label id="label_Friday_wed">
+        <input type="checkbox" name="Friday_wed" value="1">
+        Friday
+    </label><br>
+{% endif %}
+
+{% if not participant.vars.Saturday and not participant.vars.Saturday_tue%}
+    <label id="label_Saturday_wed">
+        <input type="checkbox" name="Saturday_wed" value="1">
+        Saturday
+    </label><br>
+{% endif %}
+
+{% if not participant.vars.Sunday and not participant.vars.Sunday_tue%}
+    <label id="label_Sunday_wed">
+        <input type="checkbox" name="Sunday_wed" value="1">
+        Sunday
+    </label><br>
+{% endif %}
+
+<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
+
+
+<style>
+    #additional-trips-table-thead {
+        display: none;
+    }
+
+    #additional-trips-table {
+    width: 100%; /* Adjust width as needed */
+    border-collapse: collapse; /* Ensure borders collapse properly */
+    }
+
+    #additional-trips-table th,
+    #additional-trips-table td {
+        padding: 10px;
+        text-align: left;
+        width: 20%; /* Adjust width as needed */
+    }
+
+    #additional-trips-table th {
+        background-color: #f2f2f2; /* Example background color for headers */
+    }
+
+
+    .inline-label-input {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .inline-label-input label {
+        margin-right: 10px;
+        margin-left: 0px;
+    }
+
+    .styled-green-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .styled-red-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 15px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+</style>
+
+<script>
+    document.getElementById('add-trip').addEventListener('click', function() {
+        const table = document.getElementById('additional-trips-table');
+        const thead = document.getElementById('additional-trips-table-thead');
+
+        // Find the first hidden row and display it
+        let added = false;
+        for (let i = 1; i <= 10; i++) {
+            const row = document.getElementById('additional_trip_' + i);
+            if (row.style.display === 'none') {
+                row.style.display = 'table-row';
+                added = true;
+                break;
+            }
+        }
+
+        // Display the thead if a trip has been added
+        if (added) {
+            thead.style.display = 'table-header-group'; // or 'table-row' depending on your design
+        }
+
+        // Toggle the add trip button visibility based on the number of visible rows
+        const visibleRows = table.getElementsByTagName('tbody')[0].querySelectorAll('tr[style="display: table-row;"]');
+        document.getElementById('add-trip').style.display = (visibleRows.length >= 10) ? 'none' : 'block';
+    });
+
+    document.querySelectorAll('.remove-trip').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const tripId = button.getAttribute('data-trip-id');
+            const tripRow = document.getElementById('additional_trip_' + tripId);
+            tripRow.style.display = 'none';
+
+            // Check if there are still visible rows
+            const table = document.getElementById('additional-trips-table');
+            const visibleRows = table.getElementsByTagName('tbody')[0].querySelectorAll('tr[style="display: table-row;"]');
+            if (visibleRows.length === 0) {
+                document.getElementById('additional-trips-table-thead').style.display = 'none';
+            }
+        });
+    });
+
+    // Prepopulate additional trips if they have initial values
+    const initialTrips = {{ additional_trips|safe }};
+    for (let i = 1; i <= 10; i++) {
+        if (initialTrips[i-1]) {
+            document.getElementById('additional_trip_' + i).style.display = 'table-row';
+            document.getElementById('additional-trips-table-thead').style.display = 'table-header-group';
+        }
+    }
+</script>
+
+
+
+
+{% endblock %}
