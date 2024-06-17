@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<h3>Welcome! </h3>
+<br>
+<h5>Let's start with some questions about your mobility behavior last year at the time of the study in August and September:</h5>
+
+<br><br>
+    <div>
+        <label>{{ form.mobility_change.label }}</label>
+        {{ form.mobility_change }}
+    </div>
+<br><br>
+
+<h6>During the week (Monday to Friday):</h6>
+    <div>
+        <label>{{ form.departure_week.label }}</label>
+        {{ form.departure_week }}
+    </div>
+<br>
+    <div>
+        <label>{{ form.arrival_week.label }}</label>
+        {{ form.arrival_week }}
+    </div>
+<br><br>
+<h6>On the weekend (Saturday and Sunday):</h6>
+    <div>
+        <label>{{ form.departure_weekend.label }}</label>
+        {{ form.departure_weekend }}
+    </div>
+<br>
+    <div>
+        <label>{{ form.arrival_weekend.label }}</label>
+        {{ form.arrival_weekend }}
+    </div>
+<br><br>
+
+<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
+
+{% endblock %}

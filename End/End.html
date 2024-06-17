@@ -1,0 +1,12 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<h3>Thank you for your participation! </h3>
+<br>
+<h5>Please click below to finish and submit your answers.</h5>
+<br>
+
+<button class="btn btn-primary btn-large reps" style="margin-top:3vh;" type="button" onclick="window.location.href='{{ redirect_url }}'"> Finish </button>
+
+{% endblock %}
