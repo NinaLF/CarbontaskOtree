@@ -205,6 +205,17 @@
             const tripRow = document.getElementById('additional_trip_' + tripId);
             tripRow.style.display = 'none';
 
+            // Reset the values of the form fields
+            const additionalTripElement = document.querySelector(`[name="sat_additional_trip_${tripId}"]`);
+            const startTimeElement = document.querySelector(`[name="sat_start_time_${tripId}"]`);
+            const durationElement = document.querySelector(`[name="sat_duration_${tripId}"]`);
+            const distanceElement = document.querySelector(`[name="sat_distance_${tripId}"]`);
+
+            if (additionalTripElement) additionalTripElement.value = '';
+            if (startTimeElement) startTimeElement.value = '';
+            if (durationElement) durationElement.value = '';
+            if (distanceElement) distanceElement.value = '';
+
             // Check if there are still visible rows
             const table = document.getElementById('additional-trips-table');
             const visibleRows = table.getElementsByTagName('tbody')[0].querySelectorAll('tr[style="display: table-row;"]');
@@ -212,6 +223,97 @@
                 document.getElementById('additional-trips-table-thead').style.display = 'none';
             }
         });
+    });
+
+    document.querySelector('.otree-btn-next').addEventListener('click', function(event) {
+        // Clear previous error messages
+        const errorMessages = document.querySelectorAll('.error-message');
+        errorMessages.forEach(function(errorMessage) {
+            errorMessage.remove();
+        });
+
+        // Check if all displayed rows have all fields filled in
+        let allFieldsFilled = true;
+        for (let i = 1; i <= 10; i++) {
+            const row = document.getElementById('additional_trip_' + i);
+            if (row.style.display === 'table-row') {
+                const additionalTripElement = document.querySelector(`[name="sat_additional_trip_${i}"]`);
+                const startTimeElement = document.querySelector(`[name="sat_start_time_${i}"]`);
+                const durationElement = document.querySelector(`[name="sat_duration_${i}"]`);
+                const distanceElement = document.querySelector(`[name="sat_distance_${i}"]`);
+
+                if (!additionalTripElement.value || !startTimeElement.value || !durationElement.value || !distanceElement.value) {
+                    allFieldsFilled = false;
+                    break;
+                }
+            }
+        }
+
+        if (!allFieldsFilled) {
+            // Prevent form submission
+            event.preventDefault();
+
+            // Display error message
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = 'Error: Please fill in all fields for the displayed trips.';
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+        }
+
+        // Log the chosen sat_start_time values and check for duplicates and order
+        const startTimes = {};
+        let hasDuplicate = false;
+        let isOrdered = true;
+        let isLogical = true;
+        let previousEndTime = null;
+
+        for (let i = 1; i <= 10; i++) {
+            const startTimeElement = document.querySelector(`[name="sat_start_time_${i}"]`);
+            const durationElement = document.querySelector(`[name="sat_duration_${i}"]`);
+            if (startTimeElement && durationElement) {
+                const startTimeValue = startTimeElement.value;
+                const durationValue = parseInt(durationElement.value);
+                if (startTimeValue) {
+                    console.log(`Start time for trip ${i}:`, startTimeValue);
+
+                    if (startTimes[startTimeValue]) {
+                        hasDuplicate = true;
+                    } else {
+                        startTimes[startTimeValue] = true;
+                    }
+
+                    const timeParts = startTimeValue.split(':');
+                    const currentTime = new Date();
+                    currentTime.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+
+                    if (previousEndTime && currentTime <= previousEndTime) {
+                        isLogical = false;
+                    }
+
+                    if (previousEndTime && currentTime < previousEndTime) {
+                        isOrdered = false;
+                    }
+
+                    previousEndTime = new Date(currentTime.getTime() + durationValue * 60000); // Add duration to get end time
+                }
+            }
+        }
+
+        if (hasDuplicate || !isLogical || !isOrdered) {
+            // Prevent form submission
+            event.preventDefault();
+
+            // Display error message
+            const errorDiv = document.createElement('div');
+            errorDiv.id = 'error-message';
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = hasDuplicate
+                ? 'Error: Duplicate start times are not allowed.'
+                : (!isLogical ? 'Error: Each trip must start after the previous trip ends.'
+                              : 'Error: Start times must be in increasing order.');
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+        }
     });
 
     // Prepopulate additional trips if they have initial values
