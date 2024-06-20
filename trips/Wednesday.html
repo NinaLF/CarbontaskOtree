@@ -106,7 +106,7 @@
     <br><br>
 </form>
 
-<p>Are there other days of the week on which you typically did exactly the same trips as the above? Select all that apply.</p>
+<p id="days-of-week-question" style="display:none;">Are there other days of the week on which you typically did exactly the same trips as the above? Select all that apply.</p>
 
 
 {% if not participant.vars.Thursday and not participant.vars.Thursday_tue %}
@@ -345,6 +345,23 @@
             document.getElementById('additional-trips-table-thead').style.display = 'table-header-group';
         }
     }
+
+    // Display question about days conditionally depending on whether there are days left
+    document.addEventListener('DOMContentLoaded', function() {
+        const question = document.getElementById('days-of-week-question');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let checkboxesDisplayed = false;
+
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.parentElement.style.display !== 'none') {
+                checkboxesDisplayed = true;
+            }
+        });
+
+        if (checkboxesDisplayed) {
+            question.style.display = 'block';
+        }
+    });
 </script>
 
 
