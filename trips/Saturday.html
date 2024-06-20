@@ -119,14 +119,24 @@
 <button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
 
 
+<div id="warningModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Warning: The destination of your last trip is not "Home", but you have selected "Home" as your final destination.</p><br>
+        <p>Please edit your trips so that your last destination matches where you end your day.</p>
+    </div>
+</div>
+
+
+
 <style>
     #additional-trips-table-thead {
         display: none;
     }
 
     #additional-trips-table {
-    width: 100%; /* Adjust width as needed */
-    border-collapse: collapse; /* Ensure borders collapse properly */
+        width: 100%; /* Adjust width as needed */
+        border-collapse: collapse; /* Ensure borders collapse properly */
     }
 
     #additional-trips-table th,
@@ -140,12 +150,12 @@
         background-color: #f2f2f2; /* Example background color for headers */
     }
 
-
     .inline-label-input {
         display: flex;
         align-items: center;
         justify-content: flex-start;
     }
+
     .inline-label-input label {
         margin-right: 10px;
         margin-left: 0px;
@@ -171,7 +181,47 @@
         cursor: pointer;
         margin-left: 10px;
     }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+        max-width: 600px; /* Example maximum width */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 </style>
+
 
 <script>
     document.getElementById('add-trip').addEventListener('click', function() {
@@ -222,8 +272,26 @@
             if (visibleRows.length === 0) {
                 document.getElementById('additional-trips-table-thead').style.display = 'none';
             }
+
+            // Show the add-trip button if any row is hidden
+            document.getElementById('add-trip').style.display = 'block';
         });
     });
+
+    // Modal elements
+    const modal = document.getElementById("warningModal");
+    const closeModal = document.getElementsByClassName("close")[0];
+    let proceedAfterWarning = false;
+
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
     document.querySelector('.otree-btn-next').addEventListener('click', function(event) {
         // Clear previous error messages
@@ -259,6 +327,7 @@
             errorDiv.style.color = 'red';
             errorDiv.innerText = 'Error: Please fill in all fields for the displayed trips.';
             document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+            return; // Stop further checks if not all fields are filled
         }
 
         // Log the chosen sat_start_time values and check for duplicates and order
@@ -306,15 +375,36 @@
 
             // Display error message
             const errorDiv = document.createElement('div');
-            errorDiv.id = 'error-message';
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
             errorDiv.style.color = 'red';
             errorDiv.innerText = hasDuplicate
                 ? 'Error: Duplicate start times are not allowed.'
                 : (!isLogical ? 'Error: Each trip must start after the previous trip ends.'
                               : 'Error: Start times must be in increasing order.');
             document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+            return; // Stop further checks if there are time errors
+        }
+
+        // Check if the last additional trip is not "Home" but sat_last_trip is "Home"
+        let lastTrip = null;
+        for (let i = 10; i >= 1; i--) {
+            const row = document.getElementById('additional_trip_' + i);
+            if (row.style.display === 'table-row') {
+                lastTrip = document.querySelector(`[name="sat_additional_trip_${i}"]`).value;
+                break;
+            }
+        }
+
+        const moLastTrip = document.querySelector('[name="sat_last_trip"]').value;
+
+        if (lastTrip && lastTrip !== "Home" && moLastTrip === "Home") {
+            event.preventDefault();
+            modal.style.display = "block";
+        } else {
+            proceedAfterWarning = true;
         }
     });
+
 
     // Prepopulate additional trips if they have initial values
     const initialTrips = {{ additional_trips|safe }};
@@ -341,9 +431,7 @@
             question.style.display = 'block';
         }
     });
+
 </script>
-
-
-
 
 {% endblock %}
