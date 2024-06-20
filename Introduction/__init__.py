@@ -5,7 +5,7 @@ class C(BaseConstants):
     NAME_IN_URL = 'introduction'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
-    TIME_CHOICES = [(f'{h:02}:{m:02}', f'{h:02}:{m:02}') for h in range(24) for m in (0, 30)]
+    TIME_CHOICES = [(f'{h:02}:00', f'{h:02}:00') for h in range(24)]
 
 
 class Subsession(BaseSubsession):
