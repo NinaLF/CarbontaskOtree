@@ -1092,6 +1092,7 @@ class Monday(Page):
         player.participant.vars['Friday'] = player.Friday
         player.participant.vars['Saturday'] = player.Saturday
         player.participant.vars['Sunday'] = player.Sunday
+        player.participant.vars['mo_last_trip'] = player.mo_last_trip
 
     def vars_for_template(player: Player):
         mo_additional_trips = [
@@ -1111,6 +1112,7 @@ class Tuesday(Page):
         player.participant.vars['Friday_tue'] = player.Friday_tue
         player.participant.vars['Saturday_tue'] = player.Saturday_tue
         player.participant.vars['Sunday_tue'] = player.Sunday_tue
+        player.participant.vars['tue_last_trip'] = player.tue_last_trip
 
     form_model = 'player'
     form_fields = [
@@ -1278,6 +1280,7 @@ class Wednesday(Page):
         player.participant.vars['Friday_wed'] = player.Friday_wed
         player.participant.vars['Saturday_wed'] = player.Saturday_wed
         player.participant.vars['Sunday_wed'] = player.Sunday_wed
+        player.participant.vars['wed_last_trip'] = player.wed_last_trip
 
     form_model = 'player'
     form_fields = [
@@ -1503,6 +1506,7 @@ class Thursday(Page):
         player.participant.vars['Friday_thu'] = player.Friday_thu
         player.participant.vars['Saturday_thu'] = player.Saturday_thu
         player.participant.vars['Sunday_thu'] = player.Sunday_thu
+        player.participant.vars['thu_last_trip'] = player.thu_last_trip
 
     form_model = 'player'
     form_fields = [
@@ -1781,6 +1785,7 @@ class Friday(Page):
     def before_next_page(player: Player, timeout_happened):
         player.participant.vars['Saturday_fri'] = player.Saturday_fri
         player.participant.vars['Sunday_fri'] = player.Sunday_fri
+        player.participant.vars['fri_last_trip'] = player.fri_last_trip
 
     form_model = 'player'
     form_fields = [
@@ -2109,6 +2114,7 @@ class Saturday(Page):
     @staticmethod
     def before_next_page(player: Player, timeout_happened):
         player.participant.vars['Sunday_sat'] = player.Sunday_sat
+        player.participant.vars['sat_last_trip'] = player.sat_last_trip
 
     form_model = 'player'
     form_fields = [
