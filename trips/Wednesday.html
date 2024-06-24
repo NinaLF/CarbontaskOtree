@@ -331,6 +331,18 @@ function validateTrips(includeHomeCheck) {
         errorMessage.remove();
     });
 
+            // Check if tue_first_trip is the same as participant.vars.mo_last_trip
+    const wedFirstTrip = document.querySelector('[name="wed_first_trip"]').value;
+    const tueLastTrip = "{{ participant.vars.tue_last_trip }}";
+    if (wedFirstTrip !== tueLastTrip) {
+        const errorDiv = document.createElement('div');
+        errorDiv.classList.add('error-message'); // Add class to identify error messages
+        errorDiv.style.color = 'red';
+        errorDiv.innerText = 'Error: The starting location of your day must match the ending location of your previous day, which was {{ participant.vars.tue_last_trip }}.';
+        document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+        return false; // Stop further checks if the first trip doesn't match the last trip
+    }
+
     // Check if all displayed rows have all fields filled in
     let allFieldsFilled = true;
     for (let i = 1; i <= 10; i++) {
