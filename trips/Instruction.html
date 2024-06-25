@@ -1,27 +1,34 @@
+
 {{ block content }}
 
-<h5> Instructions for the next pages:</h5>
+<h4>Instructions for the Next Pages:</h4>
 <br>
+
 <div>
-
-We now ask you to create a trip diary of all the trips you usually took on <b>each day of the week last year in August and September</b>.<br>
-To start, please read the instructions below.<br>
-
+On the following pages, please create a trip diary of all the trips you typically took <b>with your electric vehicle</b> each day of the week <b>last year in August and September</b>. Trips taken with a different car should not be included in this diary. <br><br>
 </div>
-<br>
 
-On the following pages, please provide the following details about the trips you took <b>with your electric vehicle </b>:<br><br>
+A trip is defined as driving your electric vehicle to a destination and parking it there for at least 30 minutes.
+
+<br>For each day, please first indicate where you started the day with your electric vehicle (e.g., at home) and where you ended the day. If you did not take any trips on a particular day, please select "Home" as both the starting and ending location.
+<br><br>
+For each trip of the day, please provide the following information:<br>
 <ul>
-    <li>Where you went <b>(destination)</b></li>
-    <li>When you started the trip <b>(start time)</b></li>
-<li>How many kilometers you drove <b>(distance)</b></li>
-<li>How long the trip took in minutes <b>(duration)</b></li></ul>
+    <li>Destination: <b>Where you went</b></li>
+    <li>Start Time: <b>When you started the trip</b></li>
+    <li>Distance: <b>How many kilometers you drove</b></li>
+    <li>Duration: <b>How long the trip took in minutes</b></li>
+</ul>
 
-<br>
-Trips you might have usually taken with a different car are not relevant for this trip diary. <br><br>
-
-For each day, please indicate where you started the day with your electric car (e.g. at home), and where you went from there. The last trip of the day might then be a trip back home. If you did not take any trips on a day, please select "Home" for the starting and the end location of the day.
-
+<div class="card bg-light m-3">
+    <div class="card-body">
+        <h6 style="color: #0C6EFD">Example</h6>
+        Here is an example of what your trips for one day might look like: <br><br>
+        You start your day at home. Then, you drive to work, stay there until 14:30, and drive back home. In the evening, you pick up your kids from school and return home.
+        <img style="width:100%; margin: 10px; max-width:600px;" src="{% static 'global/images/trip_diary.png' %}">
+        <br>
+    </div>
+</div>
 
 
 <button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary">Start</button>
