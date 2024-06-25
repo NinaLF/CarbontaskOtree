@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<br><br>
+    <div>
+        <label>{{ form.enough_options.label }}</label>
+        {{ form.enough_options }}
+    </div>
+<br><br>
+
+
+<br><br>
+    <div>
+        <label>{{ form.general_comment.label }}</label>
+        {{ form.general_comment }}
+    </div>
+<br><br>
+
+
+<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
+
+{% endblock %}
