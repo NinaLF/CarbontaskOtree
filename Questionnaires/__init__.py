@@ -17,9 +17,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     spontaneous_trips = models.StringField(
-        choices=['1', '2', '3', '4', '5', '7', '8'],
-        widget=widgets.RadioSelect,
-        label="How many spontaneous trips do you make in one week in addition to those which you have indicated in the trip diary?")
+        choices=['0', '1', '2', '3', '4', '5', '7', '8'],
+        label="How many spontaneous trips do you typically make in one week in addition to the planned trips recorded in your trip diary?")
 
     enough_options = models.StringField(
         choices=['No', 'Yes, I wanted to indicate more trips than were possible.'],
@@ -28,7 +27,7 @@ class Player(BasePlayer):
     )
 
     general_comment = models.LongStringField(
-        label="Please describe whether you had any problems or difficulties filling in this survey. This will help us to make it better."
+        label="Please describe any problems or difficulties you had while filling in this survey. Your feedback will help us improve it."
     )
 
 

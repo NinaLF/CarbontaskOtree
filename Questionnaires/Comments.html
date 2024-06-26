@@ -2,19 +2,18 @@
 {% load otree static %}
 
 {% block content %}
+<h5>Thank you for participating in our study. </h5><br><b>This is a pilot study that we are now looking to optimize and would greatly appreciate your feedback on the functionality and any problems you encountered. Please answer the following two questions.</b>
 
-<br><br>
+<br><br><br>
     <div>
-        <label>{{ form.enough_options.label }}</label>
-        {{ form.enough_options }}
+        <label>{{ form.enough_options.label }}</label><br>
+       <br> {{ form.enough_options }}
     </div>
-<br><br>
-
 
 <br><br>
     <div>
-        <label>{{ form.general_comment.label }}</label>
-        {{ form.general_comment }}
+        <label>{{ form.general_comment.label }}</label><br>
+       <br> {{ form.general_comment }}
     </div>
 <br><br>
 

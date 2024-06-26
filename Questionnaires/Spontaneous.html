@@ -2,11 +2,12 @@
 {% load otree static %}
 
 {% block content %}
-
+<h5>Thank you for creating the trip diary. Please answer the question below.</h5>
 <br><br>
+<p>Please consider any spontaneous trips you take each week, such as last-minute doctor appointments that weren't included in your trip diary.</p>
     <div>
-        <label>{{ form.spontaneous_trips.label }}</label>
-        {{ form.spontaneous_trips }}
+        <label>{{ form.spontaneous_trips.label }}</label><br>
+        <br>{{ form.spontaneous_trips }}
     </div>
 <br><br>
 
