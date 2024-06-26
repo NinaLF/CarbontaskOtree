@@ -108,7 +108,7 @@ Reminder: One trip is defined as going somewhere with your car and staying there
     <br><br>
 </form>
 
-<p id="days-of-week-question" style="display:none;">Are there other days of the week on which you typically did the same trips as the above? Select all that apply.</p>
+<p id="days-of-week-question" style="display:none;">Are there other days of the week on which you typically do the same trips as the above? Select all that apply.</p>
 
 
 {% if not participant.vars.Thursday and not participant.vars.Thursday_tue %}
@@ -398,7 +398,7 @@ function validateTrips(includeHomeCheck) {
                 const currentTime = new Date();
                 currentTime.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
 
-                if (previousEndTime && currentTime <= previousEndTime) {
+                if (previousEndTime && currentTime < previousEndTime) {
                     isLogical = false;
                 }
 

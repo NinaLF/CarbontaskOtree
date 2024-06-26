@@ -368,7 +368,7 @@ function validateTrips(includeHomeCheck) {
                 const currentTime = new Date();
                 currentTime.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
 
-                if (previousEndTime && currentTime <= previousEndTime) {
+                if (previousEndTime && currentTime < previousEndTime) {
                     isLogical = false;
                 }
 
