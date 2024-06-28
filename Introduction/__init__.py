@@ -21,22 +21,22 @@ class Player(BasePlayer):
 
     departure_week = models.StringField(
         choices=C.TIME_CHOICES,
-        label="On a typical day during the week (Monday to Friday), what is typically the time you (or someone in your household) leave your home for the first time with the electric car?"
+        label="On a typical day during the week (Monday to Friday), what was typically the time you or someone in your household left your home for the first time with the electric car?"
     )
 
     arrival_week = models.StringField(
         choices=C.TIME_CHOICES,
-        label="What is typically the time you (or someone in your household) return home for the final time (i.e., after which you no longer leave your home in your EV)?"
+        label="What was typically the time you or someone in your household returned home for the final time (i.e., after which your car no longer left your home)?"
     )
 
     departure_weekend = models.StringField(
         choices=C.TIME_CHOICES,
-        label="On a typical day of the weekend, what is typically the time you (or someone in your household) leave your home for the first time with the electric car?"
+        label="On a typical day of the weekend, what was typically the time you (or someone in your household) left your home for the first time with the electric car?"
     )
 
     arrival_weekend = models.StringField(
         choices=C.TIME_CHOICES,
-        label="What is typically the time you (or someone in your household) return home for the final time (i.e., after which you no longer leave your home in your EV)?"
+        label="What was typically the time you (or someone in your household) returned home for the final time (i.e., after which the car no longer left your home)?"
     )
 
 
