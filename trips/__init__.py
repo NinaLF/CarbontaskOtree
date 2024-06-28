@@ -57,14 +57,42 @@ class Player(BasePlayer):
 
     Sunday_sat = models.BooleanField(blank=True, initial=False)
 
+    comment_mo = models.StringField(
+        label="",
+        blank=True,
+    )
+    comment_tue = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    comment_wed = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    comment_thu = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    comment_fri = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    comment_sat = models.LongStringField(
+        label="",
+        blank=True,
+    )
+    comment_sun = models.LongStringField(
+        label="",
+        blank=True,
+    )
 # Monday
     mo_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     mo_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     mo_additional_trip_1 = models.StringField(
@@ -201,11 +229,11 @@ class Player(BasePlayer):
 # Tuesday
     tue_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     tue_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     tue_additional_trip_1 = models.StringField(
@@ -342,11 +370,11 @@ class Player(BasePlayer):
 # Wednesday
     wed_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     wed_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     wed_additional_trip_1 = models.StringField(
@@ -483,11 +511,11 @@ class Player(BasePlayer):
 # Thursday
     thu_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     thu_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     thu_additional_trip_1 = models.StringField(
@@ -624,11 +652,11 @@ class Player(BasePlayer):
 # Friday
     fri_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     fri_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     fri_additional_trip_1 = models.StringField(
@@ -765,11 +793,11 @@ class Player(BasePlayer):
 # Saturday
     sat_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     sat_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     sat_additional_trip_1 = models.StringField(
@@ -906,11 +934,11 @@ class Player(BasePlayer):
 # Sunday
     sun_first_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Started day at:"
+        label="Car started day at:"
     )
     sun_last_trip = models.StringField(
         choices=['Home', 'Work', 'School', 'Groceries', 'Errands', 'Social', 'Sports', 'Other'],
-        label="Ended day at:"
+        label="Car ended day at:"
     )
 
     sun_additional_trip_1 = models.StringField(
@@ -1082,7 +1110,7 @@ class Monday(Page):
         'mo_additional_trip_7', 'mo_start_time_7', 'mo_duration_7', 'mo_distance_7', 'mo_additional_trip_8',
         'mo_start_time_8', 'mo_duration_8', 'mo_distance_8', 'mo_additional_trip_9', 'mo_start_time_9',
         'mo_duration_9', 'mo_distance_9', 'mo_additional_trip_10', 'mo_start_time_10', 'mo_duration_10',
-        'mo_distance_10', 'Thursday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday', 'Sunday'
+        'mo_distance_10', 'Thursday', 'Tuesday', 'Wednesday', 'Friday', 'Saturday', 'Sunday', 'comment_mo'
     ]
 
     def before_next_page(player: Player, timeout_happened):
@@ -1124,7 +1152,7 @@ class Tuesday(Page):
         'tue_additional_trip_7', 'tue_start_time_7', 'tue_duration_7', 'tue_distance_7', 'tue_additional_trip_8',
         'tue_start_time_8', 'tue_duration_8', 'tue_distance_8', 'tue_additional_trip_9', 'tue_start_time_9',
         'tue_duration_9', 'tue_distance_9', 'tue_additional_trip_10', 'tue_start_time_10', 'tue_duration_10',
-        'tue_distance_10', 'Wednesday_tue', 'Thursday_tue', 'Friday_tue', 'Saturday_tue', 'Sunday_tue'
+        'tue_distance_10', 'Wednesday_tue', 'Thursday_tue', 'Friday_tue', 'Saturday_tue', 'Sunday_tue', 'comment_tue'
     ]
 
     @staticmethod
@@ -1213,7 +1241,7 @@ class Tuesday(Page):
             'tue_additional_trip_7', 'tue_start_time_7', 'tue_duration_7', 'tue_distance_7', 'tue_additional_trip_8',
             'tue_start_time_8', 'tue_duration_8', 'tue_distance_8', 'tue_additional_trip_9', 'tue_start_time_9',
             'tue_duration_9', 'tue_distance_9', 'tue_additional_trip_10', 'tue_start_time_10', 'tue_duration_10',
-            'tue_distance_10', 'Wednesday_tue', 'Thursday_tue', 'Friday_tue', 'Saturday_tue', 'Sunday_tue'
+            'tue_distance_10', 'Wednesday_tue', 'Thursday_tue', 'Friday_tue', 'Saturday_tue', 'Sunday_tue', 'comment_tue'
         ]
 
         if player.participant.vars.get('Tuesday', False):
@@ -1292,7 +1320,7 @@ class Wednesday(Page):
         'wed_additional_trip_7', 'wed_start_time_7', 'wed_duration_7', 'wed_distance_7', 'wed_additional_trip_8',
         'wed_start_time_8', 'wed_duration_8', 'wed_distance_8', 'wed_additional_trip_9', 'wed_start_time_9',
         'wed_duration_9', 'wed_distance_9', 'wed_additional_trip_10', 'wed_start_time_10', 'wed_duration_10',
-        'wed_distance_10', 'Thursday_wed', 'Friday_wed', 'Saturday_wed', 'Sunday_wed'
+        'wed_distance_10', 'Thursday_wed', 'Friday_wed', 'Saturday_wed', 'Sunday_wed', 'comment_wed'
     ]
 
     def vars_for_template(player: Player):
@@ -1386,7 +1414,7 @@ class Wednesday(Page):
             'wed_additional_trip_7', 'wed_start_time_7', 'wed_duration_7', 'wed_distance_7', 'wed_additional_trip_8',
             'wed_start_time_8', 'wed_duration_8', 'wed_distance_8', 'wed_additional_trip_9', 'wed_start_time_9',
             'wed_duration_9', 'wed_distance_9', 'wed_additional_trip_10', 'wed_start_time_10', 'wed_duration_10',
-            'wed_distance_10', 'Thursday_wed', 'Friday_wed', 'Saturday_wed', 'Sunday_wed'
+            'wed_distance_10', 'Thursday_wed', 'Friday_wed', 'Saturday_wed', 'Sunday_wed', 'comment_wed'
         ]
 
         if player.participant.vars.get('Wednesday_tue', False):
@@ -1518,7 +1546,7 @@ class Thursday(Page):
         'thu_additional_trip_7', 'thu_start_time_7', 'thu_duration_7', 'thu_distance_7', 'thu_additional_trip_8',
         'thu_start_time_8', 'thu_duration_8', 'thu_distance_8', 'thu_additional_trip_9', 'thu_start_time_9',
         'thu_duration_9', 'thu_distance_9', 'thu_additional_trip_10', 'thu_start_time_10', 'thu_duration_10',
-        'thu_distance_10', 'Friday_thu', 'Saturday_thu', 'Sunday_thu'
+        'thu_distance_10', 'Friday_thu', 'Saturday_thu', 'Sunday_thu', 'comment_thu'
     ]
 
     def vars_for_template(player: Player):
@@ -1612,7 +1640,7 @@ class Thursday(Page):
             'thu_additional_trip_7', 'thu_start_time_7', 'thu_duration_7', 'thu_distance_7', 'thu_additional_trip_8',
             'thu_start_time_8', 'thu_duration_8', 'thu_distance_8', 'thu_additional_trip_9', 'thu_start_time_9',
             'thu_duration_9', 'thu_distance_9', 'thu_additional_trip_10', 'thu_start_time_10', 'thu_duration_10',
-            'thu_distance_10', 'Friday_thu', 'Saturday_thu', 'Sunday_thu'
+            'thu_distance_10', 'Friday_thu', 'Saturday_thu', 'Sunday_thu', 'comment_thu'
         ]
 
         if player.participant.vars.get('Thursday_tue', False):
@@ -1797,7 +1825,7 @@ class Friday(Page):
         'fri_additional_trip_7', 'fri_start_time_7', 'fri_duration_7', 'fri_distance_7', 'fri_additional_trip_8',
         'fri_start_time_8', 'fri_duration_8', 'fri_distance_8', 'fri_additional_trip_9', 'fri_start_time_9',
         'fri_duration_9', 'fri_distance_9', 'fri_additional_trip_10', 'fri_start_time_10', 'fri_duration_10',
-        'fri_distance_10', 'Saturday_fri', 'Sunday_fri'
+        'fri_distance_10', 'Saturday_fri', 'Sunday_fri', 'comment_fri'
     ]
 
     def vars_for_template(player: Player):
@@ -1888,7 +1916,7 @@ class Friday(Page):
             'fri_additional_trip_7', 'fri_start_time_7', 'fri_duration_7', 'fri_distance_7', 'fri_additional_trip_8',
             'fri_start_time_8', 'fri_duration_8', 'fri_distance_8', 'fri_additional_trip_9', 'fri_start_time_9',
             'fri_duration_9', 'fri_distance_9', 'fri_additional_trip_10', 'fri_start_time_10', 'fri_duration_10',
-            'fri_distance_10', 'Saturday_fri', 'Sunday_fri'
+            'fri_distance_10', 'Saturday_fri', 'Sunday_fri', 'comment_fri'
         ]
 
         if player.participant.vars.get('Friday_tue', False):
@@ -2127,7 +2155,7 @@ class Saturday(Page):
         'sat_additional_trip_7', 'sat_start_time_7', 'sat_duration_7', 'sat_distance_7', 'sat_additional_trip_8',
         'sat_start_time_8', 'sat_duration_8', 'sat_distance_8', 'sat_additional_trip_9', 'sat_start_time_9',
         'sat_duration_9', 'sat_distance_9', 'sat_additional_trip_10', 'sat_start_time_10', 'sat_duration_10',
-        'sat_distance_10', 'Sunday_sat'
+        'sat_distance_10', 'Sunday_sat', 'comment_sat'
     ]
 
     def vars_for_template(player: Player):
@@ -2217,7 +2245,7 @@ class Saturday(Page):
             'sat_additional_trip_7', 'sat_start_time_7', 'sat_duration_7', 'sat_distance_7', 'sat_additional_trip_8',
             'sat_start_time_8', 'sat_duration_8', 'sat_distance_8', 'sat_additional_trip_9', 'sat_start_time_9',
             'sat_duration_9', 'sat_distance_9', 'sat_additional_trip_10', 'sat_start_time_10', 'sat_duration_10',
-            'sat_distance_10', 'Sunday_sat'
+            'sat_distance_10', 'Sunday_sat', 'comment_sat'
         ]
 
         if player.participant.vars.get('Saturday_tue', False):
@@ -2505,7 +2533,7 @@ class Sunday(Page):
         'sun_additional_trip_7', 'sun_start_time_7', 'sun_duration_7', 'sun_distance_7', 'sun_additional_trip_8',
         'sun_start_time_8', 'sun_duration_8', 'sun_distance_8', 'sun_additional_trip_9', 'sun_start_time_9',
         'sun_duration_9', 'sun_distance_9', 'sun_additional_trip_10', 'sun_start_time_10', 'sun_duration_10',
-        'sun_distance_10'
+        'sun_distance_10', 'comment_sun'
     ]
 
     def vars_for_template(player: Player):
@@ -2594,7 +2622,7 @@ class Sunday(Page):
             'sun_additional_trip_7', 'sun_start_time_7', 'sun_duration_7', 'sun_distance_7', 'sun_additional_trip_8',
             'sun_start_time_8', 'sun_duration_8', 'sun_distance_8', 'sun_additional_trip_9', 'sun_start_time_9',
             'sun_duration_9', 'sun_distance_9', 'sun_additional_trip_10', 'sun_start_time_10', 'sun_duration_10',
-            'sun_distance_10'
+            'sun_distance_10', 'comment_sun'
         ]
 
         if player.participant.vars.get('Sunday_tue', False):
