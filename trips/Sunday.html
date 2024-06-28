@@ -115,8 +115,8 @@ Reminder: One trip is defined as going somewhere with your car and staying there
 <div id="warningModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Warning: The destination of your last trip is not "Home", but you have selected "Home" as your final destination.</p><br>
-        <p>Please edit your trips so that your last destination matches where you end your day.</p>
+        <p>Warning: The destination of your last trip does not match the final destination of the car.</p><br>
+        <p>Please edit the trips so that the last destination matches where the car is parked at the end of the day.</p>
     </div>
 </div>
 
@@ -405,9 +405,9 @@ function validateTrips(includeHomeCheck) {
             }
         }
 
-        const moLastTrip = document.querySelector('[name="sun_last_trip"]').value;
+        const sunLastTrip = document.querySelector('[name="sun_last_trip"]').value;
 
-        if (lastTrip && lastTrip !== "Home" && moLastTrip === "Home") {
+        if (lastTrip && lastTrip !== sunLastTrip ) {
             modal.style.display = "block";
             return false;
         }

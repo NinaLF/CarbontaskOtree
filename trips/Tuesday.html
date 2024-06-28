@@ -154,8 +154,8 @@ Reminder: One trip is defined as going somewhere with your car and staying there
 <div id="warningModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Warning: The destination of your last trip is not "Home", but you have selected "Home" as your final destination.</p><br>
-        <p>Please edit your trips so that your last destination matches where you end your day.</p>
+        <p>Warning: The destination of your last trip does not match the final destination of the car.</p><br>
+        <p>Please edit the trips so that the last destination matches where the car is parked at the end of the day.</p>
     </div>
 </div>
 
@@ -433,24 +433,27 @@ function validateTrips(includeHomeCheck) {
         return false; // Stop further checks if there are time errors
     }
 
-    if (includeHomeCheck) {
-        // Check if the last additional trip is not "Home" but tue_last_trip is "Home"
-        let lastTrip = null;
-        for (let i = 10; i >= 1; i--) {
-            const row = document.getElementById('additional_trip_' + i);
-            if (row.style.display === 'table-row') {
-                lastTrip = document.querySelector(`[name="tue_additional_trip_${i}"]`).value;
-                break;
-            }
-        }
+        if (includeHomeCheck) {
+    let lastTrip = null;
 
-        const moLastTrip = document.querySelector('[name="tue_last_trip"]').value;
-
-        if (lastTrip && lastTrip !== "Home" && moLastTrip === "Home") {
-            modal.style.display = "block";
-            return false;
+    // Iterate through additional trips in reverse order to find the last displayed row
+    for (let i = 10; i >= 1; i--) {
+        const row = document.getElementById('additional_trip_' + i);
+        if (row.style.display === 'table-row') {
+            lastTrip = document.querySelector(`[name="tue_additional_trip_${i}"]`).value;
+            break;
         }
     }
+
+    // Retrieve the value of moLastTrip
+    const tueLastTrip = document.querySelector('[name="tue_last_trip"]').value;
+
+    // Compare lastTrip and moLastTrip directly
+    if (lastTrip && lastTrip !== tueLastTrip) {
+        modal.style.display = "block";
+        return false;
+    }
+}
 
     return true;
 }
