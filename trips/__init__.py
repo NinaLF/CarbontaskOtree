@@ -1098,6 +1098,8 @@ class Instruction(Page):
         player.participant.vars['Sunday_fri'] = player.Sunday_fri
         player.participant.vars['Sunday_sat'] = player.Sunday_sat
 
+class Example(Page):
+    form_model = 'player'
 
 class Monday(Page):
     form_model = 'player'
@@ -2952,4 +2954,4 @@ class Sunday(Page):
         return fields
 
 
-page_sequence = [Instruction, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+page_sequence = [Instruction, Example, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]

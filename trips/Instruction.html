@@ -1,40 +1,43 @@
 
 {{ block content }}
 
-<h4>Instructions for the Next Pages:</h4>
+<body>
+    <h3>Survey Instructions: How to Fill in Your Mobility Diary</h3>
 <br>
-
-<div>
-    <p>On the following pages, please document all the trips made by your <b>electric car</b> over the course of each day of the week. This includes trips made by you, your partner, children, friends, or anyone else using your electric car.</p>
-
-    <p><u>Important:</u></p>
+    <p>On the next pages, write down all the trips made by your electric car each day of the week. This includes trips by you, your partner, children, friends, or anyone else using your electric car.</p>
     <ul>
-        <li>A trip is defined as driving your electric car to a destination and parking it there for at least 20 minutes. A destination can be work, school, groceries, or any other place, including <b>home</b>. This means you should record trips both from home to other destinations and from other destinations back to home.</li>
-        <li>Only include trips made with your electric car.</li>
-        <li><b>Do not</b> include trips taken with any other vehicles.</li>
+        <li><strong>What Counts as a Trip?</strong>
+            <ul>
+                <li>A trip is driving your electric car to a place and parking it for at least 20 minutes.</li>
+                <li>Examples: Going to work, school, grocery store, or any other location, including returning home.</li>
+                <li><b>Only Include Trips with Your Electric Car.</b></li>
+            </ul>
+        </li>
     </ul>
+<br>
+    <h5>How to Fill in the Diary:</h5><br>
+    <ol>
+        <li><strong>Start and End Locations:</strong>
+            <ul>
+                <li>For each day, first note where your car starts (e.g., home) and where it ends (e.g., home).</li>
+                <li>If the car was not used, choose "Home" for both start and end locations.</li>
+            </ul>
+        </li><br>
+        <li><strong>Details for Each Trip:</strong>
+            <ul>
+                <li><strong>Destination:</strong> Where you went.</li>
+                <li><strong>Start Time:</strong> When you started the trip (use 24-hour format, e.g., 5:30 pm is 17:30).</li>
+                <li><strong>Distance:</strong> How many miles you drove.</li>
+                <li><strong>Duration:</strong> How long the trip took in minutes.</li>
+            </ul>
+        </li>
+    </ol>
+</body>
 
-<br>For each day, please first indicate where your car started the day (e.g., at home) and where the car was parked at the end of the day. If the car was not used on a particular day, please select "Home" as both the starting and ending location.
-<br><br>
-For each trip of the day, please provide the following information:<br>
-<ul>
-    <li>Destination: <b>Where you go</b></li>
-    <li>Start Time: <b>When you start the trip (in 24h format: e.g. 5:30pm is 17:30)</b></li>
-    <li>Distance: <b>How many miles you drive</b></li>
-    <li>Duration: <b>How long the trip takes in minutes</b></li>
-</ul>
-
-<div class="card bg-light m-3">
-    <div class="card-body">
-        <h6 style="color: #0C6EFD">Example</h6>
-        Here is an example of what your trips for one day might look like: <br><br>
-        You start your day at home. Then, you drive to work, stay there until 14:30, and <b>drive back home</b>. In the evening, your partner picks up the kids from school with the same electric car and <b>returns home</b>. The car ends the day at home.
-        <img style="width:100%; margin: 10px; max-width:600px;" src="{% static 'global/images/trip_diary.png' %}">
-        <br>
-    </div>
-</div>
+<br>
+<p> Please proceed to the next page where we show an example. </p>
 
 
-<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary">Start</button>
+<button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary">Next</button>
 
 {{ endblock }}
