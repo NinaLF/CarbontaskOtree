@@ -320,16 +320,22 @@ function validateTrips(includeHomeCheck) {
         errorMessage.remove();
     });
 
-                        // Check if tue_first_trip is the same as participant.vars.mo_last_trip
+    // Check if sat_first_trip is the same as participant.vars.fri_last_trip
     const satFirstTrip = document.querySelector('[name="sat_first_trip"]').value;
     const friLastTrip = "{{ participant.vars.fri_last_trip }}";
+    const commentSat = document.querySelector('[name="comment_sat"]').value;
     if (satFirstTrip !== friLastTrip) {
-        const errorDiv = document.createElement('div');
-        errorDiv.classList.add('error-message'); // Add class to identify error messages
-        errorDiv.style.color = 'red';
-        errorDiv.innerText = 'Error: The starting location of your day must match the ending location of your previous day, which was {{ participant.vars.fri_last_trip }}.';
-        document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
-        return false; // Stop further checks if the first trip doesn't match the last trip
+        if (modalShown !== true ) {
+            modal.style.display = "block";
+            return false; // Stop further checks if the first trip doesn't match the last trip
+        } else if (!commentSat) {
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = 'Error: Please provide a comment for the discrepancy between the first trip on Tuesday and the last trip on Monday.';
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+            return false;
+        }
     }
 
 
