@@ -108,6 +108,9 @@ Reminder: One trip is defined as going somewhere with your car and staying there
     <br><br>
 </form>
 
+<p>If you have would like to add any comments or clarifications, you can use the field below.</p>
+
+{% form.comment_tue %}
 
 <p id="days-of-week-question" style="display:none;">Are there other days of the week on which you typically do the same trips as the above? Select all that apply.</p>
 
@@ -154,11 +157,11 @@ Reminder: One trip is defined as going somewhere with your car and staying there
 <div id="warningModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Warning: The destination of your last trip does not match the final destination of the car.</p><br>
-        <p>Please edit the trips so that the last destination matches where the car is parked at the end of the day.</p>
+        <p>Warning: Your car must start in the same location where it ended the day before.</p><br>
+        <p>You indicated you left your car at <b>{{ participant.vars.mo_last_trip }}</b> at the end of the last day. Please edit the trips so that you start this day at <b>{{ participant.vars.mo_last_trip }}</b>.</p><br>
+        <p>If this was intentional or the ending location of the car on the day before was erroreous, please use the comment field to explain before you can proceed to the next day.</p>
     </div>
 </div>
-
 
 
 <style>
@@ -317,15 +320,19 @@ document.querySelectorAll('.remove-trip').forEach(function(button) {
 // Modal elements
 const modal = document.getElementById("warningModal");
 const closeModal = document.getElementsByClassName("close")[0];
-let proceedAfterWarning = false;
+
+// Variable to track if the modal has been shown
+let modalShown = false;
 
 closeModal.onclick = function() {
     modal.style.display = "none";
+    modalShown = true; // Mark the modal as shown
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        modalShown = true; // Mark the modal as shown
     }
 }
 
@@ -342,17 +349,14 @@ function validateTrips(includeHomeCheck) {
         errorMessage.remove();
     });
 
-        // Check if tue_first_trip is the same as participant.vars.mo_last_trip
+    // Check if tue_first_trip is the same as participant.vars.mo_last_trip
     const tueFirstTrip = document.querySelector('[name="tue_first_trip"]').value;
     const moLastTrip = "{{ participant.vars.mo_last_trip }}";
     if (tueFirstTrip !== moLastTrip) {
-        const errorDiv = document.createElement('div');
-        errorDiv.classList.add('error-message'); // Add class to identify error messages
-        errorDiv.style.color = 'red';
-        errorDiv.innerText = 'Error: The starting location of your day must match the ending location of your previous day, which was {{ participant.vars.mo_last_trip }}.';
-        document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+        if (modalShown !== true ) {
+        modal.style.display = "block";
         return false; // Stop further checks if the first trip doesn't match the last trip
-    }
+    }}
 
     // Check if all displayed rows have all fields filled in
     let allFieldsFilled = true;
@@ -433,58 +437,60 @@ function validateTrips(includeHomeCheck) {
         return false; // Stop further checks if there are time errors
     }
 
-        if (includeHomeCheck) {
-    let lastTrip = null;
+    if (includeHomeCheck) {
+        let lastTrip = null;
 
-    // Iterate through additional trips in reverse order to find the last displayed row
-    for (let i = 10; i >= 1; i--) {
-        const row = document.getElementById('additional_trip_' + i);
-        if (row.style.display === 'table-row') {
-            lastTrip = document.querySelector(`[name="tue_additional_trip_${i}"]`).value;
-            break;
+        // Iterate through additional trips in reverse order to find the last displayed row
+        for (let i = 10; i >= 1; i--) {
+            const row = document.getElementById('additional_trip_' + i);
+            if (row.style.display === 'table-row') {
+                lastTrip = document.querySelector(`[name="tue_additional_trip_${i}"]`).value;
+                break;
+            }
+        }
+
+        // Retrieve the value of tueLastTrip
+        const tueLastTrip = document.querySelector('[name="tue_last_trip"]').value;
+
+        // Compare lastTrip and tueLastTrip directly
+        if (lastTrip && lastTrip !== tueLastTrip) {
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = 'Error: At the end of the day, the car must be parked where the last trip ends. Please revise this mismatch.';
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+            return false;
         }
     }
-
-    // Retrieve the value of moLastTrip
-    const tueLastTrip = document.querySelector('[name="tue_last_trip"]').value;
-
-    // Compare lastTrip and moLastTrip directly
-    if (lastTrip && lastTrip !== tueLastTrip) {
-        modal.style.display = "block";
-        return false;
-    }
-}
 
     return true;
 }
 
-
-    // Prepopulate additional trips if they have initial values
-    const initialTrips = {{ additional_trips|safe }};
-    for (let i = 1; i <= 10; i++) {
-        if (initialTrips[i-1]) {
-            document.getElementById('additional_trip_' + i).style.display = 'table-row';
-            document.getElementById('additional-trips-table-thead').style.display = 'table-header-group';
-        }
+// Prepopulate additional trips if they have initial values
+const initialTrips = {{ additional_trips|safe }};
+for (let i = 1; i <= 10; i++) {
+    if (initialTrips[i-1]) {
+        document.getElementById('additional_trip_' + i).style.display = 'table-row';
+        document.getElementById('additional-trips-table-thead').style.display = 'table-header-group';
     }
+}
 
-    // Display question about days conditionally depending on whether there are days left
-    document.addEventListener('DOMContentLoaded', function() {
-        const question = document.getElementById('days-of-week-question');
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        let checkboxesDisplayed = false;
+// Display question about days conditionally depending on whether there are days left
+document.addEventListener('DOMContentLoaded', function() {
+    const question = document.getElementById('days-of-week-question');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let checkboxesDisplayed = false;
 
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.parentElement.style.display !== 'none') {
-                checkboxesDisplayed = true;
-            }
-        });
-
-        if (checkboxesDisplayed) {
-            question.style.display = 'block';
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.parentElement.style.display !== 'none') {
+            checkboxesDisplayed = true;
         }
     });
 
+    if (checkboxesDisplayed) {
+        question.style.display = 'block';
+    }
+});
 </script>
 
 {% endblock %}
