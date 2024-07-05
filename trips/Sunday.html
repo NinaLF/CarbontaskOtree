@@ -282,15 +282,19 @@ document.querySelectorAll('.remove-trip').forEach(function(button) {
 // Modal elements
 const modal = document.getElementById("warningModal");
 const closeModal = document.getElementsByClassName("close")[0];
-let proceedAfterWarning = false;
+
+// Variable to track if the modal has been shown
+let modalShown = false;
 
 closeModal.onclick = function() {
     modal.style.display = "none";
+    modalShown = true; // Mark the modal as shown
 }
 
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        modalShown = true; // Mark the modal as shown
     }
 }
 
