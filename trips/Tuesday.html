@@ -108,10 +108,6 @@ Reminder: One trip is defined as going somewhere with your car and staying there
     <br><br>
 </form>
 
-<p>If you have would like to add any comments or clarifications, you can use the field below.</p>
-
-{% form.comment_tue %}
-
 <p id="days-of-week-question" style="display:none;">Are there other days of the week you usually made the same trips? Select days to copy trips.</p>
 
 
@@ -150,6 +146,10 @@ Reminder: One trip is defined as going somewhere with your car and staying there
         Sunday
     </label><br>
 {% endif %}
+
+<p>If you would like to add any comments or clarifications, please use the field below.</p>
+
+{% form.comment_tue %}
 
 <button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
 
