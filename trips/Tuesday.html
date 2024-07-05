@@ -353,11 +353,20 @@ function validateTrips(includeHomeCheck) {
     // Check if tue_first_trip is the same as participant.vars.mo_last_trip
     const tueFirstTrip = document.querySelector('[name="tue_first_trip"]').value;
     const moLastTrip = "{{ participant.vars.mo_last_trip }}";
+    const commentTue = document.querySelector('[name="comment_tue"]').value; // Assuming the field name is "comment_tue"
     if (tueFirstTrip !== moLastTrip) {
         if (modalShown !== true ) {
-        modal.style.display = "block";
-        return false; // Stop further checks if the first trip doesn't match the last trip
-    }}
+            modal.style.display = "block";
+            return false; // Stop further checks if the first trip doesn't match the last trip
+        } else if (!commentTue) {
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = 'Error: Please provide a comment for the discrepancy between the first trip on Tuesday and the last trip on Monday.';
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+            return false;
+        }
+    }
 
     // Check if all displayed rows have all fields filled in
     let allFieldsFilled = true;
