@@ -280,10 +280,10 @@ document.querySelectorAll('.remove-trip').forEach(function(button) {
         tripRow.style.display = 'none';
 
         // Reset the values of the form fields
-        const additionalTripElement = document.querySelector(`[name="wed_additional_trip_${tripId}"]`);
-        const startTimeElement = document.querySelector(`[name="wed_start_time_${tripId}"]`);
-        const durationElement = document.querySelector(`[name="wed_duration_${tripId}"]`);
-        const distanceElement = document.querySelector(`[name="wed_distance_${tripId}"]`);
+        const additionalTripElement = document.querySelector(`[name="thu_additional_trip_${tripId}"]`);
+        const startTimeElement = document.querySelector(`[name="thu_start_time_${tripId}"]`);
+        const durationElement = document.querySelector(`[name="thu_duration_${tripId}"]`);
+        const distanceElement = document.querySelector(`[name="thu_distance_${tripId}"]`);
 
         if (additionalTripElement) additionalTripElement.value = '';
         if (startTimeElement) startTimeElement.value = '';
