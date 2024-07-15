@@ -393,50 +393,31 @@ function validateTrips(includeHomeCheck) {
     }
 
     if (includeHomeCheck) {
-        const moFirstTrip = document.querySelector('[name="mo_first_trip"]').value;
-        const moLastTrip = document.querySelector('[name="mo_last_trip"]').value;
+    let lastTrip = null;
 
-        let additionalTripsCount = 0;
-        for (let i = 1; i <= 10; i++) {
-            const row = document.getElementById('additional_trip_' + i);
-            if (row.style.display === 'table-row') {
-                additionalTripsCount++;
-            }
-        }
-
-        if (moFirstTrip !== moLastTrip && additionalTripsCount === 0) {
-            // Display error message
-            const errorDiv = document.createElement('div');
-            errorDiv.classList.add('error-message'); // Add class to identify error messages
-            errorDiv.style.color = 'red';
-            errorDiv.innerText = 'Error: The car cannot start and end at different locations without additional trips.';
-            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
-            return false; // Stop further checks if the condition is met
-        }
-
-        // Additional check to see if the last trip matches mo_last_trip
-        let lastTrip = null;
-
-        // Iterate through additional trips in reverse order to find the last displayed row
-        for (let i = 10; i >= 1; i--) {
-            const row = document.getElementById('additional_trip_' + i);
-            if (row.style.display === 'table-row') {
-                lastTrip = document.querySelector(`[name="mo_additional_trip_${i}"]`).value;
-                break;
-            }
-        }
-
-        // Compare lastTrip and moLastTrip directly
-        if (lastTrip && lastTrip !== moLastTrip) {
-            modal.style.display = "block";
-            return false;
+    // Iterate through additional trips in reverse order to find the last displayed row
+    for (let i = 10; i >= 1; i--) {
+        const row = document.getElementById('additional_trip_' + i);
+        if (row.style.display === 'table-row') {
+            lastTrip = document.querySelector(`[name="mo_additional_trip_${i}"]`).value;
+            break;
         }
     }
 
+    // Retrieve the value of moLastTrip
+    const moLastTrip = document.querySelector('[name="mo_last_trip"]').value;
+
+    // Compare lastTrip and moLastTrip directly
+    if (lastTrip && lastTrip !== moLastTrip) {
+        modal.style.display = "block";
+        return false;
+    }
+}
+
     return true;
 }
-</script>
 
+</script>
 
 
 {% endblock %}
