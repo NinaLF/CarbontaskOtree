@@ -124,15 +124,14 @@ Reminder: One trip is defined as going somewhere with your car and staying there
 
 <button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
 
-
 <div id="warningModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Warning: The destination of your last trip does not match the final destination of the car.</p><br>
-        <p>Please edit the trips so that the last destination matches where the car is parked at the end of the day.</p>
+        <p>Warning: Your car must start in the same location where it ended the day before.</p><br>
+        <p>You indicated you left your car at <b>{{ participant.vars.fri_last_trip }}</b> at the end of the last day. Please edit the trips so that you start this day at <b>{{ participant.vars.fri_last_trip }}</b>.</p><br>
+        <p>If this was intentional or the ending location of the car on the day before was erroreous, please use the comment field to explain before you can proceed to the next day.</p>
     </div>
 </div>
-
 
 
 <style>
@@ -323,12 +322,12 @@ function validateTrips(includeHomeCheck) {
     // Check if sat_first_trip is the same as participant.vars.fri_last_trip
     const satFirstTrip = document.querySelector('[name="sat_first_trip"]').value;
     const friLastTrip = "{{ participant.vars.fri_last_trip }}";
-    const commentSat = document.querySelector('[name="comment_sat"]').value;
+    const commentTue = document.querySelector('[name="comment_sat"]').value; // Assuming the field name is "comment_sat"
     if (satFirstTrip !== friLastTrip) {
         if (modalShown !== true ) {
             modal.style.display = "block";
             return false; // Stop further checks if the first trip doesn't match the last trip
-        } else if (!commentSat) {
+        } else if (!commentTue) {
             const errorDiv = document.createElement('div');
             errorDiv.classList.add('error-message'); // Add class to identify error messages
             errorDiv.style.color = 'red';
@@ -337,7 +336,6 @@ function validateTrips(includeHomeCheck) {
             return false;
         }
     }
-
 
     // Check if all displayed rows have all fields filled in
     let allFieldsFilled = true;
@@ -419,8 +417,9 @@ function validateTrips(includeHomeCheck) {
     }
 
     if (includeHomeCheck) {
-        // Check if the last additional trip is not "Home" but sat_last_trip is "Home"
         let lastTrip = null;
+
+        // Iterate through additional trips in reverse order to find the last displayed row
         for (let i = 10; i >= 1; i--) {
             const row = document.getElementById('additional_trip_' + i);
             if (row.style.display === 'table-row') {
@@ -429,10 +428,16 @@ function validateTrips(includeHomeCheck) {
             }
         }
 
+        // Retrieve the value of satLastTrip
         const satLastTrip = document.querySelector('[name="sat_last_trip"]').value;
 
-        if (lastTrip && lastTrip !== satLastTrip ) {
-            modal.style.display = "block";
+        // Compare lastTrip and satLastTrip directly
+        if (lastTrip && lastTrip !== satLastTrip) {
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = 'Error: At the end of the day, the car must be parked where the last trip ends. Please revise this mismatch.';
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
             return false;
         }
     }
@@ -440,33 +445,31 @@ function validateTrips(includeHomeCheck) {
     return true;
 }
 
-
-    // Prepopulate additional trips if they have initial values
-    const initialTrips = {{ additional_trips|safe }};
-    for (let i = 1; i <= 10; i++) {
-        if (initialTrips[i-1]) {
-            document.getElementById('additional_trip_' + i).style.display = 'table-row';
-            document.getElementById('additional-trips-table-thead').style.display = 'table-header-group';
-        }
+// Prepopulate additional trips if they have initial values
+const initialTrips = {{ additional_trips|safe }};
+for (let i = 1; i <= 10; i++) {
+    if (initialTrips[i-1]) {
+        document.getElementById('additional_trip_' + i).style.display = 'table-row';
+        document.getElementById('additional-trips-table-thead').style.display = 'table-header-group';
     }
+}
 
-    // Display question about days conditionally depending on whether there are days left
-    document.addEventListener('DOMContentLoaded', function() {
-        const question = document.getElementById('days-of-week-question');
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        let checkboxesDisplayed = false;
+// Display question about days conditionally depending on whether there are days left
+document.addEventListener('DOMContentLoaded', function() {
+    const question = document.getElementById('days-of-week-question');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let checkboxesDisplayed = false;
 
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.parentElement.style.display !== 'none') {
-                checkboxesDisplayed = true;
-            }
-        });
-
-        if (checkboxesDisplayed) {
-            question.style.display = 'block';
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.parentElement.style.display !== 'none') {
+            checkboxesDisplayed = true;
         }
     });
 
+    if (checkboxesDisplayed) {
+        question.style.display = 'block';
+    }
+});
 </script>
 
 {% endblock %}
