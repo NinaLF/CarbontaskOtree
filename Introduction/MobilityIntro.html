@@ -1,29 +1,44 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block style %}
+<style>
+    hr {
+        border: 1px solid #ccc;
+        margin: 10px 0;
+    }
+    .darker-hr {
+        border: 1px solid #666;
+        margin: 20px 0;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h3>Welcome! </h3>
+<h4>Let's start with some general questions about the use of your electric car.</h4>
 <br>
-<h5>Let's start with some general questions about the use of your electric car. All questions relate to the use car last year in August:</h5>
+<h5><u>All questions relate to the use car last year in August:</u></h5>
 
 <br><br>
-<h5>During the week (Monday to Friday):</h5>
+<b>During the week (Monday to Friday):</b><br>
     <div>
         <label>{{ form.departure_week.label }}</label>
         {{ form.departure_week }}
     </div>
-<br>
+<hr>
     <div>
         <label>{{ form.arrival_week.label }}</label>
         {{ form.arrival_week }}
     </div>
-<br><br>
-<h5>On the weekend (Saturday and Sunday):</h5>
+<br>
+<hr class="darker-hr">
+<br>
+<b>On the weekend (Saturday and Sunday):</b><br>
     <div>
         <label>{{ form.departure_weekend.label }}</label>
         {{ form.departure_weekend }}
     </div>
-<br>
+<hr>
     <div>
         <label>{{ form.arrival_weekend.label }}</label>
         {{ form.arrival_weekend }}
