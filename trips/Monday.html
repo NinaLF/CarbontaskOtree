@@ -122,17 +122,6 @@ Reminder: One trip is defined as going somewhere with your car and staying there
 <button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>
 
 
-
-<div id="warningModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Warning: The destination of your last trip does not match the final destination of the car.</p><br>
-        <p>Please edit the trips so that the last destination matches where the car is parked at the end of the day.</p>
-    </div>
-</div>
-
-
-
 <style>
     #additional-trips-table-thead {
         display: none;
@@ -285,21 +274,6 @@ document.querySelectorAll('.remove-trip').forEach(function(button) {
     });
 });
 
-// Modal elements
-const modal = document.getElementById("warningModal");
-const closeModal = document.getElementsByClassName("close")[0];
-let proceedAfterWarning = false;
-
-closeModal.onclick = function() {
-    modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
 document.querySelector('.otree-btn-next').addEventListener('click', function(event) {
     if (!validateTrips(true)) {
         event.preventDefault();
@@ -393,29 +367,56 @@ function validateTrips(includeHomeCheck) {
     }
 
     if (includeHomeCheck) {
-    let lastTrip = null;
+        let lastTrip = null;
 
-    // Iterate through additional trips in reverse order to find the last displayed row
-    for (let i = 10; i >= 1; i--) {
-        const row = document.getElementById('additional_trip_' + i);
-        if (row.style.display === 'table-row') {
-            lastTrip = document.querySelector(`[name="mo_additional_trip_${i}"]`).value;
-            break;
+        // Iterate through additional trips in reverse order to find the last displayed row
+        for (let i = 10; i >= 1; i--) {
+            const row = document.getElementById('additional_trip_' + i);
+            if (row.style.display === 'table-row') {
+                lastTrip = document.querySelector(`[name="mo_additional_trip_${i}"]`).value;
+                break;
+            }
+        }
+
+        // Retrieve the value of moLastTrip
+        const moLastTrip = document.querySelector('[name="mo_last_trip"]').value;
+        const moFirstTrip = document.querySelector('[name="mo_first_trip"]').value;
+
+        // Check the condition: mo_first_trip != mo_last_trip AND no additional trips match mo_last_trip
+        if (moFirstTrip !== moLastTrip) {
+            let additionalTripMatches = false;
+            for (let i = 1; i <= 10; i++) {
+                const additionalTripElement = document.querySelector(`[name="mo_additional_trip_${i}"]`);
+                if (additionalTripElement && additionalTripElement.value === moLastTrip) {
+                    additionalTripMatches = true;
+                    break;
+                }
+            }
+
+            if (!additionalTripMatches) {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error-message'); // Add class to identify error messages
+                errorDiv.style.color = 'red';
+                errorDiv.innerText = 'Error: The first location of the car does not match the last location, and there are no intermediate trips matching the last location.';
+                document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+                return false;
+            }
+        }
+
+        // Compare lastTrip and moLastTrip directly
+        if (lastTrip && lastTrip !== moLastTrip) {
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('error-message'); // Add class to identify error messages
+            errorDiv.style.color = 'red';
+            errorDiv.innerText = 'Error: At the end of the day, the car must be parked where the last trip ends. Please revise this mismatch.';
+            document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+            return false;
         }
     }
 
-    // Retrieve the value of moLastTrip
-    const moLastTrip = document.querySelector('[name="mo_last_trip"]').value;
-
-    // Compare lastTrip and moLastTrip directly
-    if (lastTrip && lastTrip !== moLastTrip) {
-        modal.style.display = "block";
-        return false;
-    }
-}
-
     return true;
 }
+
 
 </script>
 

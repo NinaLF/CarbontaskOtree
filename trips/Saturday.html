@@ -431,6 +431,27 @@ function validateTrips(includeHomeCheck) {
         // Retrieve the value of satLastTrip
         const satLastTrip = document.querySelector('[name="sat_last_trip"]').value;
 
+        // Check the condition: sat_first_trip != sat_last_trip AND no additional trips match sat_last_trip
+        if (satFirstTrip !== satLastTrip) {
+            let additionalTripMatches = false;
+            for (let i = 1; i <= 10; i++) {
+                const additionalTripElement = document.querySelector(`[name="sat_additional_trip_${i}"]`);
+                if (additionalTripElement && additionalTripElement.value === satLastTrip) {
+                    additionalTripMatches = true;
+                    break;
+                }
+            }
+
+            if (!additionalTripMatches) {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error-message'); // Add class to identify error messages
+                errorDiv.style.color = 'red';
+                errorDiv.innerText = 'Error: The first location of the car does not match the last location, and there are no intermediate trips matching the last location.';
+                document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+                return false;
+            }
+        }
+
         // Compare lastTrip and satLastTrip directly
         if (lastTrip && lastTrip !== satLastTrip) {
             const errorDiv = document.createElement('div');

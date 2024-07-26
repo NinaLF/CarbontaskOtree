@@ -424,6 +424,27 @@ function validateTrips(includeHomeCheck) {
         // Retrieve the value of sunLastTrip
         const sunLastTrip = document.querySelector('[name="sun_last_trip"]').value;
 
+        // Check the condition: sun_first_trip != sun_last_trip AND no additional trips match sun_last_trip
+        if (sunFirstTrip !== sunLastTrip) {
+            let additionalTripMatches = false;
+            for (let i = 1; i <= 10; i++) {
+                const additionalTripElement = document.querySelector(`[name="sun_additional_trip_${i}"]`);
+                if (additionalTripElement && additionalTripElement.value === sunLastTrip) {
+                    additionalTripMatches = true;
+                    break;
+                }
+            }
+
+            if (!additionalTripMatches) {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error-message'); // Add class to identify error messages
+                errorDiv.style.color = 'red';
+                errorDiv.innerText = 'Error: The first location of the car does not match the last location, and there are no intermediate trips matching the last location.';
+                document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+                return false;
+            }
+        }
+
         // Compare lastTrip and sunLastTrip directly
         if (lastTrip && lastTrip !== sunLastTrip) {
             const errorDiv = document.createElement('div');

@@ -478,7 +478,7 @@ function validateTrips(includeHomeCheck) {
                 const errorDiv = document.createElement('div');
                 errorDiv.classList.add('error-message'); // Add class to identify error messages
                 errorDiv.style.color = 'red';
-                errorDiv.innerText = 'Error: The first trip on Tuesday does not match the last trip on Tuesday, and there are no intermediate trips matching the last trip.';
+                errorDiv.innerText = 'Error: The first location of the car on Tuesday does not match the last location, and there are no intermediate trips matching the last location.';
                 document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
                 return false;
             }
@@ -499,7 +499,7 @@ function validateTrips(includeHomeCheck) {
 }
 
 
-// Prepopulate additional trips if they have initial values
+// Prepoluate the additional trips if they were previously filled
 const initialTrips = {{ additional_trips|safe }};
 for (let i = 1; i <= 10; i++) {
     if (initialTrips[i-1]) {

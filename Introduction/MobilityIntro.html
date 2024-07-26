@@ -17,32 +17,36 @@
 {% block content %}
 <h4>Let's start with some general questions about the use of your electric car.</h4>
 <br>
-<h5><u>All questions relate to the use car last year in August:</u></h5>
-
+<p style="font-weight: bold; color: red;">
+  All questions relate to the use of your electric car last year in August / September:
+</p>
 <br><br>
-<b>During the week (Monday to Friday):</b><br>
-    <div>
-        <label>{{ form.departure_week.label }}</label>
-        {{ form.departure_week }}
-    </div>
-<hr>
-    <div>
-        <label>{{ form.arrival_week.label }}</label>
-        {{ form.arrival_week }}
-    </div>
-<br>
-<hr class="darker-hr">
-<br>
-<b>On the weekend (Saturday and Sunday):</b><br>
-    <div>
-        <label>{{ form.departure_weekend.label }}</label>
-        {{ form.departure_weekend }}
-    </div>
-<hr>
-    <div>
-        <label>{{ form.arrival_weekend.label }}</label>
-        {{ form.arrival_weekend }}
-    </div>
+<ol>
+  <li><b>During the week (Monday to Friday):</b></li><br>
+  <div>
+    <label>{{ form.departure_week.label }}</label>
+    {{ form.departure_week }}
+  </div>
+  <hr>
+  <div>
+    <label>{{ form.arrival_week.label }}</label>
+    {{ form.arrival_week }}
+  </div>
+
+    <br><br>
+
+  <li><b>On the weekend (Saturday and Sunday):</b></li><br>
+  <div>
+    <label>{{ form.departure_weekend.label }}</label>
+    {{ form.departure_weekend }}
+  </div>
+  <hr>
+  <div>
+    <label>{{ form.arrival_weekend.label }}</label>
+    {{ form.arrival_weekend }}
+  </div>
+</ol>
+
 <br><br>
 
 <button style="float: right; margin-top: 2vh;" class="otree-btn-next btn btn-primary" >Next</button>

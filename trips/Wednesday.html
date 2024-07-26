@@ -455,6 +455,27 @@ function validateTrips(includeHomeCheck) {
         // Retrieve the value of wedLastTrip
         const wedLastTrip = document.querySelector('[name="wed_last_trip"]').value;
 
+        // Check the condition: wed_first_trip != wed_last_trip AND no additional trips match wed_last_trip
+        if (wedFirstTrip !== wedLastTrip) {
+            let additionalTripMatches = false;
+            for (let i = 1; i <= 10; i++) {
+                const additionalTripElement = document.querySelector(`[name="wed_additional_trip_${i}"]`);
+                if (additionalTripElement && additionalTripElement.value === wedLastTrip) {
+                    additionalTripMatches = true;
+                    break;
+                }
+            }
+
+            if (!additionalTripMatches) {
+                const errorDiv = document.createElement('div');
+                errorDiv.classList.add('error-message'); // Add class to identify error messages
+                errorDiv.style.color = 'red';
+                errorDiv.innerText = 'Error: The first location of the car on Wednesday does not match the last location, and there are no intermediate trips matching the last location.';
+                document.querySelector('form').insertAdjacentElement('beforebegin', errorDiv);
+                return false;
+            }
+        }
+
         // Compare lastTrip and wedLastTrip directly
         if (lastTrip && lastTrip !== wedLastTrip) {
             const errorDiv = document.createElement('div');
