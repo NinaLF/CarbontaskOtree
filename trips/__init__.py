@@ -57,7 +57,7 @@ class Player(BasePlayer):
 
     Sunday_sat = models.BooleanField(blank=True, initial=False)
 
-    comment_mo = models.StringField(
+    comment_mo = models.LongStringField(
         label="",
         blank=True,
     )
