@@ -25,7 +25,7 @@ class End(Page):
 
     @staticmethod
     def vars_for_template(player: Player):
-        redirect_url = "https://app.prolific.com/submissions/complete?cc=C1OW1NPL"
+        redirect_url = "https://app.prolific.com/submissions/complete?cc=CS13BLNX"
 
         return {
             'redirect_url': redirect_url
