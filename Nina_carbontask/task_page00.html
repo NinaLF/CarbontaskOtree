@@ -1,0 +1,289 @@
+
+
+{% block styles %}
+    <link href="{{ static 'global/css/generalStyle.css'}}" rel="stylesheet">
+    <link href="{{ static 'global/css/customStyle.css'}}" rel="stylesheet">
+{% endblock %}
+
+{{ block title }} 
+Please rate these carbon footprints
+{{ endblock }}
+{{ block content }}
+<meta charset="UTF-8">
+
+
+<style>
+
+/* Adjust the max-width as needed */
+    @media only screen and (min-width: 701px) {
+        .radiotable {
+            width: 60%;
+            padding: 20px 20px; 
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        .radiotable {
+            width: 100%;
+            padding: 30px 40px; 
+        }
+    }
+    /* Adjust spacing between sentences */
+    .sentence {
+        margin: 0;
+        /* Adjust this value to control spacing between sentences */
+        padding: 0;
+        /* Optionally adjust padding if needed */
+        line-height: 0.5;
+    }
+    .question {
+        margin: 0;
+        /* Adjust this value to control spacing between sentences */
+        padding: 0;
+        /* Optionally adjust padding if needed */
+        line-height: 0.5;
+        size: 17
+    }
+
+    .info {
+        margin: 0;
+        /* Adjust this value to control spacing between sentences */
+        padding: 0;
+        /* Optionally adjust padding if needed */
+        line-height: 0.2;
+        size: 10
+    }
+   
+
+    table, th, tr{
+        border: 1px solid;
+        border-left: none;
+        border-right: none;
+        padding: 30px 30px 20px 20px; 
+
+    }
+
+
+    td.image {
+        width: 100px;
+    }
+
+    td.type {
+        width: 100px;
+    }
+
+
+
+    .radiotable, tr, th{
+
+        border: none;
+        text-align: left;
+        border: none;
+        border-top: none;
+    }
+
+  /* Horizontal Slider styling */
+    .slider-container {
+        margin-top: 20px;
+        width: 60%;
+        position: relative;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        border-radius: 5px;
+        background: #cacaca;
+        outline: none;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+        position: relative;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #e8d13b;
+        cursor: pointer;
+        border-radius: 50%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #e8d13b;
+        cursor: pointer;
+        border-radius: 50%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .slider-labels {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .current-value {
+        font-size: 16px;
+        color: #000;
+        margin-top: 10px;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Input field styling */
+    .form-field-small {
+        width: 80px; /* Adjust the width as needed */
+        font-size: 16px; /* Optional: Adjust font size for readability */
+        padding: 5px; /* Optional: Add padding for better appearance */
+    }
+
+   
+
+    /* .image {
+        width: 125px;
+    } */
+</style>
+
+<p style="text-align: left; font-size: 0.9rem;">
+    Round {{round_number}} out of 16
+    <br>
+</p>
+
+
+<div class=".question" > 
+    <p>
+        <br>
+        <b> Think about a person with the lifestyle below. How large do you think the carbon footprint of this person is? </b>
+
+    <br>
+</div>
+
+
+<table id="currentFootprintTable">
+
+</table>
+<br>
+<br>
+<meta charset="UTF-8">
+
+<div > 
+    <p style=" font-size: 20px;"> <b> Please enter a number with at least one decimal place, or move the slider to make your estimate between 0 and 10 tons of CO<sub>2eq</sub>. </b> <br> </p>
+    <input type="text" name="rating0" class="form-field-small"  >
+
+    <div class="slider-container">
+        <div class="slider-labels">
+            <span>0</span>
+            <span>10</span>
+        </div>
+        <input type="range" min="0" max="10" step="0.01"  class="slider" id="carbonSlider">
+        <div class="current-value" id="sliderValue"> </div>
+    </div>
+    {{ formfield_errors 'rating0' }}
+</div>
+
+
+
+
+<div >
+    <button id="nextst" style="float: right; margin-top: 2vh;" disabled class="otree-btn-next btn btn-primary"> Next </button>
+ 
+</div>
+{% endblock %}
+
+
+
+{% block scripts %}
+<meta charset="UTF-8">
+<script>
+    var currentBehaviors = "{{current_footprint_table}}"
+    currentBehaviors = eval(currentBehaviors)
+    var currentImages = "{{current_footprint_table_images}}"
+    currentImages = eval(currentImages)
+    var behaviorTypes = "{{behaviorTYPES}}"
+    behaviorTypes = eval(behaviorTypes)
+    var random_behavior_order = '{{random_behavior_order}}'
+    random_behavior_order = eval(random_behavior_order)
+    var behaviorTypesDict = {}
+    
+    random_behavior_order.forEach((random_behavior_order, i) => behaviorTypesDict[random_behavior_order] = behaviorTypes[i]);
+    console.log(behaviorTypesDict)
+
+
+    fillTable = function () {
+        console.log("hello istarted")
+        for (let i = 0; i < currentBehaviors.length & i <currentImages.length ; i++) {
+           
+            thisCurrType = behaviorTypes[random_behavior_order[i]]
+            thisCurrBeh = currentBehaviors[i]
+            thisCurrImg = currentImages[i]
+            var mytable = document.getElementById("currentFootprintTable");
+
+            // Create an empty <tr> element and add it to the 1st position of the table:
+            var row = mytable.insertRow(-1);
+
+            // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+
+            // Add some text to the new cells:
+            cell1.innerHTML = thisCurrType;
+            cell1.classList.add("type")
+            cell2.innerHTML = thisCurrBeh;
+            cell2.classList.add("behavior")
+            imgString = `<img  style="width:55%; "  src=/static/global/images/` + thisCurrImg + `.png>`
+            cell3.innerHTML =  imgString
+            cell3.classList.add("image")
+
+
+        }
+     }
+
+    enablebtn = function () {
+        document.getElementById("nextst").disabled = false;
+    }
+
+
+
+
+    window.onload = function () {
+
+        fillTable();
+        setTimeout(function () { enablebtn(); }, 3 * 1000);
+
+        // Sync slider with value display
+        const formField = document.querySelector('input[name="rating0"]');
+        const slider = document.getElementById('carbonSlider');
+
+        formField.addEventListener('input', function() {
+            slider.value = formField.value;
+            sliderValue.textContent = slider.value;
+            updateSliderColor(slider);
+        });
+
+        slider.addEventListener('input', function() {
+            sliderValue.textContent = slider.value;
+            formField.value = slider.value; // Update hidden field
+            updateSliderColor(slider);
+        });
+
+        sliderValue.textContent = slider.value;
+        updateSliderColor(slider);
+    };
+
+    function updateSliderColor(slider) {
+        const value = (slider.value - slider.min) / (slider.max - slider.min);
+        slider.style.background = `linear-gradient(to right, #e8d13b 0%, #e8d13b ${value * 100}%, #cacaca ${value * 100}%, #cacaca 100%)`;
+    }
+
+
+</script>
+
+{{ endblock }}
