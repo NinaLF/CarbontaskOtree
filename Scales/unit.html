@@ -129,7 +129,17 @@
     </p>
 </div> 
 
-{{formfield ' subjectiveKnowledgePost'}}
+
+<div class="radiotable" style="padding-top:0vh; padding-left:0vw; ">
+    <p> How knowledgeable do you feel about the effect of different behaviors on carbon footprints? That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?    </p>
+    <p style="text-indent: 0vw;">
+        Not much at all &nbsp;
+        {{ for choice in form.subjectiveKnowledgePost}}
+            {{ choice }}
+        {{ endfor }}
+        &nbsp; A great deal
+    </p>
+</div> 
 
 {{formfield ' generalFeedback'}}
 
