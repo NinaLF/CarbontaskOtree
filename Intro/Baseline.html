@@ -114,34 +114,19 @@
 {{ block content }}
 
 <p>
-  How well could you handle the unit kg of CO<sub>2</sub> since usually the unit you are familiar with is pounds?  <br>
-  Please consider the issue of understanding the metric unit kg as different from the fact that CO<sub>2</sub> emissions are hard to judge and estimate for everyone including those familar with the metric system.  <br> <br>
+    Before we start with the study, please indicate the following:
 </p>
-<div class="radiotable" style="padding-top:0vh; padding-left:0vw; ">
-    <p> How much difficulty did you have understanding and imagining 'kg' CO<sub>2</sub> ?  </p>
-    <p style="text-indent: 0vw;">
-        No difficulty at all &nbsp;
-        {{ for choice in form.UnitUnderstanding}}
-            {{ choice }}
-        {{ endfor }}
-        &nbsp; A great deal
-    </p>
-</div> 
-
 
 <div class="radiotable" style="padding-top:0vh; padding-left:0vw; ">
     <p> How knowledgeable do you feel about the effect of different behaviors on carbon footprints? That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?    </p>
     <p style="text-indent: 0vw;">
         Not much at all &nbsp;
-        {{ for choice in form.subjectiveKnowledgePost}}
+        {{ for choice in form.subjectiveKnowledgePre}}
             {{ choice }}
         {{ endfor }}
         &nbsp; A great deal
     </p>
 </div> 
-
-{{formfield ' generalFeedback'}}
-
 <br> <br>
 
 <div class="next-btn radiotable">  
@@ -150,5 +135,6 @@
     </div>
 </div> 
 
-{{ endblock }}
 
+
+{{ endblock }}

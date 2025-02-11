@@ -20,6 +20,12 @@ class Player(BasePlayer):
     
     dataScience = models.BooleanField(initial=False)
     dataTeach = models.BooleanField(initial=False)
+
+    subjectiveKnowledgePre = models.StringField(widget=widgets.RadioSelect,  
+                                                 label= '  How knowledgeable do you feel about the effect of different behaviors on carbon footprints? That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?',
+                                              choices=[['1', 'not much at all (1)'], ['2', '2'],['3', '3'],['4', '4'],
+                                                       ['5', '5'], ['6', '6'],  ['7', '7'], ['8', '8'],['9', '9'], ['10', 'A great deal (10)'] ]   )
+
     
     
 # FUNCTIONS
@@ -40,10 +46,14 @@ class Consent(Page):
 
 class Instructions(Page):
     form_model = 'player'
+
+class Baseline(Page):
+    form_model = 'player'
+    form_fields= [ 'subjectiveKnowledgePre' ]
     
 
 # Page sequence
 page_sequence = [
-    Consent
+    Consent, Baseline
     
 ]

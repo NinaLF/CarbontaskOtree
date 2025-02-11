@@ -285,8 +285,22 @@ class Player(BasePlayer):
     numeracy1 = models.IntegerField(min=0, max=100)
 
 
-    UnitUnderstanding =  models.IntegerField( widget=widgets.RadioSelect,  label="How much difficulty did you have understanding and imagining 'kg' ",
+    UnitUnderstanding =  models.IntegerField( widget=widgets.RadioSelect,  label="How much difficulty did you have understanding and imagining 'kg' CO<sub>2</sub> ",
                                           choices=[['1', 'no problem with the unit (1)'], ['2', '2'], ['3', '3'],['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],['8', '8'], ['9', '9'],  ['10', ' lots of difficulty (10)'] ] ) 
+    
+    generalFeedback = models.StringField(max_length=3000, blank=True, label='Do you have any comments, feedback or ideas? Thanks for sharing.')
+    
+    
+    subjectiveKnowledgePost = models.StringField( label= '  How knowledgeable do you feel about the effect of different behaviors on carbon footprints. That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?',
+                                              choices=[['1', 'not much at all (1)'], ['2', '2'],['3', '3'],['4', '4'],
+                                                       ['5', '5'], ['6', '6'],  ['7', '7'], ['8', '8'],['9', '9'], ['10', 'A great deal (10)'] ]   )
+
+
+    pretest_engaging = make_field('engaging')
+    pretest_interesting = make_field('interesting')
+    pretest_understandable = make_field('understandable')
+    pretest_knowledge = make_field('helpful to increase my knowledge')
+
 
     
    
@@ -350,14 +364,24 @@ class Numeracy(Page):
     form_model = 'player'
     form_fields= ['numeracy1']
    
-   
+class PretestQuestions(Page):
+    def is_displayed(self):
+        return self.participant.group_assignment != "control"
+    
+    form_model = 'player'
+    form_fields= ['pretest_engaging', 'pretest_interesting', 'pretest_understandable', 'pretest_knowledge' ]
+
 class policyScales(Page):
     form_model = 'player'
     form_fields= ['policy_commute', 'policy_flying', 'policy_electricity', 'policy_diet', 'policy_recycling', 'policy_regional' ]
    
 class unit(Page):
     form_model = 'player'
-    form_fields= ['UnitUnderstanding']
+    form_fields= ['UnitUnderstanding', 'generalFeedback', 'subjectiveKnowledgePost']
+
+class unit(Page):
+    form_model = 'player'
+    form_fields= ['UnitUnderstanding', 'generalFeedback']
     
 class Demographics(Page):
      form_model = 'player'
@@ -371,7 +395,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood, BehaviorLaundry,
-                   policyScales, ClimateConcern, Numeracy, NFC,  unit, End
+                   PretestQuestions, policyScales, ClimateConcern, Numeracy, NFC,  unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,
