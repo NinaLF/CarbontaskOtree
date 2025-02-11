@@ -291,8 +291,7 @@ class Player(BasePlayer):
     generalFeedback = models.StringField(max_length=3000, blank=True, label='Do you have any comments, feedback or ideas? Thanks for sharing.')
     
     
-    subjectiveKnowledgePost = models.IntegerField(widget=widgets.RadioSelect,  
-                                                   label= '  How knowledgeable do you feel about the effect of different behaviors on carbon footprints. That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?',
+    subjectiveKnowledgePost = models.IntegerField(widget=widgets.RadioSelect,  label= '  How knowledgeable do you feel about the effect of different behaviors on carbon footprints. That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?',
                                               choices=[['1', 'not much at all (1)'], ['2', '2'],['3', '3'],['4', '4'],
                                                        ['5', '5'], ['6', '6'],  ['7', '7'], ['8', '8'],['9', '9'], ['10', 'A great deal (10)'] ]   )
 
@@ -386,7 +385,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood, BehaviorLaundry,
-                 ClimateConcern, policyScales, Numeracy, NFC,  unit, End 
+                 unit, ClimateConcern, policyScales, Numeracy, NFC,   End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,
