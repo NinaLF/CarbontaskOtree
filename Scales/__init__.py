@@ -367,7 +367,7 @@ class policyScales(Page):
    
 class unit(Page):
     form_model = 'player'
-    form_fields= ['UnitUnderstanding', 'generalFeedback', 'subjectiveKnowledgePost']
+    form_fields= ['UnitUnderstanding' , 'subjectiveKnowledgePost', 'generalFeedback']
 
 class unit(Page):
     form_model = 'player'
