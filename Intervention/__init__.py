@@ -63,6 +63,15 @@ def creating_session(subsession:Subsession):
 
 class Player(BasePlayer):
 
+    def make_field(label):
+        return models.IntegerField(
+        choices=[['10', 'Agree completely (10)'], ['9', '9'],['8', '8'],['7', '7'],
+                 ['6', '6'], ['5', '5'], ['4', '4'], 
+                 ['3', '3'], ['2', '2'], ['1', 'Completely disagree (1)'] ],                                
+        label=label,
+        widget=widgets.RadioSelectHorizontal,
+    )
+
     diet = models.StringField(choices=["Meat-based", "Vegetarian" ] )
     laundry = models.StringField(choices=["Air Dry Clothes", "Use Dryer (average dryer and full load)"] )
     recycling = models.StringField(choices=["Does Not Recycle", "Recycles"] )
@@ -78,8 +87,15 @@ class Player(BasePlayer):
     
     controlQuestion3 = models.StringField(label="Which behavior's impact where you most surprised by, either due to having a smaller or bigger impact than you expected?",
                                           choices=["Meat or plant-based diet", "Air drying clothes or dryer", "Recycling or not","Regional or imported food", "Car or bus commute", "Flying or taking train"  ] )
+    
 
-  
+
+    pretest_engaging = make_field('engaging')
+    pretest_interesting = make_field('interesting')
+    pretest_understandable = make_field('understandable')
+    pretest_knowledge = make_field('helpful to increase my knowledge')
+
+
 # PAGES
 class TaskInfo(Page):
     pass
@@ -235,9 +251,15 @@ class PassiveSampling3(Page):
 class Transition(Page):
     pass
 
+class PretestQuestions(Page):
+    def is_displayed(self):
+        return self.participant.group_assignment != "control"
+    
+    form_model = 'player'
+    form_fields= ['pretest_engaging', 'pretest_interesting', 'pretest_understandable', 'pretest_knowledge' ]
 
-page_sequence = [ActiveSampling, ActiveSampling3, ActiveSampling2 ,
+page_sequence = [ActiveSampling, ActiveSampling3, ActiveSampling2 , 
                  # ActiveSamplingOld, 
-                 PassiveSampling, PassiveSampling2, PassiveSampling3]
+                 PassiveSampling, PassiveSampling2, PassiveSampling3, PretestQuestions]
 
 

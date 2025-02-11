@@ -395,7 +395,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood, BehaviorLaundry,
-                   PretestQuestions, policyScales, ClimateConcern, Numeracy, NFC,  unit, End 
+                 ClimateConcern, policyScales, Numeracy, NFC,  unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,
