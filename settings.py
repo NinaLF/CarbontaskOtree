@@ -14,9 +14,15 @@ SESSION_CONFIGS = [
      ),
 
       dict(
-         name='study',
-         app_sequence=[ 'Intro', 'Intervention', 'Nina_instructions', 'Nina_carbontask', 
-                        'Scales'],
+         name='study_t1',
+         app_sequence=[ 'Intro_t1', 'Nina_instructions', 'Nina_carbontask', 'Scales_t1'],
+         num_demo_participants=10,
+     ),
+
+     dict(
+         name='study_t2',
+         app_sequence=[ 'Intro_t2', 'Intervention', 'Nina_instructions', 'Nina_carbontask', 
+                        'Scales_t2'],
          num_demo_participants=10,
      ),
 

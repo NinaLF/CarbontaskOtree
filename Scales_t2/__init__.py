@@ -381,7 +381,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood, BehaviorLaundry,
-                  ClimateConcern, policyScales, Numeracy, NFC,  unit, End 
+                  policyScales, unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

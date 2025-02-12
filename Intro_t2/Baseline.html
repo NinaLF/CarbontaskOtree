@@ -7,10 +7,10 @@
  
 
     #nextst, .otree-btn-next{
-        background-color: #26a69a  !important; 
+        background-color: #26a69a !important; 
         text-transform: uppercase;
         border-radius: 0%;
-        border-color: #26a69a  !important; 
+        border-color: #26a69a !important; 
         color: white;
         box-shadow:  slategray;
         margin-bottom: -15px;
@@ -19,14 +19,14 @@
     #nextst:hover:enabled, .otree-btn-next:hover {
         letter-spacing: 1pt;
         box-shadow:  slategray;
-        background-color: #26a69a  !important; 
-        border-color: #26a69a  !important; 
+        background-color: #26a69a !important; 
+        border-color: #26a69a !important; 
     }
     
     .btn-primary.disabled, .btn-primary:disabled {
         color: #fff;
-        background-color: #2bbbad  !important; 
-        border-color: #2bbbad  !important; 
+        background-color: #2bbbad !important; 
+        border-color: #2bbbad !important; 
     }
 
 
@@ -41,7 +41,6 @@
         background-color: #A5D7D2 !important; 
         border-color: #46505A;
     }
-
 
 
     @media only screen and (min-width: 950px) {
@@ -109,33 +108,33 @@
 
 </style>
 
-
 {% endblock %}
 
-{% block title %}
-    Behavior
-{% endblock %}
+{{ block title }} {{ endblock }}
+{{ block content }}
 
-{% block content %}
-<br>
+<p>
+    Before we start with the study, please indicate the following:
+</p>
 
-
-<div > 
-    <br>
-    {{ formfield 'footprint_regional' }}
-    <br>
-    {{ formfield 'footprint_electricity' }}
-    <br>
-
-    <br>
-
-</div>
-
-</div>
+<div class="radiotable" style="padding-top:0vh; padding-left:0vw; ">
+    <p> How knowledgeable do you feel about the effect of different behaviors on carbon footprints? That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?    </p>
+    <p style="text-indent: 0vw;">
+        Not much at all &nbsp;
+        {{ for choice in form.subjectiveKnowledgePre}}
+            {{ choice }}
+        {{ endfor }}
+        &nbsp; A great deal
+    </p>
+</div> 
+<br> <br>
 
 <div class="next-btn radiotable">  
-    <div style="float: right; background-color:  #26a69a;  border-color: #26a69a; border-radius: 0%;  background-color: #26a69a; text-transform: uppercase; color: white; box-shadow:  slategray ;">
-            {% next_button %} 
+    <div style="float: right; padding-top: 2vh;">
+         {% next_button %} 
     </div>
 </div> 
+
+
+
 {{ endblock }}
