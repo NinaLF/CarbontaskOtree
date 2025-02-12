@@ -9,7 +9,7 @@ SESSION_CONFIGS = [
 
       dict(
          name='scales',
-         app_sequence=['Scales'],
+         app_sequence=['Scales_t1'],
          num_demo_participants=10,
      ),
 
