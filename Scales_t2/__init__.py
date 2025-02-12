@@ -4,7 +4,7 @@ from otree.api import *
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'panel_study'
+    NAME_IN_URL = 'Scales t2'
     NUM_ROUNDS = 1
     PLAYERS_PER_GROUP = None
 
