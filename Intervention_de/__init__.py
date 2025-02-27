@@ -7,7 +7,7 @@ intervention
 """
 
 class Constants(BaseConstants):
-    name_in_url = 'carbon_footprint'
+    name_in_url = 'carbon_footprint_calc'
     players_per_group = None
     num_rounds = 1
     behavior_data = {

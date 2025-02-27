@@ -6,7 +6,7 @@ from settings import LANGUAGE_CODE
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'instructions_task'
+    NAME_IN_URL = 'instructions_task_de'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 

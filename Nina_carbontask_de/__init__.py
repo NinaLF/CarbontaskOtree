@@ -5,7 +5,7 @@ from otree.api import *
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'task'
+    NAME_IN_URL = 'task_de'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 16
     FOOTPRINT_COMBINATIONS_TABLE_de = open('Nina_carbontask/FOOTPRINT_COMBINATIONS_TABLE_de.json')
