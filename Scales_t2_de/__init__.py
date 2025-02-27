@@ -4,7 +4,7 @@ from otree.api import *
 
 
 class C(BaseConstants):
-    NAME_IN_URL = 'Scalest2'
+    NAME_IN_URL = 'Scalest2_de'
     NUM_ROUNDS = 1
     PLAYERS_PER_GROUP = None
 
