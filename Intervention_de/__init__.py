@@ -26,7 +26,7 @@ class Constants(BaseConstants):
                 "Recycelt nicht": 0.0575,
                 "Recycelt": 0.0
             },
-            "<b>Lebensmittel</b>  <br> gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr ": {
+            "<b>Lebensmittel</b>  <br> gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr <br> ": {
                 "more than 3/4 is regional": 0.0,
                 "more than 3/4 is imported": 0.44
             },
@@ -34,7 +34,7 @@ class Constants(BaseConstants):
                 "by bus": 0.471,
                 "by car": 1.595
             },
-            "<b>Urlaub</b>   ": {
+            "<b>Urlaub</b>  <br>  ": {
                 "fliegt 1 Hin- und Rückflug von 3-6 Stunden (=2 Flüge, z.B. Zürich-Marrakesch, Zurich-Antalya) ": 1.2,
                 "Per Zug (fliegt nicht, z. B. Zürich-Paris oder London)": 0.0076
             }
