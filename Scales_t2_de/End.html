@@ -1,0 +1,20 @@
+{% block styles %}
+    <link href="{{ static 'global/css/generalStyle.css'}}" rel="stylesheet">
+
+{% endblock %}
+
+{{ block title }}Ende{{ endblock }}
+{{ block content }}
+
+<p>
+    Danke für Ihre Teilnahem.<br>
+    <b> Bitte klicken Sie hier um die Studie abzuschliessen</b>
+    <br>
+    <br>
+
+<button class="btn btn-primary btn-large reps" style="margin-top:3vh;" type="button" onclick="window.location.href='https://app.prolific.com/submissions/complete?cc=C1BL7N4O' "> Hier zum Beenden drücken</button>
+
+</p>
+
+
+{{ endblock }}

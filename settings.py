@@ -3,13 +3,13 @@ from os import environ
 SESSION_CONFIGS = [
      dict(
          name='intervention',
-         app_sequence=['Intervention'],
+         app_sequence=['Intervention_de'],
          num_demo_participants=10,
      ),
 
       dict(
          name='scales',
-         app_sequence=['Scales_t1'],
+         app_sequence=['Scales_t1_de', 'Scales_t2_de'],
          num_demo_participants=10,
      ),
 
@@ -21,8 +21,15 @@ SESSION_CONFIGS = [
 
      dict(
          name='study_t2',
-         app_sequence=[ 'Intro_t2', 'Intervention', 'Nina_instructions', 'Nina_carbontask', 
-                        'Scales_t2'],
+         app_sequence=[ 'Intro_t2', 'Intervention_de', 'Nina_instructions', 'Nina_carbontask', 
+                        'Scales_t2_de'],
+         num_demo_participants=10,
+     ),
+
+     dict(
+         name='study_t2_de',
+         app_sequence=[ 'Intro_t1_de', 'Nina_instructions_de', 'Nina_carbontask_de', 
+                        'Scales_t1_de'],
          num_demo_participants=10,
      ),
 

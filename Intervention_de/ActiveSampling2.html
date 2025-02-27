@@ -1,0 +1,235 @@
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .behavior-container {
+        margin-bottom: 20px;
+        font-weight: plain;
+    }
+    .behavior-label {
+        font-weight: plain;
+    }
+    select {
+        margin-left: 10px;
+    }
+    h1 {
+        color: #000000;
+        font-size: 40px;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    .left-column {
+        flex: 2.5;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+    .right-column {
+        flex: 1;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h2 {
+        font-weight: plain;
+        color: #000000;
+        font-size: 32px;
+    }
+    .progress-bar-wrapper {
+        padding: 20px; /* Add padding around the bar */
+    }
+    .progress-bar-container {
+        width: 90px;
+        height: 300px; /* Represents 10 tons CO₂eq */
+        background-color: #ffffff;
+        border-radius: 5px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column-reverse; /* Fill from bottom up */
+        margin-top: 20px;
+    }
+    .progress-bar-section {
+        width: 100%;
+        transition: height 0.4s;
+    }
+    .section-1 { background-color: #CBE4F9; } /* Color for Diet */
+    .section-2 { background-color: #CDF5F6; } /* Color for Electricity */
+    .section-3 { background-color: #EFF9DA; } /* Color for Recycling */
+    .section-4 { background-color: #F9EBDF; }/* Color for Food */
+    .section-5 { background-color: #F9D8D6; } /* Color for Commute */
+    .section-6 { background-color: #D6CDEA; } /* Color for Vacation */
+
+    /* Add corresponding background colors for the select elements */
+    .select-diet { background-color: #CBE4F9; }
+    .select-electricity { background-color: #CDF5F6; }
+    .select-recycling { background-color: #EFF9DA; }
+    .select-food { background-color: #F9EBDF; }
+    .select-commute { background-color: #F9D8D6; }
+    .select-vacation { background-color: #D6CDEA; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <h1>CO<sub>2</sub>-Fussabdruck Rechner</h1>
+    <br>
+<body style="font-size: 19px;">
+    <p style="font-size: 19px;"> 
+        Durch Anklicken der Boxen können Sie verschiedene Stufen für die einzelnen Verhaltensweisen auswählen.<br>
+        Der zugehörige gesamte CO<sub>2</sub>-Fussabdruck der ausgewählten Verhaltensweisen wird auf der rechten Seite des Bildschirms aktualisiert
+        Der Balken füllt sich mit verschiedenen Farben je nach ausgewähltem Verhalten, wobei jede Farbe die Menge an Kohlenstoffemissionen darstellt, die das Verhalten pro Jahr verursacht.<br>
+        <br><br>
+        <b> Bitte erstellen Sie den höchstmögliche Fussabdruck mit den 6 Verhaltensweisen</b>.<br> Danach können sie fortfahren
+    </p>
+    <br>
+
+
+    
+    <div class="container"> 
+        <div class="left-column"> 
+            <form id="carbon-footprint-form">
+                <!-- Explicitly set classes for each behavior -->
+                <div class="behavior-container">
+                    <label class="behavior-label">Ernährung (basierend auf dem durchschnittlichen Kalorienbedarf von 2000kcal eines Erwachsenen für 1 Jahr) </label>
+                    <select class="select-diet" name="diet" onchange="updateTotalFootprint()">
+                        <option value="2.206">Fleisch-basiert</option>
+                        <option value="1.338">Vegetarisch</option>
+                    </select>
+                </div>
+
+                <div class="behavior-container">
+                    <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
+                    <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
+                        <option value="0.00">lässt die Wäsche lufttrocknen</option>
+                        <option value="0.039">benutzt den Trockner (durchschnittlicher Trockner und vollbeladen) </option> 
+                    </select>
+                </div>
+
+                <div class="behavior-container">
+                    <label class="behavior-label">Recycling (Materialien wie Papier, Glas, Metalle für ein Jahr) </label>
+                    <select class="select-recycling" name="recycling" onchange="updateTotalFootprint()">
+                        <option value="0.0575">Recycelt nicht</option>
+                        <option value="0">Recycelt</option>
+                    </select>
+                </div>
+
+                <div class="behavior-container">
+                    <label class="behavior-label">Lebensmittel (gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr)</label>
+                    <select class="select-food" name="food" onchange="updateTotalFootprint()">
+                        <option value="0">Mehr als 3/4 ist regional</option>
+                        <option value="0.44">Mehr als 3/4 ist importiert</option>
+                    </select>
+                </div>
+
+                <div class="behavior-container">
+                    <label class="behavior-label">Arbeitsweg (20 Kilometer täglich zur und von der Arbeit (eine Fahrt =10km), 5 Tage pro Woche während 48 Wochen pro Jahr) </label>
+                    <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
+                        <option value="0.471">Mit dem Bus</option>
+                        <option value="1.595">Mit dem eigenen Auto</option>
+                    </select>
+                </div>
+
+                <div class="behavior-container">
+                    <label class="behavior-label">Urlaub</label>
+                    <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
+                        <option value="1.2"> fliegt 1 Hin- und Rückflug von 3-6 Stunden (=2 Flüge, z.B. Zürich-Marrakesch, Zurich-Antalya )</option>
+                        <option value="0.0076">Per Zug (fliegt nicht, z. B. Zürich-Paris oder London)</option>
+                    </select>
+                </div>
+            </form>
+            <br>
+        </div>
+
+        <div class="right-column"> 
+            <h2>Gesamter CO<sub>2</sub>-Fussabdruck in Tonnen CO<sub>2eq</sub>:</h2> 
+            <div class="progress-bar-wrapper"></div>
+                <div class="progress-bar-container">
+                    <!-- Sections for each behavior -->
+                    <div class="progress-bar-section section-1" id="section-1"></div>
+                    <div class="progress-bar-section section-2" id="section-2"></div>
+                    <div class="progress-bar-section section-3" id="section-3"></div>
+                    <div class="progress-bar-section section-4" id="section-4"></div>
+                    <div class="progress-bar-section section-5" id="section-5"></div>
+                    <div class="progress-bar-section section-6" id="section-6"></div>
+                </div>
+                <br>
+            <span style="font-size: 32px;" id="total-footprint">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        const behaviorData = {{ behavior_data|safe }};
+        const totalFootprintElement = document.getElementById('total-footprint');
+        const sections = [
+            document.getElementById('section-1'),
+            document.getElementById('section-2'),
+            document.getElementById('section-3'),
+            document.getElementById('section-4'),
+            document.getElementById('section-5'),
+            document.getElementById('section-6')
+        ];
+        const minFootprint = 0;
+        const maxFootprint = 6;  // Container represents up to 10 tons CO2eq
+
+        function updateTotalFootprint() {
+            let totalFootprint = 0.0;
+            const selects = document.querySelectorAll('.behavior-container select');
+            let values = [];
+
+            selects.forEach(select => {
+                const value = parseFloat(select.value);
+                if (!isNaN(value)) {
+                    values.push(value);
+                    totalFootprint += value;
+                }
+            });
+
+            // Make sure the total footprint doesn't exceed the max footprint (6 tons in this case)
+            totalFootprint = Math.min(Math.max(totalFootprint, minFootprint), maxFootprint);
+            totalFootprintElement.innerText = totalFootprint.toFixed(2);
+
+            // Calculate the proportionate height of each section
+            const totalHeight = (totalFootprint / maxFootprint) * 100;
+            let cumulativeHeight = 0;
+
+            values.forEach((value, index) => {
+                const sectionHeight = (value / totalFootprint) * totalHeight;
+                sections[index].style.height = `${sectionHeight}%`;
+            });
+        }
+
+        // Initial calculation
+        updateTotalFootprint();
+
+        window.onload = function () {
+            setTimeout(function () {
+                document.getElementById("nextst").disabled = false;
+            }, 15000); // 15 seconds delay increase when actually starting the study
+        };
+    </script>
+
+
+<p>
+    <br>
+    {{ formfield 'controlQuestion1' }} <br>
+
+    {{ formfield 'controlQuestion2' }} <br>
+
+    {{ formfield 'controlQuestion3' }} <br>
+
+</p>
+
+    <div >
+        <button id="nextst" style="float: right; margin-top: 2vh;" disabled class="otree-btn-next btn btn-primary"> Weiter </button>
+
+    </div>
+
+</body>
+{% endblock %}
