@@ -21,12 +21,13 @@
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 20px;
-        font-size: 24px;
+        font-size: 21px;
     }
     .left-column {
-        flex: 2.1;
+        flex: 2;
         padding: 15px;
         box-sizing: border-box;
+        font-size: 20px;
     }
     .right-column {
         flex: 1.2;
@@ -39,7 +40,7 @@
     h2 {
         font-weight: plain;
         color: #000000;
-        font-size: 32px;
+        font-size: 28px;
     }
     .progress-bar-wrapper {
         padding: 20px; /* Add padding around the bar */
@@ -67,7 +68,7 @@
 
     /* Add corresponding background colors for the select elements */
     .select-diet { background-color: #CBE4F9; }
-    .select-laundry { background-color: #CDF5F6; }
+    .select-electricity { background-color: #CDF5F6; }
     .select-recycling { background-color: #EFF9DA; }
     .select-food { background-color: #F9EBDF; }
     .select-commute { background-color: #F9D8D6; }
@@ -79,8 +80,8 @@
 
     <h1>CO<sub>2</sub>-Fussabdruck Rechner</h1>
     <br>
-<body style="font-size: 17px;">
-    <p style="font-size: 17px;"> 
+<body style="font-size: 19px;">
+    <p style="font-size: 19px;"> 
         Durch Anklicken der Boxen können Sie verschiedene Stufen für die einzelnen Verhaltensweisen auswählen.<br>
         Der zugehörige gesamte CO<sub>2</sub>-Fussabdruck der ausgewählten Verhaltensweisen wird auf der rechten Seite des Bildschirms aktualisiert
         Der Balken füllt sich mit verschiedenen Farben je nach ausgewähltem Verhalten, wobei jede Farbe die Menge an Kohlenstoffemissionen darstellt, die das Verhalten pro Jahr verursacht.<br>
@@ -105,7 +106,7 @@
 
                 <div class="behavior-container">
                     <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
-                    <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
+                    <select class="select-electricity" name="electricity" onchange="updateTotalFootprint()">
                         <option value="0.00">lässt die Wäsche lufttrocknen</option>
                         <option value="0.039">benutzt den Trockner (durchschnittlicher Trockner und vollbeladen) </option> 
                     </select>

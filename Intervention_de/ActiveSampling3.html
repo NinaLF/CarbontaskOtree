@@ -21,12 +21,13 @@
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 20px;
-        font-size: 24px;
+        font-size: 21px;
     }
     .left-column {
         flex: 2;
         padding: 15px;
         box-sizing: border-box;
+        font-size: 20px;
     }
     .right-column {
         flex: 1.2;
@@ -39,7 +40,7 @@
     h2 {
         font-weight: plain;
         color: #000000;
-        font-size: 32px;
+        font-size: 28px;
     }
     .progress-bar-wrapper {
         padding: 20px; /* Add padding around the bar */
@@ -67,7 +68,7 @@
 
     /* Add corresponding background colors for the select elements */
     .select-diet { background-color: #CBE4F9; }
-    .select-laundry { background-color: #CDF5F6; }
+    .select-electricity { background-color: #CDF5F6; }
     .select-recycling { background-color: #EFF9DA; }
     .select-food { background-color: #F9EBDF; }
     .select-commute { background-color: #F9D8D6; }
@@ -106,7 +107,7 @@
 
                 <div class="behavior-container">
                     <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
-                    <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
+                    <select class="select-electricity" name="electricity" onchange="updateTotalFootprint()">
                         <option value="0.00">lässt die Wäsche lufttrocknen</option>
                         <option value="0.039">benutzt den Trockner (durchschnittlicher Trockner und vollbeladen) </option> 
                     </select>
@@ -160,7 +161,7 @@
                     <div class="progress-bar-section section-6" id="section-6"></div>
                 </div>
                 <br>
-            <span style="font-size: 32px;" id="total-footprint">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
+            <span style="font-size: 28px;" id="total-footprint">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
             <br>
         </div>
     </div>
