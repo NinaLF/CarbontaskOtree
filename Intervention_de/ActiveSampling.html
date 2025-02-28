@@ -1,4 +1,5 @@
 {% block styles %}
+
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -118,7 +119,7 @@
 
                 <div class="behavior-container">
                     <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
-                    <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
+                    <select class="select-electricity" name="electricity" onchange="updateTotalFootprint()">
                         <option value="0.00">lässt die Wäsche lufttrocknen</option>
                         <option value="0.039">benutzt den Trockner (durchschnittlicher Trockner und vollbeladen) </option> 
                     </select>
