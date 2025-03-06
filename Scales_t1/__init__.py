@@ -185,10 +185,10 @@ class Player(BasePlayer):
     footprint_flying_long = models.IntegerField(min=0, max= 300,
                                                  label= "How many <b> long-distance flights (>6 hours) </b> did you take on average in the past two years? <i> i: one round-trip flight counts as two flights. So if you flew from Miami to London and back this counts as 2 flights. </i> " )
 
-    footprint_commute_car =  models.IntegerField( min=0, max=200 , 
+    footprint_commute_car =  models.IntegerField( min=0, max=1000 , 
                                                  label= "How many miles by car did you commute on a typical working day in the past 2 weeks (as a driver or passenger) to get to work? <br> Please enter the average miles <b> per working day </b>")
                                                
-    footprint_commute_car2 =  models.IntegerField( min=0, max=200 , 
+    footprint_commute_car2 =  models.IntegerField( min=0, max=1000 , 
                                                  label= "How many miles by car did you drive on average for other purposes (as a driver or passenger) for leisure activities, chores/groceries or other reasons? <br> Please enter the average miles <b> per day </b>")
                                                
                                                  
@@ -202,15 +202,9 @@ class Player(BasePlayer):
                                                         ['NaturalGas',  'Natural gas' ],
                                                         ['Diesel', 'Gasoline/Diesel/Hybrid' ]]
                                                    )
-    footprint_commute_pt =  models.StringField(label="How many miles did you commute per week in the past 2 weeks using public transport (train, bus, etc.) or an e-bike? Please calculate all private journeys including the work commute, but not business travels <b>based on one week.</b>" ,
-                                                widget=widgets.RadioSelectHorizontal, 
-                                               choices = [ ['lessA', '1 - 39 miles' ],
-                                               ['AtoB',  '40 - 50 miles' ],
-                                               ['BtoC', '50 -149 miles'  ],
-                                               ['CtoD', '150 - 224 miles' ],
-                                               ['DtoE',  '225 - 370 miles' ],
-                                               ['most', 'more than 370 miles'  ] ] )
-
+    footprint_commute_pt =  models.IntegerField(min=0, max=1000 ,
+                                                 label="How many miles did you commute per week in the past 2 weeks using public transport (train, bus, etc.) or an e-bike? Please calculate all private journeys including the work commute, but not business travels <b>based on one week.</b>" )
+                                         
     footprint_regional =  models.StringField(label = ' What percentage of your food is regional (from within your country or region, not imported) ? ', widget=widgets.RadioSelectHorizontal ,
                                              choices = [  
                                                   [ 'less_than' , 'Less than a quarter'],

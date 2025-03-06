@@ -163,14 +163,11 @@ class Player(BasePlayer):
     footprint_flying_long = models.IntegerField(min=0, max= 300,
                                              label= "Wie viele <b> Langstreckenflüge (>6 Stunden) </b> haben Sie in den letzten zwei Jahren durchschnittlich unternommen? <i> Ein Hin- und Rückflug zählt als zwei Flüge. Wenn Sie also von Miami nach London und zurück geflogen sind, zählt das als 2 Flüge. </i>")
     
-    footprint_commute_car =  models.IntegerField(min=0, max=200 , 
-                                             label= "Wie viele Kilometer haben Sie an einem typischen Arbeitstag in den letzten 2 Wochen mit dem Auto zur Arbeit zurückgelegt (als Fahrer oder Beifahrer)? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Arbeitstag </b> an")
-
     
-    footprint_commute_car =  models.IntegerField( min=0, max=200 , 
+    footprint_commute_car =  models.IntegerField( min=0, max=1000 , 
                                                  label= "Wie viele Kilometer sind Sie an einem typischen Arbeitstag in den letzten 2 Wochen mit dem Auto gependelt (als Fahrer oder Beifahrer), um zur Arbeit zu gelangen? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Arbeitstag </b> an")
                                                 
-    footprint_commute_car2 =  models.IntegerField( min=0, max=200 , 
+    footprint_commute_car2 =  models.IntegerField( min=0, max=1000 , 
                                                  label= "Wie viele Kilometer sind Sie durchschnittlich für andere Zwecke (als Fahrer oder Beifahrer) für Freizeitaktivitäten, Besorgungen/Einkäufe oder andere Gründe gefahren? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Tag </b> an")
                                                 
     footprint_commute_car_type=  models.StringField( label = 'Welche Art von Kraftstoff nutzt Ihr Auto?', widget=widgets.RadioSelectHorizontal ,
@@ -181,15 +178,9 @@ class Player(BasePlayer):
                                                         ['NaturalGas',  'Erdgas' ],
                                                         ['Diesel', 'Benzin/Diesel/Hybrid' ]]
                                                    )
-    footprint_commute_pt =  models.StringField(label="Wie viele Kilometer sind Sie in den letzten 2 Wochen pro Woche mit öffentlichen Verkehrsmitteln (Zug, Bus usw.) oder einem E-Bike gependelt? Bitte berechnen Sie alle privaten Fahrten einschließlich des Arbeitswegs, aber keine Geschäftsreisen <b>basierend auf einer Woche.</b>" ,
-                                                widget=widgets.RadioSelectHorizontal, 
-                                               choices = [ ['lessA', '1 - 39 Meilen' ],
-                                               ['AtoB',  '40 - 50 Meilen' ],
-                                               ['BtoC', '50 -149 Meilen'  ],
-                                               ['CtoD', '150 - 224 Meilen' ],
-                                               ['DtoE',  '225 - 370 Meilen' ],
-                                               ['most', 'mehr als 370 Meilen'  ] ] )
-
+    footprint_commute_pt =  models.IntegerField(min=0, max=1000 , 
+                                                label="Wie viele Kilometer sind Sie in den letzten 2 Wochen pro Tag mit öffentlichen Verkehrsmitteln (Zug, Bus usw.) gependelt? Bitte berechnen Sie alle privaten Fahrten einschließlich des Arbeitswegs, aber keine Geschäftsreisen <b>basierend auf einem Tag.</b>" )
+                                               
     footprint_regional =  models.StringField(label = 'Welcher Prozentsatz Ihrer Lebensmittel ist regional (aus Ihrem Land oder Ihrer Region, nicht importiert)?', widget=widgets.RadioSelectHorizontal ,
                                              choices = [  
                                                   [ 'less_than' , 'Weniger als ein Viertel'],
@@ -324,7 +315,7 @@ class unit(Page):
     
 class Demographics(Page):
      form_model = 'player'
-     form_fields= [ 'age', 'gender', 'education', 'income', 'polOrientation' , 'generalFeedback']
+     form_fields= [ 'age', 'gender', 'education', 'polOrientation' , 'generalFeedback']
        
 
 class End(Page):

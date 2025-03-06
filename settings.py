@@ -31,14 +31,14 @@ SESSION_CONFIGS = [
 
      dict(
          name='study_t2',
-         app_sequence=[ 'Intro_t2', 'Intervention_de', 'Nina_instructions', 'Nina_carbontask', 
+         app_sequence=[ 'Intro_t2', 'Intervention', 'Nina_instructions', 'Nina_carbontask', 
                         'Scales_t2_de'],
          num_demo_participants=10,
      ),
 
      dict(
          name='study_t2_de',
-         app_sequence=[ 'Intro_t2_de', 'Nina_instructions_de', 'Nina_carbontask_de', 
+         app_sequence=[ 'Intro_t2_de','Intervention_de', 'Nina_instructions_de', 'Nina_carbontask_de', 
                         'Scales_t2_de'],
          num_demo_participants=10,
      ),
