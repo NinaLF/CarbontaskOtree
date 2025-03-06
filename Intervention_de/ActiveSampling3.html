@@ -196,18 +196,27 @@
                 }
             });
 
+            
+
             // Make sure the total footprint doesn't exceed the max footprint (6 tons in this case)
             totalFootprint = Math.min(Math.max(totalFootprint, minFootprint), maxFootprint);
             totalFootprintElement.innerText = totalFootprint.toFixed(2);
 
             // Calculate the proportionate height of each section
             const totalHeight = (totalFootprint / maxFootprint) * 100;
-            let cumulativeHeight = 0;
-
             values.forEach((value, index) => {
                 const sectionHeight = (value / totalFootprint) * totalHeight;
                 sections[index].style.height = `${sectionHeight}%`;
             });
+
+            // Check if the total footprint is exactly 5.54, and enable the "Next" button if true
+            const nextButton = document.getElementById("nextst");
+            if (parseFloat(totalFootprint) >= 2.8 && parseFloat(totalFootprint) <= 3.2) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
         }
 
         // Initial calculation
@@ -218,6 +227,12 @@
                 document.getElementById("nextst").disabled = false;
             }, 15000); // 15 seconds delay increase when actually starting the study
         };
+
+
+            
+  
+
+    </script>
     </script>
 
 

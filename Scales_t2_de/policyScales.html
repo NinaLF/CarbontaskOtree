@@ -4,16 +4,18 @@
 {% endblock %}
 
 {% block title %}
-Some questions on Policies 
+Fragen zu politischen Maßnahmen
 
 {% endblock %}
 
 {% block content %}
 
 <p>
-    In the following, we will ask for your views on different public policies. Please answer them as truthfully as possible. <br>
-    Many countries have introduced new policies to reduce the risk of climate change. This includes policies that require or create incentives for reductions in greenhouse gas emissions across domains and actors. <br> <br>
-    Please indicate whether you strongly oppose or strongly support the following policies.
+
+    Im Folgenden fragen wir Sie nach Ihrer Meinung zu verschiedenen politischen Maßnahmen. Bitte beantworten Sie die Fragen so wahrheitsgemäß wie möglich.  <br> 
+    Viele Länder haben neue politische Maßnahmen eingeführt, um das Risiko des Klimawandels zu verringern. Dazu gehören Maßnahmen, die eine Verringerung der Treibhausgasemissionen in verschiedenen Bereichen und bei unterschiedlichen Akteuren vorschreiben oder Anreize dafür schaffen. 
+    Bitte geben Sie an, inwieweit Sie diese Maßnahmen ablehnen oder unterstützen. <br>
+
     <br>
     <br>
 </p>
@@ -25,7 +27,7 @@ Some questions on Policies
     <button class="accordion" id={{field.id}} name={{field.name}}>  {{field.label}}  </button>
     <div class="accpanel">
         <table style="width:90%; margin-left: auto; margin-right: auto;">
-            <tr style="padding: 5px;"> <td colspan="3" style="text-align: left; padding:0"> strongly oppose </td>  <td colspan="4"> </td>  <td colspan="3" style="text-align: right;"> strongly support </td> </tr>
+            <tr style="padding: 5px;"> <td colspan="3" style="text-align: left; padding:0"> Starke Ablehnung </td>  <td colspan="4"> </td>  <td colspan="3" style="text-align: right;"> Starke Befürwortung</td> </tr>
 
             <tr >
                 {{ for choice in field }}            

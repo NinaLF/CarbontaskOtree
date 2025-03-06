@@ -23,6 +23,11 @@ SESSION_CONFIGS = [
          app_sequence=[ 'Intro_t1', 'Nina_instructions', 'Nina_carbontask', 'Scales_t1'],
          num_demo_participants=10,
      ),
+      dict(
+         name='study_t1_de',
+         app_sequence=[ 'Intro_t1_de', 'Nina_instructions_de', 'Nina_carbontask_de', 'Scales_t1_de'],
+         num_demo_participants=10,
+     ),
 
      dict(
          name='study_t2',
@@ -33,8 +38,8 @@ SESSION_CONFIGS = [
 
      dict(
          name='study_t2_de',
-         app_sequence=[ 'Intro_t1_de', 'Nina_instructions_de', 'Nina_carbontask_de', 
-                        'Scales_t1_de'],
+         app_sequence=[ 'Intro_t2_de', 'Nina_instructions_de', 'Nina_carbontask_de', 
+                        'Scales_t2_de'],
          num_demo_participants=10,
      ),
 

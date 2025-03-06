@@ -208,12 +208,12 @@ class Player(BasePlayer):
                                                  label= "Wie oft haben Sie in den letzten 4 Wochen durchschnittlich Ihre Wäsche luftgetrocknet? <br> Bitte geben Sie die durchschnittliche Anzahl an <b> pro Woche </b>")
 
     ## policy scales
-    policy_commute =	'Erhöhung oder Einführung von Steuern auf Kraftstoff für Fahrzeuge (z. B. Diesel und Benzin). '
-    policy_flying =	'Erhöhung oder Einführung von Steuern auf Flugreisen.'
-    policy_electricity ='Erhöhung oder Einführung von Steuern auf fossile Brennstoffe als Energiequelle (z. B. Gas, Öl und Kohle).'
-    policy_diet =	'Erhöhung oder Einführung von Steuern auf rotes Fleisch (z. B. Rindfleisch, Lammfleisch, Kalbfleisch).'
-    policy_recycling =	'Erhöhung oder Einführung von Steuern auf nicht wiederverwertbare (=nicht recyclebare) Materialien.'
-    policy_regional =	'Erhöhung oder Einführung von Steuern auf Lebensmittelprodukte, die per Flugzeug importiert werden.'
+    policy_commute =make_field('Erhöhung oder Einführung von Steuern auf Kraftstoff für Fahrzeuge (z. B. Diesel und Benzin). ')
+    policy_flying =make_field(	'Erhöhung oder Einführung von Steuern auf Flugreisen.')
+    policy_electricity =make_field('Erhöhung oder Einführung von Steuern auf fossile Brennstoffe als Energiequelle (z. B. Gas, Öl und Kohle).')
+    policy_diet =	make_field('Erhöhung oder Einführung von Steuern auf rotes Fleisch (z. B. Rindfleisch, Lammfleisch, Kalbfleisch).')
+    policy_recycling =	make_field('Erhöhung oder Einführung von Steuern auf nicht wiederverwertbare (=nicht recyclebare) Materialien.')
+    policy_regional =	make_field('Erhöhung oder Einführung von Steuern auf Lebensmittelprodukte, die per Flugzeug importiert werden.')
     
 
  # demographics

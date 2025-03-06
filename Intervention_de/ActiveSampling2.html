@@ -201,12 +201,18 @@
 
             // Calculate the proportionate height of each section
             const totalHeight = (totalFootprint / maxFootprint) * 100;
-            let cumulativeHeight = 0;
-
             values.forEach((value, index) => {
                 const sectionHeight = (value / totalFootprint) * totalHeight;
                 sections[index].style.height = `${sectionHeight}%`;
             });
+
+            // Check if the total footprint is exactly 5.54, and enable the "Next" button if true
+            const nextButton = document.getElementById("nextst");
+            if (parseFloat(totalFootprint) === 5.54) {
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
         }
 
         // Initial calculation
