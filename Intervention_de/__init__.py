@@ -55,7 +55,7 @@ class Group(BaseGroup):
 def creating_session(subsession:Subsession):
 
     import itertools
-    group_assignment = itertools.cycle(["control", "passive", "active"])
+    group_assignment = itertools.cycle([ "passive", "active"])
     for player in subsession.get_players():
         if subsession.round_number == 1:
             player.participant.group_assignment = next(group_assignment)
@@ -252,9 +252,6 @@ class Transition(Page):
     pass
 
 class PretestQuestions(Page):
-    def is_displayed(self):
-        return self.participant.group_assignment != "control"
-    
     form_model = 'player'
     form_fields= ['pretest_engaging', 'pretest_interesting', 'pretest_understandable', 'pretest_knowledge' ]
 
