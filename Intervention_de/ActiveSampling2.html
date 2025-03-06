@@ -195,9 +195,9 @@
                 }
             });
 
-            // Make sure the total footprint doesn't exceed the max footprint (6 tons in this case)
-            totalFootprint = Math.min(Math.max(totalFootprint, minFootprint), maxFootprint);
-            totalFootprintElement.innerText = totalFootprint.toFixed(2);
+            // Display the calculated total footprint
+            totalFootprint = totalFootprint.toFixed(2);
+            totalFootprintElement.innerText = totalFootprint;
 
             // Calculate the proportionate height of each section
             const totalHeight = (totalFootprint / maxFootprint) * 100;
@@ -214,16 +214,12 @@
                 nextButton.disabled = true;
             }
         }
-
-        // Initial calculation
+            // Initial calculation
         updateTotalFootprint();
+  
 
-        window.onload = function () {
-            setTimeout(function () {
-                document.getElementById("nextst").disabled = false;
-            }, 15000); // 15 seconds delay increase when actually starting the study
-        };
     </script>
+
 
 
 <p>
