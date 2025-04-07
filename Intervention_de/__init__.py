@@ -40,6 +40,35 @@ class Constants(BaseConstants):
             }
     }
 
+    control_data = {
+   
+      
+         "Streckendistanz von Frankfurt (Fahrstrecke nicht Luftlinie)": {
+                "Frankfurt-Düsseldorf": 226,
+                "Frankfurt-Berlin ": 548
+            },
+            "Streckendistanz von Berlin (Fahrstrecke nicht Luftlinie)": {
+                "Berlin-Saarbrücken": 723,
+                "Berlin-Köln": 575
+            },
+            "Streckendistanz von München (Fahrstrecke nicht Luftlinie)": {
+                "München-Hamburg": 793,
+                "München-Osnabrück": 641
+            },
+            "Streckendistanz von Hannover (Fahrstrecke nicht Luftlinie)": {
+                "Hannover-Dresden": 364,
+                "Hannover-Frankfurt": 569
+            },
+             "Streckendistanz von Stuttgart (Fahrstrecke nicht Luftlinie)": {
+                "Stuttgart-Bonn": 350,
+                "Stuttgart-Erfurt": 339
+            },
+             "Streckendistanz von Wiesbaden (Fahrstrecke nicht Luftlinie)": {
+                "Wiesbaden-Nürnberg": 253,
+                "Wiesbaden-Berlin": 573
+            }
+    }
+
 
 class Subsession(BaseSubsession):
 
@@ -55,7 +84,7 @@ class Group(BaseGroup):
 def creating_session(subsession:Subsession):
 
     import itertools
-    group_assignment = itertools.cycle([ "passive", "active"])
+    group_assignment = itertools.cycle([ "passive", "active", "control"])
     for player in subsession.get_players():
         if subsession.round_number == 1:
             player.participant.group_assignment = next(group_assignment)
@@ -252,11 +281,111 @@ class Transition(Page):
     pass
 
 class PretestQuestions(Page):
+
+    def is_displayed(self):
+        return self.participant.group_assignment != "control"
+
     form_model = 'player'
     form_fields= ['pretest_engaging', 'pretest_interesting', 'pretest_understandable', 'pretest_knowledge' ]
 
+
+
+class Control(Page):
+
+    def is_displayed(self):
+        return self.participant.group_assignment == "control"
+
+    def before_next_page(self, timeout_happened=False):
+        total_footprint = 0
+        
+        selections = {}
+
+        # Iterate through each behavior to calculate the total footprint and store selections
+        for behavior, options in Constants.control_data.items():
+            selected_option = selections.get(behavior.lower(), None)
+            if selected_option is not None:
+                total_footprint += options.get(selected_option, 0)
+
+        # Store the total footprint and selections in participant variables
+        self.participant.vars['total_footprint'] = total_footprint
+        self.participant.vars['selections'] = selections
+
+    def vars_for_template(self):
+        # Get stored selections or use 'Not selected' as default
+        selections = self.participant.vars.get('selections', {})
+        diet_selection = selections.get('diet', 'Not selected')
+        commute_selection = selections.get('commute', 'Not selected')
+
+        return {
+            'control_data': Constants.control_data,
+            'diet_select': diet_selection,
+            'commute_select': commute_selection
+        }
+    
+class Control2(Page):
+    def is_displayed(self):
+        return self.participant.group_assignment == "control"
+
+    def before_next_page(self, timeout_happened=False):
+        total_footprint = 0
+        
+        selections = {}
+
+        # Iterate through each behavior to calculate the total footprint and store selections
+        for behavior, options in Constants.control_data.items():
+            selected_option = selections.get(behavior.lower(), None)
+            if selected_option is not None:
+                total_footprint += options.get(selected_option, 0)
+
+        # Store the total footprint and selections in participant variables
+        self.participant.vars['total_footprint'] = total_footprint
+        self.participant.vars['selections'] = selections
+
+    def vars_for_template(self):
+        # Get stored selections or use 'Not selected' as default
+        selections = self.participant.vars.get('selections', {})
+        diet_selection = selections.get('diet', 'Not selected')
+        commute_selection = selections.get('commute', 'Not selected')
+
+        return {
+            'control_data': Constants.control_data,
+            'diet_select': diet_selection,
+            'commute_select': commute_selection
+        }
+    
+class Control3(Page):
+  
+    def is_displayed(self):
+        return self.participant.group_assignment == "control"
+
+    def before_next_page(self, timeout_happened=False):
+        total_footprint = 0
+        
+        selections = {}
+
+        # Iterate through each behavior to calculate the total footprint and store selections
+        for behavior, options in Constants.control_data.items():
+            selected_option = selections.get(behavior.lower(), None)
+            if selected_option is not None:
+                total_footprint += options.get(selected_option, 0)
+
+        # Store the total footprint and selections in participant variables
+        self.participant.vars['total_footprint'] = total_footprint
+        self.participant.vars['selections'] = selections
+
+    def vars_for_template(self):
+        # Get stored selections or use 'Not selected' as default
+        selections = self.participant.vars.get('selections', {})
+
+        return {
+            'control_data': Constants.control_data
+    
+        }
+    
 page_sequence = [ActiveSampling, ActiveSampling3, ActiveSampling2 , 
                  # ActiveSamplingOld, 
-                 PassiveSampling, PassiveSampling2, PassiveSampling3, PretestQuestions]
+                 PassiveSampling, PassiveSampling2, PassiveSampling3, 
+                 Control, Control2, Control3,
+                 PretestQuestions]
 
 

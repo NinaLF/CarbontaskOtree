@@ -178,17 +178,16 @@ Bitte bewerten Sie die CO<sub>2</sub> Fussabdrücke
 <meta charset="UTF-8">
 
 <div > 
-    <p style=" font-size: 17px;"> <b> Bitte beachten Sie, dass die Skala nicht das Minimum und Maximum an CO<sub>2eq</sub> der dargestellten Fussabdrücke wiedergibt, sondern zur Orientierung gilt</b> <br>
-        Bitte bewegen Sie den Schieberegler, um Ihre Schätzung zwischen 0 und 10 Tonnen CO<sub>2eq</sub> zu machen oder geben Sie eine Zahl mit mindestens einer Dezimalstelle ein. </b> <br>
+    <p style=" font-size: 17px;"> Bitte bewegen Sie den Schieberegler, um Ihre Schätzung bis zu 5550 kg CO<sub>2eq</sub> zu machen oder geben Sie eine Zahl ein. </b> <br>
      </p>
     <input type="text" name="rating0" class="form-field-small"  >
 
     <div class="slider-container">
         <div class="slider-labels">
-            <span>0</span>
-            <span>10</span>
+            <span>1000 kg CO<sub>2</sub></span>
+            <span>5550 kg CO<sub>2</sub></span>
         </div>
-        <input type="range" min="0" max="10" step="0.005"  class="slider" id="carbonSlider">
+        <input type="range" min="1000" max="5500" step="25"  class="slider" id="carbonSlider">
         <div class="current-value" id="sliderValue"> </div>
     </div>
     {{ formfield_errors 'rating0' }}

@@ -311,7 +311,7 @@ class policyScales(Page):
    
 class unit(Page):
     form_model = 'player'
-    form_fields= ['UnitUnderstanding' , 'generalFeedback']
+    form_fields= [ 'generalFeedback']
     
 class Demographics(Page):
      form_model = 'player'
@@ -325,7 +325,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-                  ClimateConcern, policyScales,  BehaviorLaundry, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC,   Demographics, End 
+                  ClimateConcern, policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC, unit,  Demographics, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

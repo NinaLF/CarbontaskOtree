@@ -39,15 +39,18 @@
     h2 {
         font-weight: plain;
         color: #000000;
-        font-size: 32px;
+        font-size: 28px;
+        padding-left: 5px;
+        text-align: center;
     }
     .progress-bar-wrapper {
-        padding: 20px; /* Add padding around the bar */
+        padding: 20px 20px 20px 50px; /* top right bottom left */
     }
     .progress-bar-container {
-        width: 90px;
-        height: 300px; /* Represents 10 tons CO₂eq */
+        width: 140px;
+        height: 380px; /* Represents 10 tons CO₂eq */
         background-color: #ffffff;
+        border: 3px solid black;
         border-radius: 5px;
         overflow: hidden;
         display: flex;
@@ -58,19 +61,19 @@
         width: 100%;
         transition: height 0.4s;
     }
-    .section-1 { background-color: #CBE4F9; } /* Color for Diet */
-    .section-2 { background-color: #CDF5F6; } /* Color for Electricity */
-    .section-3 { background-color: #EFF9DA; } /* Color for Recycling */
-    .section-4 { background-color: #F9EBDF; }/* Color for Food */
-    .section-5 { background-color: #F9D8D6; } /* Color for Commute */
-    .section-6 { background-color: #D6CDEA; } /* Color for Vacation */
+    .section-1 { background-color: #CBE4F9;border: 1px solid rgb(65, 64, 64); } /* Color for Diet */
+    .section-2 { background-color: #CDF5F6;border: 0.4px solid rgb(65, 64, 64);  } /* Color for laundry */
+    .section-3 { background-color: #EFF9DA;border: 1px solid rgb(65, 64, 64); ; } /* Color for Commute before was 5 */ 
+    .section-4 { background-color: #F9EBDF;border: 0.4px solid rgb(65, 64, 64); ; }/* Color for Food */
+    .section-5 { background-color: #F9D8D6;border: 0.4px solid rgb(65, 64, 64); ; } /* Color for Recycling */
+    .section-6 { background-color: #D6CDEA;border: 1px solid rgb(65, 64, 64);  } /* Color for Vacation */
 
     /* Add corresponding background colors for the select elements */
     .select-diet { background-color: #CBE4F9; }
-    .select-electricity { background-color: #CDF5F6; }
-    .select-recycling { background-color: #EFF9DA; }
+    .select-laundry { background-color: #CDF5F6; }
+    .select-recycling { background-color: #F9D8D6; }
     .select-food { background-color: #F9EBDF; }
-    .select-commute { background-color: #F9D8D6; }
+    .select-commute { background-color: #EFF9DA; }
     .select-vacation { background-color: #D6CDEA; }
 </style>
 {% endblock %}
@@ -105,17 +108,18 @@
 
                 <div class="behavior-container">
                     <label class="behavior-label">Drying clothes (Based on 3 drying loads per week and the average energy mix) </label>
-                    <select class="select-electricity" name="electricity" onchange="updateTotalFootprint()">
+                    <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
                         <option value="0.00">air dry laundry </option>
                         <option value="0.039">use dryer (average dryer and full load) </option> 
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Recycling (Materials such as paper, glass, metals for one year) </label>
-                    <select class="select-recycling" name="recycling" onchange="updateTotalFootprint()">
-                        <option value="0.0575">Does not recycle</option>
-                        <option value="0">Recycles</option>
+                    <label class="behavior-label">Commute (12.5 miles to and from work everyday (one trip = 6.25 miles), 5 days a week for 48 weeks per year) </label>
+                    <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
+                        <option value="0.471">By bus</option>
+                        <option value="1.595">By personal car</option>
+                        
                     </select>
                 </div>
 
@@ -128,10 +132,10 @@
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Commute (12.5 miles to and from work everyday (one trip = 6.25 miles), 5 days a week for 48 weeks per year) </label>
-                    <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
-                        <option value="0.471">By bus</option>
-                        <option value="1.595">By personal car</option>
+                    <label class="behavior-label">Recycling (Materials such as paper, glass, metals for one year) </label>
+                    <select class="select-recycling" name="recycling" onchange="updateTotalFootprint()">
+                        <option value="0.0575">Does not recycle</option>
+                        <option value="0">Recycles</option>
                     </select>
                 </div>
 
@@ -176,7 +180,7 @@
             document.getElementById('section-6')
         ];
         const minFootprint = 0;
-        const maxFootprint = 6;  // Container represents up to 10 tons CO2eq
+        const maxFootprint = 5.54;  // Container represents up to 10 tons CO2eq
 
         function updateTotalFootprint() {
             let totalFootprint = 0.0;
