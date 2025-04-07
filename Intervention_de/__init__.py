@@ -161,7 +161,11 @@ class ActiveSamplingOld(Page):
             'commute_select': commute_selection
         }
     
+class ActiveSamplingIntro(Page):
 
+    def is_displayed(self):
+        return self.participant.group_assignment == "active"
+    
 class ActiveSampling(Page):
 
     def is_displayed(self):
@@ -382,7 +386,7 @@ class Control3(Page):
     
         }
     
-page_sequence = [ActiveSampling, ActiveSampling3, ActiveSampling2 , 
+page_sequence = [ActiveSamplingIntro, ActiveSampling, ActiveSampling3, ActiveSampling2 , 
                  # ActiveSamplingOld, 
                  PassiveSampling, PassiveSampling2, PassiveSampling3, 
                  Control, Control2, Control3,

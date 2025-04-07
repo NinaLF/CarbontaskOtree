@@ -80,16 +80,26 @@
 {% endblock %}
 
 {% block content %}
-
-    <h1>CO<sub>2</sub>-Fussabdruck Rechner</h1>
+<body>
+    <h1>Distanz Rechner </h1>
     <br>
 <body style="font-size: 19px;">
+    <p style="font-size: 19px;">  
+        Stellen Sie sich vor, Sie stellen eine fiktive Reise durch Deutschland zusammen in der sie in gewissen Städten Freunde und Verwandte besuchen.  <br>  <br>
+
+        In dieser interaktiven Darstellung können Sie unterschiedliche Strecken kombinieren und beobachten, wie sich die Gesamtdistanz verändert.
+        Die dargestellten Entfernungen basieren auf typischen Fahrstrecken (keine Luftlinie).
+        Wenn Sie auf die Boxen klicken, können Sie für ausgewählte Städte unterschiedliche Reiseziel auswählen.   <br>
+        Die mit der Auswahle verbundende Gesamtdistanz wird sich dabei jeweils anpassen und auf der rechten Seite Ihres Bildschirms angezeigt.
+        Der Balken füllt sich mit verschiedenen Farben je nach ausgewählten Städten, wobei jede Farbe die Distanz in km darstellt.<br>
+
+
+        <br>
+    <p>
+
     <p style="font-size: 19px;"> 
-        Durch Anklicken der Boxen können Sie verschiedene Stufen für die einzelnen Verhaltensweisen auswählen.<br>
-        Der zugehörige gesamte CO<sub>2</sub>-Fussabdruck der ausgewählten Verhaltensweisen wird auf der rechten Seite des Bildschirms aktualisiert
-        Der Balken füllt sich mit verschiedenen Farben je nach ausgewähltem Verhalten, wobei jede Farbe die Menge an Kohlenstoffemissionen darstellt, die das Verhalten pro Jahr verursacht.<br>
-        <br><br>
-        <b> Bitte erstellen Sie den höchstmögliche Fussabdruck mit den 6 Verhaltensweisen</b>.<br> Danach können sie fortfahren
+        <b>Bitte erstellen eine Gesamtdistanz die so nah an 3000km wie möglich ist um fortfahren zu können </b>
+       <br> 
     </p>
     <br>
 
@@ -100,50 +110,50 @@
             <form id="carbon-footprint-form">
                 <!-- Explicitly set classes for each behavior -->
                 <div class="behavior-container">
-                    <label class="behavior-label">Ernährung (basierend auf dem durchschnittlichen Kalorienbedarf von 2000kcal eines Erwachsenen für 1 Jahr) </label>
+                    <label class="behavior-label">Streckendistanz von Frankfurt (Fahrstrecke nicht Luftlinie)</label>
                     <select class="select-diet" name="diet" onchange="updateTotalFootprint()">
-                        <option value="2.206">Fleisch-basiert</option>
-                        <option value="1.338">Vegetarisch</option>
+                        <option value="226">Frankfurt-Düsseldorf</option>
+                        <option value="548">Frankfurt-Berlin</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
+                    <label class="behavior-label">Streckendistanz von Berlin (Fahrstrecke nicht Luftlinie) </label>
                     <select class="select-electricity" name="electricity" onchange="updateTotalFootprint()">
-                        <option value="0.00">lässt die Wäsche lufttrocknen</option>
-                        <option value="0.039">benutzt den Trockner (durchschnittlicher Trockner und vollbeladen) </option> 
+                        <option value="723">Berlin-Saarbrücken</option>
+                        <option value="575">Berlin-Köln</option> 
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Recycling (Materialien wie Papier, Glas, Metalle für ein Jahr) <br> </label>
+                    <label class="behavior-label">Streckendistanz von München (Fahrstrecke nicht Luftlinie) <br>  </label>
                     <select class="select-recycling" name="recycling" onchange="updateTotalFootprint()">
-                        <option value="0.0575">Recycelt nicht</option>
-                        <option value="0">Recycelt</option>
+                        <option value="793">München-Hamburg</option>
+                        <option value="411">München-Freiburg</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Lebensmittel (gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr)</label>
+                    <label class="behavior-label">Streckendistanz von Hannover (Fahrstrecke nicht Luftlinie)</label>
                     <select class="select-food" name="food" onchange="updateTotalFootprint()">
-                        <option value="0">Mehr als 3/4 ist regional</option>
-                        <option value="0.44">Mehr als 3/4 ist importiert</option>
+                        <option value="364">Hannover-Dresden</option>
+                        <option value="569">Hannover-Frankfurt</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Arbeitsweg (20 Kilometer täglich zur und von der Arbeit (eine Fahrt =10km), 5 Tage pro Woche während 48 Wochen pro Jahr) </label>
+                    <label class="behavior-label">Streckendistanz von Stuttgart (Fahrstrecke nicht Luftlinie) </label>
                     <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
-                        <option value="0.471">Mit dem Bus</option>
-                        <option value="1.595">Mit dem eigenen Auto</option>
+                        <option value="751">Stuttgart-Kiel</option>
+                        <option value="339">Stuttgart-Erfurt</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Urlaub</label>
+                    <label class="behavior-label">Streckendistanz von Wiesbaden (Fahrstrecke nicht Luftlinie) <br> </label>
                     <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
-                        <option value="1.2"> fliegt 1x 3-6 Stunden Hin- und Rückflug (z.B. Zürich-Antalya )</option>
-                        <option value="0.0076">Per Zug (fliegt nicht, z. B. Zürich-Paris oder London) </option>
+                        <option value="253"> Wiesbaden-Nürnberg</option>
+                        <option value="573">Wiesbaden-Berlin </option>
                     </select>
                 </div>
             </form>
@@ -151,7 +161,7 @@
         </div>
 
         <div class="right-column"> 
-            <h2>Gesamter CO<sub>2</sub>-Fussabdruck in Tonnen CO<sub>2eq</sub>:</h2> 
+            <h2>Gesamte Streckendistanz in km:</h2> 
             <div class="progress-bar-wrapper"></div>
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
@@ -163,13 +173,13 @@
                     <div class="progress-bar-section section-6" id="section-6"></div>
                 </div>
                 <br>
-            <span style="font-size: 32px;" id="total-footprint">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
+            <span style="font-size: 32px;" id="total-footprint">Klicken Sie auf die Städte, um es herauszufinden</span>
             <br>
         </div>
     </div>
 
     <script>
-        const behaviorData = {{ behavior_data|safe }};
+        const behaviorData = {{ control_data|safe }};
         const totalFootprintElement = document.getElementById('total-footprint');
         const sections = [
             document.getElementById('section-1'),
@@ -179,8 +189,8 @@
             document.getElementById('section-5'),
             document.getElementById('section-6')
         ];
-        const minFootprint = 0;
-        const maxFootprint = 6;  // Container represents up to 10 tons CO2eq
+        const minFootprint = 2160;
+        const maxFootprint = 3960;  // Container represents up to 10 tons CO2eq
 
         function updateTotalFootprint() {
             let totalFootprint = 0.0;
@@ -195,9 +205,9 @@
                 }
             });
 
-            // Display the calculated total footprint
-            totalFootprint = totalFootprint.toFixed(2);
-            totalFootprintElement.innerText = totalFootprint;
+            // Make sure the total footprint doesn't exceed the max footprint (6 tons in this case)
+            totalFootprint = Math.min(Math.max(totalFootprint, minFootprint), maxFootprint);
+            totalFootprintElement.innerText = totalFootprint.toFixed(0);
 
             // Calculate the proportionate height of each section
             const totalHeight = (totalFootprint / maxFootprint) * 100;
@@ -208,7 +218,8 @@
 
             // Check if the total footprint is exactly 5.54, and enable the "Next" button if true
             const nextButton = document.getElementById("nextst");
-            if (parseFloat(totalFootprint) === 5.54) {
+            if (parseFloat(totalFootprint) >= 2800 && parseFloat(totalFootprint) <= 3150) {
+
                 nextButton.disabled = false;
             } else {
                 nextButton.disabled = true;
@@ -219,18 +230,6 @@
   
 
     </script>
-
-
-
-<p>
-    <br>
-    {{ formfield 'controlQuestion1' }} <br>
-
-    {{ formfield 'controlQuestion2' }} <br>
-
-    {{ formfield 'controlQuestion3' }} <br>
-
-</p>
 
     <div >
         <button id="nextst" style="float: right; margin-top: 2vh;" disabled class="otree-btn-next btn btn-primary"> Weiter </button>

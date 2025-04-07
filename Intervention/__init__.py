@@ -132,6 +132,11 @@ class ActiveSamplingOld(Page):
             'commute_select': commute_selection
         }
     
+class ActiveSamplingIntro(Page):
+
+    def is_displayed(self):
+        return self.participant.group_assignment == "active"
+    
 
 class ActiveSampling(Page):
 
@@ -258,8 +263,101 @@ class PretestQuestions(Page):
     form_model = 'player'
     form_fields= ['pretest_engaging', 'pretest_interesting', 'pretest_understandable', 'pretest_knowledge' ]
 
-page_sequence = [ActiveSampling, ActiveSampling3, ActiveSampling2 , 
+class Control(Page):
+
+    def is_displayed(self):
+        return self.participant.group_assignment == "control"
+
+    def before_next_page(self, timeout_happened=False):
+        total_footprint = 0
+        
+        selections = {}
+
+        # Iterate through each behavior to calculate the total footprint and store selections
+        for behavior, options in Constants.control_data.items():
+            selected_option = selections.get(behavior.lower(), None)
+            if selected_option is not None:
+                total_footprint += options.get(selected_option, 0)
+
+        # Store the total footprint and selections in participant variables
+        self.participant.vars['total_footprint'] = total_footprint
+        self.participant.vars['selections'] = selections
+
+    def vars_for_template(self):
+        # Get stored selections or use 'Not selected' as default
+        selections = self.participant.vars.get('selections', {})
+        diet_selection = selections.get('diet', 'Not selected')
+        commute_selection = selections.get('commute', 'Not selected')
+
+        return {
+            'control_data': Constants.control_data,
+            'diet_select': diet_selection,
+            'commute_select': commute_selection
+        }
+    
+class Control2(Page):
+    def is_displayed(self):
+        return self.participant.group_assignment == "control"
+
+    def before_next_page(self, timeout_happened=False):
+        total_footprint = 0
+        
+        selections = {}
+
+        # Iterate through each behavior to calculate the total footprint and store selections
+        for behavior, options in Constants.control_data.items():
+            selected_option = selections.get(behavior.lower(), None)
+            if selected_option is not None:
+                total_footprint += options.get(selected_option, 0)
+
+        # Store the total footprint and selections in participant variables
+        self.participant.vars['total_footprint'] = total_footprint
+        self.participant.vars['selections'] = selections
+
+    def vars_for_template(self):
+        # Get stored selections or use 'Not selected' as default
+        selections = self.participant.vars.get('selections', {})
+        diet_selection = selections.get('diet', 'Not selected')
+        commute_selection = selections.get('commute', 'Not selected')
+
+        return {
+            'control_data': Constants.control_data,
+            'diet_select': diet_selection,
+            'commute_select': commute_selection
+        }
+    
+class Control3(Page):
+  
+    def is_displayed(self):
+        return self.participant.group_assignment == "control"
+
+    def before_next_page(self, timeout_happened=False):
+        total_footprint = 0
+        
+        selections = {}
+
+        # Iterate through each behavior to calculate the total footprint and store selections
+        for behavior, options in Constants.control_data.items():
+            selected_option = selections.get(behavior.lower(), None)
+            if selected_option is not None:
+                total_footprint += options.get(selected_option, 0)
+
+        # Store the total footprint and selections in participant variables
+        self.participant.vars['total_footprint'] = total_footprint
+        self.participant.vars['selections'] = selections
+
+    def vars_for_template(self):
+        # Get stored selections or use 'Not selected' as default
+        selections = self.participant.vars.get('selections', {})
+
+        return {
+            'control_data': Constants.control_data
+    
+        }
+    
+page_sequence = [ActiveSamplingIntro, ActiveSampling, ActiveSampling3, ActiveSampling2 , 
                  # ActiveSamplingOld, 
-                 PassiveSampling, PassiveSampling2, PassiveSampling3, PretestQuestions]
+                 PassiveSampling, PassiveSampling2, PassiveSampling3, 
+                 Control, Control2, Control3, PretestQuestions]
 
 
