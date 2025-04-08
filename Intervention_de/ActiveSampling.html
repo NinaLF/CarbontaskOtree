@@ -42,6 +42,12 @@
         flex-direction: column;
         align-items: center;
     }
+    #total-footprint-top,
+    #total-footprint-bottom {
+        font-size: 32px;
+        text-align: center;
+    }
+
 
     /* Make everything scale better on small screens */
     @media (max-width: 760px) {
@@ -221,7 +227,7 @@
 
         <div class="right-column"> 
             <h2>Gesamter Fussabdruck in Tonnen CO<sub>2eq</sub>:</h2> 
-            <span style="font-size: 32px;" id="total-footprint-top">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
+            <span id="total-footprint-top">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
             <div class="progress-bar-wrapper"></div>
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
@@ -233,7 +239,7 @@
                     <div class="progress-bar-section section-1" id="section-1"></div> <!-- Diet -->
                 </div>
                 <br>
-            <span style="font-size: 32px;" id="total-footprint-bottom">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
+            <span  id="total-footprint-bottom">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>
             <br>
         </div>
     </div>
