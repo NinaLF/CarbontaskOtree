@@ -84,21 +84,17 @@
     <br>
 <body style="font-size: 21px;">
     <p style="font-size: 21px;">  
-        Stellen Sie sich vor, Sie stellen eine fiktive Reise durch Deutschland zusammen in der sie in gewissen Städten Freunde und Verwandte besuchen.  <br>  <br>
-
-        In dieser interaktiven Darstellung können Sie unterschiedliche Strecken kombinieren und beobachten, wie sich die Gesamtdistanz verändert.
-        Die dargestellten Entfernungen basieren auf typischen Fahrstrecken (keine Luftlinie).
-        Wenn Sie auf die Boxen klicken, können Sie für ausgewählte Städte unterschiedliche Reiseziel auswählen.   <br>
-        Die mit der Auswahle verbundende Gesamtdistanz wird sich dabei jeweils anpassen und auf der rechten Seite Ihres Bildschirms angezeigt.
-        Der Balken füllt sich mit verschiedenen Farben je nach ausgewählten Städten, wobei jede Farbe die Distanz in km darstellt.<br>
-
+        Imagine you are putting together a fictitious journey through the United Kingdom during which you visit friends and relatives in certain cities.  <br>  <br>
+        In this interactive display, you can combine different routes and observe how the total distance changes. 
+        The distances shown are based on typical driving distances (not direct linear distances).  <br>
+        If you click on the boxes, you can select different destinations for selected cities.
+        The total distance associated with the selection will be adjusted and displayed on the right side of your screen. The bar will fill with different colors depending on the selected cities, with each color representing the distance in miles. <br>
 
         <br>
     <p>
 
     <p style="font-size: 21px;"> 
-        <b>Bitte erstellen eine Gesamtdistanz die so nah an 3000km wie möglich ist um fortfahren zu können </b>
-       <br> 
+        <b>Please create a distance as close to 1500 as possible</b> 
     </p>
     <br>
 
@@ -109,50 +105,50 @@
             <form id="carbon-footprint-form">
                 <!-- Explicitly set classes for each behavior -->
                 <div class="behavior-container">
-                    <label class="behavior-label">Streckendistanz von Frankfurt (Fahrstrecke nicht Luftlinie)</label>
+                    <label class="behavior-label">Travel distance from Londn(not as the crow flies)</label>
                     <select class="select-diet" name="diet" onchange="updateTotalFootprint()">
-                        <option value="226">Frankfurt-Düsseldorf</option>
-                        <option value="548">Frankfurt-Berlin</option>
+                        <option value="59">London-Cambridge</option>
+                        <option value="118">London-Bristol</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Streckendistanz von Berlin (Fahrstrecke nicht Luftlinie) </label>
+                    <label class="behavior-label">Travel distance from Oxford (not as the crow flies) </label>
                     <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
-                        <option value="723">Berlin-Saarbrücken</option>
-                        <option value="575">Berlin-Köln</option> 
+                        <option value="184">Oxford-York</option>
+                        <option value="66">Oxford-Bath</option> 
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Streckendistanz von München (Fahrstrecke nicht Luftlinie) <br>  </label>
+                    <label class="behavior-label">Travel distance from Exeter (not as the crow flies) <br>  </label>
                     <select class="select-recycling" name="recycling" onchange="updateTotalFootprint()">
-                        <option value="793">München-Hamburg</option>
-                        <option value="411">München-Freiburg</option>
+                        <option value="284">Exeter-Norwich</option>
+                        <option value="159">Exeter-Birmingham</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Streckendistanz von Hannover (Fahrstrecke nicht Luftlinie)</label>
+                    <label class="behavior-label">Travel distance from Liverpool (not as the crow flies)</label>
                     <select class="select-food" name="food" onchange="updateTotalFootprint()">
-                        <option value="364">Hannover-Dresden</option>
-                        <option value="569">Hannover-Frankfurt</option>
+                        <option value="353">Liverpool-Aberdeen</option>
+                        <option value="200">Liverpool-Cardiff</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Streckendistanz von Stuttgart (Fahrstrecke nicht Luftlinie) </label>
+                    <label class="behavior-label">Travel distance from Edinburgh (not as the crow flies) </label>
                     <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
-                        <option value="751">Stuttgart-Kiel</option>
-                        <option value="339">Stuttgart-Erfurt</option>
+                        <option value="182">Edinburgh-Leeds</option>
+                        <option value="433">Edinburgh-Portsmouth</option>
                     </select>
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Streckendistanz von Wiesbaden (Fahrstrecke nicht Luftlinie) <br> </label>
+                    <label class="behavior-label">Travel distance from Glasgow (not as the crow flies) <br> </label>
                     <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
-                        <option value="253"> Wiesbaden-Nürnberg</option>
-                        <option value="573">Wiesbaden-Berlin </option>
+                        <option value="402"> Glasgow-London</option>
+                        <option value="392">Glasgow-Cardiff </option>
                     </select>
                 </div>
             </form>
@@ -160,7 +156,7 @@
         </div>
 
         <div class="right-column"> 
-            <h2>Gesamte Streckendistanz in km:</h2> 
+            <h2>Total travel distance in miles:</h2> 
             <div class="progress-bar-wrapper"></div>
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
@@ -172,7 +168,7 @@
                     <div class="progress-bar-section section-6" id="section-6"></div>
                 </div>
                 <br>
-            <span style="font-size: 32px;" id="total-footprint">Klicken Sie auf die Städte, um es herauszufinden</span>
+            <span style="font-size: 32px;" id="total-footprint">Click on the cities to find out</span>
             <br>
         </div>
     </div>
@@ -188,8 +184,9 @@
             document.getElementById('section-5'),
             document.getElementById('section-6')
         ];
-        const minFootprint = 2160;
-        const maxFootprint = 3960;  // Container represents up to 10 tons CO2eq
+        const minFootprint = 1055;
+        const maxFootprint = 1780;  // Container represents up to 10 tons CO2eq
+
 
         function updateTotalFootprint() {
             let totalFootprint = 0.0;
@@ -217,7 +214,7 @@
 
             // Check if the total footprint is exactly 5.54, and enable the "Next" button if true
             const nextButton = document.getElementById("nextst");
-            if (parseFloat(totalFootprint) >= 2800 && parseFloat(totalFootprint) <= 3150) {
+            if (parseFloat(totalFootprint) >= 1400 && parseFloat(totalFootprint) <= 1600) {
 
                 nextButton.disabled = false;
             } else {
