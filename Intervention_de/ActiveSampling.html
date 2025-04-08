@@ -18,24 +18,63 @@
         font-size: 40px;
     }
     .container {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        font-size: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Optional: max width for layout */
+    margin: 0 auto;
+}
+
+    /* DESKTOP: Two columns side-by-side */
+    @media (min-width: 769px) {
+        .left-column {
+            flex: 0 0 65%;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .right-column {
+            flex: 0 0 35%;
+            padding: 15px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
-    .left-column {
-        flex: 2.5;
-        padding: 15px;
-        box-sizing: border-box;
+
+    /* MOBILE: Stack columns vertically */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .left-column,
+        .right-column {
+            width: 100%;
+            flex: 1 1 100%;
+            padding: 10px;
+        }
+
+        .progress-bar-container {
+            height: 300px; /* Optional: adjust for small screens */
+        }
+
+        #total-footprint {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: plain;
+            color: #000000;
+            padding-left: 2px;
+            text-align: center;
+        }
     }
-    .right-column {
-        flex: 1;
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
     h2 {
         font-weight: plain;
         color: #000000;
@@ -120,7 +159,7 @@
                     <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
                     <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
                         <option value="0.00">lässt die Wäsche lufttrocknen</option>
-                        <option value="0.039">mit durchschnittlichem. vollbeladenem Trockner </option> 
+                        <option value="0.039">gewöhnlicher, vollbeladener Trockner </option> 
                     </select>
                 </div>
 
@@ -151,7 +190,7 @@
                 <div class="behavior-container">
                     <label class="behavior-label">Urlaub <br> </label>
                     <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
-                        <option value="1.2"> fliegt 1x 3-6 Stunden Hin-und Rückflug </option>
+                        <option value="1.2">fliegt 1x 3-6 Stunden Hin-& Rück</option>
                         <option value="0.0076">Per Zug (fliegt nicht) </option>
                     </select>
                 </div>

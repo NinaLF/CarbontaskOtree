@@ -37,7 +37,7 @@ SESSION_CONFIGS = [
      dict(
          name='study_t2',
          app_sequence=[ 'Intro_t2', 'Intervention', 'Nina_instructions', 'Nina_carbontask', 
-                        'Scales_t2_de'],
+                        'Scales_t2'],
          num_demo_participants=10,
      ),
 
