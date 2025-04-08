@@ -4,11 +4,12 @@
         font-family: Arial, sans-serif;
     }
     .behavior-container {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-weight: plain;
     }
     .behavior-label {
         font-weight: plain;
+        line-height: normal;
     }
     select {
         margin-left: 10px;
@@ -18,24 +19,91 @@
         font-size: 40px;
     }
     .container {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        font-size: 24px;
+    display: flex;
+    flex-direction: row; /* Always side by side */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     }
+
+    /* Columns always next to each other */
     .left-column {
-        flex: 2.5;
-        padding: 15px;
+        flex: 0 0 60%;
+        padding: 10px;
         box-sizing: border-box;
     }
+
     .right-column {
-        flex: 1;
-        padding: 20px;
+        flex: 0 0 40%;
+        padding: 10px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    #total-footprint-top,
+    #total-footprint-bottom {
+        font-size: 32px;
+        text-align: center;
+    }
+
+
+    /* Make everything scale better on small screens */
+    @media (max-width: 760px) {
+        body {
+            font-size: 14px;
+        }
+
+        .left-column {
+        flex: 0 0 55%;
+        padding: 5px;
+        }
+
+        .right-column {
+            flex: 0 0 45%;
+            padding: 5px;
+        }
+
+        .progress-bar-container {
+        width: 100px !important;
+        height: 280px !important;
+        border-width: 2px !important;
+        }
+
+        h2 {
+            font-size: 16px !important;
+            text-align: center;
+        }
+
+        #total-footprint {
+            font-size: 18px !important;
+            text-align: center;
+        }
+
+        #total-footprint-top,
+        #total-footprint-bottom {
+            font-size: 18px !important;
+            text-align: center;
+        }
+
+        .progress-bar-section {
+            transition: height 0.3s;
+        }
+
+        select {
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .behavior-label {
+            font-size: 14px;
+            line-height: normal;
+        }
+    }
+
+
     h2 {
         font-weight: plain;
         color: #000000;
@@ -44,7 +112,7 @@
         text-align: center;
     }
     .progress-bar-wrapper {
-        padding: 20px 20px 20px 50px; /* top right bottom left */
+        padding: 1px 5px 5px 20px; /* top right bottom left */
     }
     .progress-bar-container {
         width: 140px;
@@ -55,26 +123,29 @@
         overflow: hidden;
         display: flex;
         flex-direction: column-reverse; /* Fill from bottom up */
-        margin-top: 20px;
+        margin-top: 1px;
     }
     .progress-bar-section {
         width: 100%;
         transition: height 0.4s;
     }
+
     .section-1 { background-color: #CBE4F9;border: 1px solid rgb(65, 64, 64); } /* Color for Diet */
     .section-2 { background-color: #CDF5F6;border: 0.4px solid rgb(65, 64, 64);  } /* Color for laundry */
-    .section-3 { background-color: #EFF9DA;border: 1px solid rgb(65, 64, 64); ; } /* Color for Commute before was 5 */ 
-    .section-4 { background-color: #F9EBDF;border: 0.4px solid rgb(65, 64, 64); ; }/* Color for Food */
-    .section-5 { background-color: #F9D8D6;border: 0.4px solid rgb(65, 64, 64); ; } /* Color for Recycling */
+    .section-3 { background-color: #F9D8D6;border: 1px solid rgb(65, 64, 64); ; } /* Color for Recycling before was 5 */ 
+    .section-4 { background-color: #EFF9DA ;border: 0.4px solid rgb(65, 64, 64); ; }/* Color for Food */
+    .section-5 { background-color: #F9EBDF;border: 0.4px solid rgb(65, 64, 64); ; } /* Color for commute */
     .section-6 { background-color: #D6CDEA;border: 1px solid rgb(65, 64, 64);  } /* Color for Vacation */
 
     /* Add corresponding background colors for the select elements */
     .select-diet { background-color: #CBE4F9; }
     .select-laundry { background-color: #CDF5F6; }
-    .select-recycling { background-color: #F9D8D6; }
-    .select-food { background-color: #F9EBDF; }
+    .select-recycling { background-color: #F9EBDF; }
+    .select-food { background-color: #F9D8D6; }
     .select-commute { background-color: #EFF9DA; }
     .select-vacation { background-color: #D6CDEA; }
+   
+    
 </style>
 {% endblock %}
 
@@ -115,19 +186,19 @@
                 </div>
 
                 <div class="behavior-container">
+                    <label class="behavior-label">Food (Foods and bevarages bought and consumed for one year) </label>
+                    <select class="select-food" name="food" onchange="updateTotalFootprint()">
+                        <option value="0.44">More than 3/4 is imported</option>
+                        <option value="0.00">More than 3/4 is regional</option>
+                    </select>
+                </div>
+
+                <div class="behavior-container">
                     <label class="behavior-label">Commute (12.5 miles to and from work everyday (one trip = 6.25 miles), 5 days a week for 48 weeks per year) </label>
                     <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
                         <option value="0.471">By bus</option>
                         <option value="1.595">By personal car</option>
                         
-                    </select>
-                </div>
-
-                <div class="behavior-container">
-                    <label class="behavior-label">Food (Foods and bevarages bought and consumed for one year) </label>
-                    <select class="select-food" name="food" onchange="updateTotalFootprint()">
-                        <option value="0.44">More than 3/4 is imported</option>
-                        <option value="0.00">More than 3/4 is regional</option>
                     </select>
                 </div>
 
@@ -152,25 +223,28 @@
 
         <div class="right-column"> 
             <h2>Total Carbon Footprint in tons CO<sub>2eq</sub>:</h2> 
+            <span id="total-footprint-top">click on the behaviors to find out</span>
             <div class="progress-bar-wrapper"></div>
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
                     <div class="progress-bar-section section-6" id="section-6"></div> <!-- Vacation -->
-                    <div class="progress-bar-section section-5" id="section-5"></div> <!-- Recycling -->
+                    <div class="progress-bar-section section-5" id="section-5"></div> <!-- commute -->
                     <div class="progress-bar-section section-4" id="section-4"></div> <!-- Food -->
-                    <div class="progress-bar-section section-3" id="section-3"></div> <!-- Commute -->
-                    <div class="progress-bar-section section-2" id="section-2"></div> <!-- Laundry -->
+                    <div class="progress-bar-section section-3" id="section-3"></div> <!-- rec -->
                     <div class="progress-bar-section section-1" id="section-1"></div> <!-- Diet -->
+                    <div class="progress-bar-section section-2" id="section-2"></div> <!-- Laundry -->
                 </div>
                 <br>
-            <span style="font-size: 32px;" id="total-footprint">click on the behaviors to find out</span>
-            <br>
+            <span id="total-footprint-bottom">click on the behaviors to find out</span>
+                <br>
         </div>
     </div>
 
     <script>
         const behaviorData = {{ behavior_data|safe }};
-        const totalFootprintElement = document.getElementById('total-footprint');
+//        const totalFootprintElement = document.getElementById('total-footprint');
+        const totalFootprintTop = document.getElementById('total-footprint-top');
+        const totalFootprintBottom = document.getElementById('total-footprint-bottom');
         const sections = [
             document.getElementById('section-1'),
             document.getElementById('section-2'),
@@ -195,9 +269,12 @@
                 }
             });
 
-            // Display the calculated total footprint
-            totalFootprint = totalFootprint.toFixed(2);
-            totalFootprintElement.innerText = totalFootprint;
+            // Make sure the total footprint doesn't exceed the max footprint (6 tons in this case)
+            totalFootprint = Math.min(Math.max(totalFootprint, minFootprint), maxFootprint);
+            //totalFootprintElement.innerText = totalFootprint.toFixed(2);
+            totalFootprintTop.innerText = totalFootprint.toFixed(2);
+            totalFootprintBottom.innerText = totalFootprint.toFixed(2);
+
 
             // Calculate the proportionate height of each section
             const totalHeight = (totalFootprint / maxFootprint) * 100;
@@ -208,7 +285,17 @@
 
             // Check if the total footprint is exactly 5.54, and enable the "Next" button if true
             const nextButton = document.getElementById("nextst");
-            if (parseFloat(totalFootprint) === 5.54) {
+            if (parseFloat(totalFootprint) >= 5.40 && parseFloat(totalFootprint) <= 5.60) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+
+            const roundedFootprint = Math.round(totalFootprint * 100) / 100;  // round to 2 decimals
+            console.log("Rounded footprint:", roundedFootprint);
+
+            if (roundedFootprint === 5.54) {
                 nextButton.disabled = false;
             } else {
                 nextButton.disabled = true;
