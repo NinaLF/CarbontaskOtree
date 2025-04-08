@@ -132,15 +132,15 @@
     .section-1 { background-color: #CBE4F9;border: 1px solid rgb(65, 64, 64); } /* Color for Diet */
     .section-2 { background-color: #CDF5F6;border: 0.4px solid rgb(65, 64, 64);  } /* Color for laundry */
     .section-3 { background-color: #F9D8D6;border: 1px solid rgb(65, 64, 64); ; } /* Color for Recycling before was 5 */ 
-    .section-4 { background-color: #F9EBDF;border: 0.4px solid rgb(65, 64, 64); ; }/* Color for Food */
-    .section-5 { background-color: #EFF9DA;border: 0.4px solid rgb(65, 64, 64); ; } /* Color for commute */
+    .section-4 { background-color: #EFF9DA ;border: 0.4px solid rgb(65, 64, 64); ; }/* Color for Food */
+    .section-5 { background-color: #F9EBDF;border: 0.4px solid rgb(65, 64, 64); ; } /* Color for commute */
     .section-6 { background-color: #D6CDEA;border: 1px solid rgb(65, 64, 64);  } /* Color for Vacation */
 
     /* Add corresponding background colors for the select elements */
     .select-diet { background-color: #CBE4F9; }
     .select-laundry { background-color: #CDF5F6; }
-    .select-recycling { background-color: #F9D8D6; }
-    .select-food { background-color: #F9EBDF; }
+    .select-recycling { background-color: #F9EBDF; }
+    .select-food { background-color: #F9D8D6; }
     .select-commute { background-color: #EFF9DA; }
     .select-vacation { background-color: #D6CDEA; }
 </style>
@@ -193,6 +193,14 @@
                 </div>
 
                 <div class="behavior-container">
+                    <label class="behavior-label">Lebensmittel (gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr)</label>
+                    <select class="select-food" name="food" onchange="updateTotalFootprint()">
+                        <option value="0.44">Mehr als 3/4 ist importiert</option>
+                        <option value="0.00">Mehr als 3/4 ist regional</option>
+                    </select>
+                </div>
+
+                <div class="behavior-container">
                     <label class="behavior-label">Arbeitsweg (20 Kilometer täglich zur und von der Arbeit (eine Fahrt =10km), 5 Tage pro Woche während 48 Wochen pro Jahr) </label>
                     <select class="select-commute" name="commute" onchange="updateTotalFootprint()">
                         <option value="0.471">Mit dem Bus</option>
@@ -205,15 +213,6 @@
                     <select class="select-recycling" name="recycling" onchange="updateTotalFootprint()">
                         <option value="0.0575">Recycelt nicht</option>
                         <option value="0">Recycelt</option>
-                    </select>
-                </div>
-
-            
-                <div class="behavior-container">
-                    <label class="behavior-label">Lebensmittel (gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr)</label>
-                    <select class="select-food" name="food" onchange="updateTotalFootprint()">
-                        <option value="0.44">Mehr als 3/4 ist importiert</option>
-                        <option value="0.00">Mehr als 3/4 ist regional</option>
                     </select>
                 </div>
 
@@ -235,9 +234,9 @@
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
                     <div class="progress-bar-section section-6" id="section-6"></div> <!-- Vacation -->
-                    <div class="progress-bar-section section-4" id="section-4"></div> <!-- Food -->
-                    <div class="progress-bar-section section-3" id="section-3"></div> <!-- commute -->
-                    <div class="progress-bar-section section-5" id="section-5"></div> <!-- rec -->
+                    <div class="progress-bar-section section-5" id="section-5"></div> <!-- Food -->
+                    <div class="progress-bar-section section-4" id="section-4"></div> <!-- commute -->
+                    <div class="progress-bar-section section-3" id="section-3"></div> <!-- rec -->
                     <div class="progress-bar-section section-1" id="section-1"></div> <!-- Diet -->
                     <div class="progress-bar-section section-2" id="section-2"></div> <!-- Laundry -->
                 </div>
