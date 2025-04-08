@@ -163,7 +163,7 @@ Please rate these carbon footprints
 <div class=".question" > 
     <p>
         <br>
-        <b> Think about a person with the lifestyle below. How large do you think the carbon footprint of this person is? </b>
+        <b> Think about a person with the lifestyle below. How large do you think the carbon footprint of this person is across an entire year? </b>
 
     <br>
 </div>
@@ -177,16 +177,16 @@ Please rate these carbon footprints
 <meta charset="UTF-8">
 
 <div > 
-    <p style=" font-size: 17px;"> Please enter a number or move the slider to make your estimate up to 5550 kg of CO<sub>2eq</sub>. </b> <br>
+    <p style=" font-size: 17px;"> Please move the slider to make your estimate about the size of the carbon footprint in kg of CO<sub>2eq</sub>. </b> 
      </p>
-    <input type="text" name="rating0" class="form-field-small" style="background-color: white; border-color: white; color: white;" >
+    <input type="text" name="rating0" class="form-field-small" style="background-color: white; border-color: white; color: white; background: transparent; border: none; color: transparent;" >
 
     <div class="slider-container">
         <div class="slider-labels">
-            <span>1000 <br> kg CO<sub>2</sub></span>
-            <span>5550 <br> kg CO<sub>2</sub></span>
+            <span>1860 <br> kg CO<sub>2</sub></span>
+            <span>5540 <br> kg CO<sub>2</sub></span>
         </div>
-        <input type="range" min="1000" max="5500" step="25"  class="slider" id="carbonSlider">
+        <input type="range" min="1860" max="5540" step="20"  class="slider" id="carbonSlider">
         <div class="current-value" id="sliderValue"> </div>
     </div>
     {{ formfield_errors 'rating0' }}

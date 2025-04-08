@@ -40,6 +40,36 @@ class Constants(BaseConstants):
             }
     }
 
+    control_data = {
+   
+      
+         "Streckendistanz von Frankfurt (Fahrstrecke nicht Luftlinie)": {
+                "Frankfurt-Düsseldorf": 226,
+                "Frankfurt-Berlin ": 548
+            },
+            "Streckendistanz von Berlin (Fahrstrecke nicht Luftlinie)": {
+                "Berlin-Saarbrücken": 723,
+                "Berlin-Köln": 575
+            },
+            "Streckendistanz von München (Fahrstrecke nicht Luftlinie)": {
+                "München-Hamburg": 793,
+                "München-Osnabrück": 641
+            },
+            "Streckendistanz von Hannover (Fahrstrecke nicht Luftlinie)": {
+                "Hannover-Dresden": 364,
+                "Hannover-Frankfurt": 569
+            },
+             "Streckendistanz von Stuttgart (Fahrstrecke nicht Luftlinie)": {
+                "Stuttgart-Bonn": 350,
+                "Stuttgart-Erfurt": 339
+            },
+             "Streckendistanz von Wiesbaden (Fahrstrecke nicht Luftlinie)": {
+                "Wiesbaden-Nürnberg": 253,
+                "Wiesbaden-Berlin": 573
+            }
+    }
+
+
 
 class Subsession(BaseSubsession):
 

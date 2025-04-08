@@ -1,5 +1,4 @@
 {% block styles %}
-
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -7,11 +6,9 @@
     .behavior-container {
         margin-bottom: 20px;
         font-weight: plain;
-        font-size: 21px;
     }
     .behavior-label {
         font-weight: plain;
-        font-size: 19px;
     }
     select {
         margin-left: 10px;
@@ -24,17 +21,16 @@
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 20px;
-        font-size: 21px;
+        font-size: 24px;
     }
     .left-column {
-        flex: 2;
+        flex: 2.5;
         padding: 15px;
         box-sizing: border-box;
-        font-size: 20px;
     }
     .right-column {
-        flex: 1.2;
-        padding: 15px;
+        flex: 1;
+        padding: 20px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -44,14 +40,17 @@
         font-weight: plain;
         color: #000000;
         font-size: 28px;
+        padding-left: 5px;
+        text-align: center;
     }
     .progress-bar-wrapper {
-        padding: 20px; /* Add padding around the bar */
+        padding: 20px 20px 20px 50px; /* top right bottom left */
     }
     .progress-bar-container {
-        width: 90px;
-        height: 300px; /* Represents 10 tons CO₂eq */
+        width: 140px;
+        height: 380px; /* Represents 10 tons CO₂eq */
         background-color: #ffffff;
+        border: 3px solid black;
         border-radius: 5px;
         overflow: hidden;
         display: flex;
@@ -62,19 +61,19 @@
         width: 100%;
         transition: height 0.4s;
     }
-    .section-1 { background-color: #CBE4F9; } /* Color for Diet */
-    .section-2 { background-color: #CDF5F6; } /* Color for Electricity */
-    .section-3 { background-color: #EFF9DA; } /* Color for Recycling */
-    .section-4 { background-color: #F9EBDF; }/* Color for Food */
-    .section-5 { background-color: #F9D8D6; } /* Color for Commute */
-    .section-6 { background-color: #D6CDEA; } /* Color for Vacation */
+    .section-1 { background-color: #CBE4F9;border: 1px solid rgb(65, 64, 64); } /* Color for Diet */
+    .section-2 { background-color: #CDF5F6;border: 0.4px solid rgb(65, 64, 64);  } /* Color for laundry */
+    .section-3 { background-color: #EFF9DA;border: 1px solid rgb(65, 64, 64); ; } /* Color for Commute before was 5 */ 
+    .section-4 { background-color: #F9EBDF;border: 0.4px solid rgb(65, 64, 64); ; }/* Color for Food */
+    .section-5 { background-color: #F9D8D6;border: 0.4px solid rgb(65, 64, 64); ; } /* Color for Recycling */
+    .section-6 { background-color: #D6CDEA;border: 1px solid rgb(65, 64, 64);  } /* Color for Vacation */
 
     /* Add corresponding background colors for the select elements */
     .select-diet { background-color: #CBE4F9; }
-    .select-electricity { background-color: #CDF5F6; }
-    .select-recycling { background-color: #EFF9DA; }
+    .select-laundry { background-color: #CDF5F6; }
+    .select-recycling { background-color: #F9D8D6; }
     .select-food { background-color: #F9EBDF; }
-    .select-commute { background-color: #F9D8D6; }
+    .select-commute { background-color: #EFF9DA; }
     .select-vacation { background-color: #D6CDEA; }
 </style>
 {% endblock %}
@@ -83,8 +82,8 @@
 <body>
     <h1>CO<sub>2</sub>-Fussabdruck Rechner </h1>
     <br>
-<body style="font-size: 19px;">
-    <p style="font-size: 19px;">  
+<body style="font-size: 21px;">
+    <p style="font-size: 21px;">  
         Ein persönlicher CO<sub>2</sub>-Fussabdruck bezieht sich auf die Gesamtmenge an Treibhausgasen (einschliesslich CO<sub>2</sub> und Methan), die durch das Verhalten einer Person in die Atmosphäre ausgestossen werden.
         Der CO<sub>2</sub>-Fussabdruck umfasst daher Emissionen aus Autofahren, Fliegen, Stromverbrauch, Kühlung oder Heizung des eigenen Hauses, dem Kauf von Waren und anderen Quellen.
        
@@ -92,7 +91,7 @@
         <br>
     <p>
 
-    <p style="font-size: 19px;"> 
+    <p style="font-size: 21px;"> 
         Um Ihnen mehr Informationen über den CO<sub>2</sub>-Fussabdruck zu geben, können Sie hier verschiedene Kombinationen von Verhaltensweisen ausprobieren und sehen, wie sich diese auf die Gesamtgrösse des CO<sub>2</sub>-Fussabdrucks auswirken.  <br> <br>
         Wenn Sie auf die Boxen klicken, können Sie für jedes Verhalten unterschiedliche Ausprägungen auswählen. Zum Beispiel, eine vegetarische Ernährung oder eine Ernährung die Fleisch beinhaltet, oder mit dem Bus oder dem Auto zur Arbeit fahren. <br>
         Der mit den spezifischen Verhalten assoziierte gesamte CO<sub>2</sub>-Fussabdruck wird sich dabei jeweils anpassen und auf der rechten Seite Ihres Bildschirms angezeigt.
@@ -119,9 +118,9 @@
 
                 <div class="behavior-container">
                     <label class="behavior-label">Wäsche trocknen (basierend auf 3 Ladungen pro Woche für 1 Jahr und einem durchschnittlichen Energiemix) </label>
-                    <select class="select-electricity" name="electricity" onchange="updateTotalFootprint()">
+                    <select class="select-laundry" name="laundry" onchange="updateTotalFootprint()">
                         <option value="0.00">lässt die Wäsche lufttrocknen</option>
-                        <option value="0.039">benutzt den Trockner (durchschnittlicher Trockner und vollbeladen) </option> 
+                        <option value="0.039">mit durchschnittlichem. vollbeladenem Trockner </option> 
                     </select>
                 </div>
 
@@ -136,8 +135,8 @@
                 <div class="behavior-container">
                     <label class="behavior-label">Lebensmittel (gekaufte und verbrauchte Lebensmittel und Getränke für 1 Jahr)</label>
                     <select class="select-food" name="food" onchange="updateTotalFootprint()">
-                        <option value="0">Mehr als 3/4 ist regional</option>
                         <option value="0.44">Mehr als 3/4 ist importiert</option>
+                        <option value="0.00">Mehr als 3/4 ist regional</option>
                     </select>
                 </div>
 
@@ -152,8 +151,8 @@
                 <div class="behavior-container">
                     <label class="behavior-label">Urlaub <br> </label>
                     <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
-                        <option value="1.2"> fliegt 1x 3-6 Stunden Hin- und Rückflug (z.B. Zürich-Antalya )</option>
-                        <option value="0.0076">Per Zug (fliegt nicht, z. B. Zürich-Paris oder London) </option>
+                        <option value="1.2"> fliegt 1x 3-6 Stunden Hin-und Rückflug </option>
+                        <option value="0.0076">Per Zug (fliegt nicht) </option>
                     </select>
                 </div>
             </form>
@@ -165,12 +164,12 @@
             <div class="progress-bar-wrapper"></div>
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
-                    <div class="progress-bar-section section-1" id="section-1"></div>
-                    <div class="progress-bar-section section-2" id="section-2"></div>
-                    <div class="progress-bar-section section-3" id="section-3"></div>
-                    <div class="progress-bar-section section-4" id="section-4"></div>
-                    <div class="progress-bar-section section-5" id="section-5"></div>
-                    <div class="progress-bar-section section-6" id="section-6"></div>
+                    <div class="progress-bar-section section-6" id="section-6"></div> <!-- Vacation -->
+                    <div class="progress-bar-section section-5" id="section-5"></div> <!-- Recycling -->
+                    <div class="progress-bar-section section-4" id="section-4"></div> <!-- Food -->
+                    <div class="progress-bar-section section-3" id="section-3"></div> <!-- Commute -->
+                    <div class="progress-bar-section section-2" id="section-2"></div> <!-- Laundry -->
+                    <div class="progress-bar-section section-1" id="section-1"></div> <!-- Diet -->
                 </div>
                 <br>
             <span style="font-size: 32px;" id="total-footprint">Klicken Sie auf die Verhaltensweisen, um es herauszufinden</span>

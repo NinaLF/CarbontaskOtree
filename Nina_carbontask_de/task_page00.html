@@ -164,7 +164,7 @@ Bitte bewerten Sie die CO<sub>2</sub> Fussabdrücke
 <div class=".question" > 
     <p>
         <br>
-        <b> Stellen Sie sich eine Person mit dem folgenden Lebensstil vor. Wie groß ist Ihrer Meinung nach der CO<sub>2</sub> -Fußabdruck dieser Person? </b>
+        <b> Stellen Sie sich eine Person mit dem folgenden Lebensstil vor. Wie groß ist Ihrer Meinung nach der CO<sub>2</sub> -Fussabdruck dieser Person für eine gesamtes Jahr? </b>
 
     <br>
 </div>
@@ -178,16 +178,17 @@ Bitte bewerten Sie die CO<sub>2</sub> Fussabdrücke
 <meta charset="UTF-8">
 
 <div > 
-    <p style=" font-size: 17px;"> Bitte bewegen Sie den Schieberegler, um Ihre Schätzung bis zu 5550 kg CO<sub>2eq</sub> zu machen oder geben Sie eine Zahl ein. </b> <br>
+    <p style=" font-size: 17px;"> Bitte bewegen Sie den Schieberegler, um Ihre Schätzung der Grösse des CO<sub>2</sub> -Fussabdruck in kg CO<sub>2eq</sub> zu machen. </b>
      </p>
-    <input type="text" name="rating0" class="form-field-small"  >
+    <input type="text" name="rating0" class="form-field-small" style="background-color: white; border-color: white; color: white; background: transparent; border: none; color: transparent;" >
+
 
     <div class="slider-container">
         <div class="slider-labels">
-            <span>1000 kg CO<sub>2</sub></span>
-            <span>5550 kg CO<sub>2</sub></span>
+            <span>1860 kg CO<sub>2</sub></span>
+            <span>5540 kg CO<sub>2</sub></span>
         </div>
-        <input type="range" min="1000" max="5500" step="25"  class="slider" id="carbonSlider">
+        <input type="range" min="1860" max="5540" step="20"  class="slider" id="carbonSlider">
         <div class="current-value" id="sliderValue"> </div>
     </div>
     {{ formfield_errors 'rating0' }}

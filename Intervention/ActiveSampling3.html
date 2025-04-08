@@ -83,8 +83,8 @@
 
     <h1>Carbon Footprint Calculator</h1>
     <br>
-<body style="font-size: 19px;">
-    <p style="font-size: 19px;"> 
+<body style="font-size: 21px;">
+    <p style="font-size: 21px;"> 
         By clicking on the boxes you can select different levels for each of the behaviors.<br>
         The associated total carbon footprint of the selected behavior levels will be updated on the right side of your screen. 
         The bar will fill with different colors based on the behaviors selected, each representing the amount of carbon emissions the behavior causes per year.<br>
@@ -127,8 +127,8 @@
                 <div class="behavior-container">
                     <label class="behavior-label">Food (Foods and bevarages bought and consumed for one year) </label>
                     <select class="select-food" name="food" onchange="updateTotalFootprint()">
-                        <option value="0">More than 3/4 is regional</option>
                         <option value="0.44">More than 3/4 is imported</option>
+                        <option value="0.00">More than 3/4 is regional</option>
                     </select>
                 </div>
 
@@ -143,7 +143,7 @@
                 <div class="behavior-container">
                     <label class="behavior-label">Vacation</label>
                     <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
-                        <option value="1.2">1 round-trip 3-6 hour flight (=2 flights)</option>
+                        <option value="1.2">1x round-trip flight 3-6 hours (=2 flights)</option>
                         <option value="0.0076">Via train (does not fly)</option>
                     </select>
                 </div>
@@ -156,12 +156,12 @@
             <div class="progress-bar-wrapper"></div>
                 <div class="progress-bar-container">
                     <!-- Sections for each behavior -->
-                    <div class="progress-bar-section section-1" id="section-1"></div>
-                    <div class="progress-bar-section section-2" id="section-2"></div>
-                    <div class="progress-bar-section section-3" id="section-3"></div>
-                    <div class="progress-bar-section section-4" id="section-4"></div>
-                    <div class="progress-bar-section section-5" id="section-5"></div>
-                    <div class="progress-bar-section section-6" id="section-6"></div>
+                    <div class="progress-bar-section section-6" id="section-6"></div> <!-- Vacation -->
+                    <div class="progress-bar-section section-5" id="section-5"></div> <!-- Recycling -->
+                    <div class="progress-bar-section section-4" id="section-4"></div> <!-- Food -->
+                    <div class="progress-bar-section section-3" id="section-3"></div> <!-- Commute -->
+                    <div class="progress-bar-section section-2" id="section-2"></div> <!-- Laundry -->
+                    <div class="progress-bar-section section-1" id="section-1"></div> <!-- Diet -->
                 </div>
                 <br>
             <span style="font-size: 32px;" id="total-footprint">click on the behaviors to find out</span>
