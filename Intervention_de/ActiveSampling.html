@@ -19,68 +19,77 @@
     }
     .container {
     display: flex;
+    flex-direction: row; /* Always side by side */
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px; /* Optional: max width for layout */
+    max-width: 1200px;
     margin: 0 auto;
-}
-
-    /* DESKTOP: Two columns side-by-side */
-    @media (min-width: 769px) {
-        .left-column {
-            flex: 0 0 65%;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .right-column {
-            flex: 0 0 35%;
-            padding: 15px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
     }
 
-    /* MOBILE: Stack columns vertically */
-    /* MOBILE: Stack columns vertically with smaller left column */
-    @media (max-width: 768px) {
-        .container {
-            flex-direction: column;
-            font-size: 16px; /* Slightly smaller for space efficiency */
+    /* Columns always next to each other */
+    .left-column {
+        flex: 0 0 60%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .right-column {
+        flex: 0 0 40%;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Make everything scale better on small screens */
+    @media (max-width: 600px) {
+        body {
+            font-size: 14px;
         }
 
         .left-column {
-            width: 90%; /* Make it narrower */
-            align-self: flex-start; /* Align to left, not center */
-            padding: 5px;
-            box-sizing: border-box;
+        flex: 0 0 55%;
+        padding: 5px;
         }
 
         .right-column {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            align-items: center;
+            flex: 0 0 45%;
+            padding: 5px;
         }
 
-        .behavior-container {
+        h2 {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #total-footprint {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            width: 100px;         /* Smaller width on mobile */
+            height: 180px;        /* Shorter bar */
+            border-width: 2px;    /* Slightly thinner border */
+        }
+
+        .progress-bar-section {
+            transition: height 0.3s;
+        }
+
+        select {
+            font-size: 14px;
             width: 100%;
         }
 
         .behavior-label {
-            font-size: 16px;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        select {
-            width: 100%; /* Make sure dropdowns don’t overflow */
-            font-size: 16px;
+            font-size: 14px;
         }
     }
+
 
     h2 {
         font-weight: plain;
@@ -195,7 +204,7 @@
                 </div>
 
                 <div class="behavior-container">
-                    <label class="behavior-label">Urlaub <br> </label>
+                    <label class="behavior-label">Urlaubsreisen <br> </label>
                     <select class="select-vacation" name="vacation" onchange="updateTotalFootprint()">
                         <option value="1.2">fliegt 1x 3-6 Stunden Hin-& Rück</option>
                         <option value="0.0076">Per Zug (fliegt nicht) </option>
