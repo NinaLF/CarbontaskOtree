@@ -54,7 +54,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    rating0 = models.FloatField( label='How large or small do you think this persons footprint is?', mix=1860, max=5540)
+    rating0 = models.FloatField( label='How large or small do you think this persons footprint is?', mix=1820, max=5540)
    
     vignetteNumber = models.IntegerField(initial= 0)
     order_behavior_types = models.StringField()
