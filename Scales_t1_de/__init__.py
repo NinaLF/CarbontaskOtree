@@ -206,39 +206,6 @@ class Player(BasePlayer):
     policy_recycling =	make_field('Erhöhung oder Einführung von Steuern auf nicht wiederverwertbare (=nicht recyclebare) Materialien.')
     policy_regional =	make_field('Erhöhung oder Einführung von Steuern auf Lebensmittelprodukte, die per Flugzeug importiert werden.')
     
-
- # demographics
-    age = models.IntegerField(label='Wie alt sind Sie', min=18, max=90)
-    
-    gender = models.StringField( label='Welchem Geschlecht fühlen Sie sich zugehörig?',
-        choices=[['Male', 'Männlich'], ['Female', 'Weiblich'], 
-        ['prefer not to answer/ diverse', 'divers/keine Angabe']],
-        widget = widgets.RadioSelect
-    )
-    education = models.StringField( label='Was ist Ihr höchster Bildungsabschluss?',
-        choices=[['No formal education', 'keine formelle Bildung abgeschlossen'],
-                ['Compulsory education', 'obligatorische Schule'], 
-                 ['Further education', 'Sekundarstufe: Matura / Berufsbildung / Allgemeinbildung '],
-                 ['Higher education (Bachelor, Master, PhD)', 'höhere Berufsbildung: Hochschulabschluss / Bachelor / Master / Doktor']],
-                 widget = widgets.RadioSelect
-    )
-
-    income = models.StringField(
-                                label='How high is your <b>yearly personal income before tax </b>?',
-        choices=[['< 18.000£', '< 18.000£'],
-                 ['18.000£ to 23.000£', '18.000£ to 23.000£'], 
-                 ['23.001£ to 30.500£', '23.001£ to 30.500£'], 
-                 ['30.501£ to 45.000£', '30.500£ to 45.000£'], 
-                 ['> 45.001£', '> 45.001£']],
-                  widget = widgets.RadioSelect
-    )
-    polOrientation =  models.IntegerField( widget=widgets.RadioSelect,  
-                                          choices=[['1', 'extremely left (1)'], ['2', '2'], ['3', '3'],['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],['8', '8'], ['9', '9'],  ['10', 'extremely right (10)'] ] ) 
-
-    climate_change_concern1 = make_field('Ich mache mir Sorgen, dass sich das Klima verändert. ')
-    climate_change_concern2 = make_field('Klimaschutz ist wichtig für unsere Zukunft.')
-    climate_change_concern3 = make_field('Wir müssen das Gleichgewicht des Klimas schützen.')
-    climate_change_concern4 = make_field('Der Klimawandel hat schwerwiegende Folgen für Mensch und Natur.')
     
 ## https://www.researchgate.net/publication/29870461_Need_for_cognition_Eine_Skala_zur_Erfassung_von_Engagement_und_Freude_bei_Denkaufgaben_Presentation_and_validation_of_a_German_version_of_the_Need_for_Cognition_Scale
     nfc_1 = make_field('Ich würde komplizierte Probleme einfachen Problemen vorziehen.')
@@ -312,10 +279,6 @@ class policyScales(Page):
 class unit(Page):
     form_model = 'player'
     form_fields= [ 'generalFeedback']
-    
-class Demographics(Page):
-     form_model = 'player'
-     form_fields= [ 'age', 'gender', 'education', 'polOrientation' , 'generalFeedback']
        
 
 class End(Page):
@@ -325,7 +288,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-                  ClimateConcern, policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC, unit,  Demographics, End 
+                  ClimateConcern, policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC, unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

@@ -15,7 +15,13 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-   
+    def make_field(label):
+        return models.IntegerField(
+        choices=[1,2,3,4,5,6,7,8,9,10],                           
+        label=label,
+        widget=widgets.RadioSelectHorizontal,
+    )
+
 # consent
     
     dataScience = models.BooleanField(initial=False)
@@ -25,7 +31,44 @@ class Player(BasePlayer):
     subjectiveKnowledgePre = models.IntegerField(widget=widgets.RadioSelect,  label= 'Wie kenntnisreich fühlen Sie sich über die Auswirkungen verschiedener Verhaltensweisen auf den CO<sub>2</sub>-Fußabdruck? Das heißt, wie viel denken Sie wissen Sie, über die Menge an CO<sub>2</sub>-Emissionen, die durch verschiedene Handlungen verursacht wird?',
                                               choices=[['1', 'überhaupt nicht viel (1)'], ['2', '2'],['3', '3'],['4', '4'],
                                                        ['5', '5'], ['6', '6'],  ['7', '7'], ['8', '8'],['9', '9'], ['10', 'sehr viel (10)'] ]   )
+    
+     # demographics
+    age = models.IntegerField(label='Wie alt sind Sie', min=18, max=90)
+    
+    gender = models.StringField( label='Welchem Geschlecht fühlen Sie sich zugehörig?',
+        choices=[['Male', 'Männlich'], ['Female', 'Weiblich'], 
+        ['prefer not to answer/ diverse', 'divers/keine Angabe']],
+        widget = widgets.RadioSelect
+    )
+    education = models.StringField( label='Was ist Ihr höchster Bildungsabschluss?',
+        choices=[['No formal education', 'keine formelle Bildung abgeschlossen'],
+                ['Compulsory education', 'obligatorische Schule'], 
+                 ['Further education', 'Sekundarstufe: Matura / Berufsbildung / Allgemeinbildung '],
+                 ['Higher education (Bachelor, Master, PhD)', 'höhere Berufsbildung: Hochschulabschluss / Bachelor / Master / Doktor']],
+                 widget = widgets.RadioSelect
+    )
 
+    income = models.StringField(
+                                label='How high is your <b>yearly personal income before tax </b>?',
+        choices=[['< 18.000£', '< 18.000£'],
+                 ['18.000£ to 23.000£', '18.000£ to 23.000£'], 
+                 ['23.001£ to 30.500£', '23.001£ to 30.500£'], 
+                 ['30.501£ to 45.000£', '30.500£ to 45.000£'], 
+                 ['> 45.001£', '> 45.001£']],
+                  widget = widgets.RadioSelect
+    )
+    polOrientation =  models.IntegerField( widget=widgets.RadioSelect,  
+                                          choices=[['1', 'extremely left (1)'], ['2', '2'], ['3', '3'],['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],['8', '8'], ['9', '9'],  ['10', 'extremely right (10)'] ] ) 
+
+
+    climate_change_concern1 = make_field('Ich mache mir Sorgen, dass sich das Klima verändert. ')
+    climate_change_concern2 = make_field('Klimaschutz ist wichtig für unsere Zukunft.')
+    climate_change_concern3 = make_field('Wir müssen das Gleichgewicht des Klimas schützen.')
+    climate_change_concern4 = make_field('Der Klimawandel hat schwerwiegende Folgen für Mensch und Natur.')
+    
+    attention_check = make_field('Um zu zeigen, dass Sie aufmerksam lesen, wählen Sie bitte die Auswahl ganz rechts ("Stimme absolut zu").')
+
+    screenoutWV = models.BooleanField(initial=False)
 
     
     
@@ -52,9 +95,35 @@ class Baseline(Page):
     form_model = 'player'
     form_fields= [ 'subjectiveKnowledgePre' ]
     
+class Demographics(Page):
+     form_model = 'player'
+     form_fields= [ 'age', 'gender', 'education', 'income', 'polOrientation' ]
+
+class ClimateConcern(Page):
+    form_model = 'player'
+    form_fields = ['climate_change_concern1', 'climate_change_concern2', 'attention_check',  'climate_change_concern3', 'climate_change_concern4']
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        correct = player.attention_check == 10
+        if( correct == False ):
+               player.screenoutWV = True
+
+
+class Screenout(Page):
+    form_model = 'player'
+    @staticmethod
+    def vars_for_template(player: Player):
+        return{
+             'participantlabel':player.participant.label
+        } 
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.screenoutWV )
+
 
 # Page sequence
 page_sequence = [
-    Consent, Baseline
+    Consent, Demographics, ClimateConcern, Screenout, Baseline
     
 ]

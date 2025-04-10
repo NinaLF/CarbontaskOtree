@@ -238,40 +238,6 @@ class Player(BasePlayer):
     policy_regional = make_field('Increase or introduce taxes on food products imported via plane')
     
 
- # demographics
-    age = models.IntegerField(label='How old are you', min=18, max=90)
-    
-    gender = models.StringField( label='How do you identify?',
-        choices=[['Male', 'Male'], ['Female', 'Female'], 
-        ['prefer not to answer/ diverse', 'prefer not to answer/ diverse']],
-        widget = widgets.RadioSelect
-    )
-    education = models.StringField( label='What is your <b>highest education</b>?',
-        choices=[['No formal education', 'No formal education'],
-                ['Compulsory education', 'Compulsory education (secondary school)'], 
-                 ['Further education', 'Further education'],
-                 ['Higher education (Bachelor, Master, PhD)', 'Higher education (Bachelor, Master, PhD)']],
-                 widget = widgets.RadioSelect
-    )
-
-    income = models.StringField(
-                                label='How high is your <b>yearly personal income before tax </b>?',
-        choices=[['< 18.000£', '< 18.000£'],
-                 ['18.000£ to 23.000£', '18.000£ to 23.000£'], 
-                 ['23.001£ to 30.500£', '23.001£ to 30.500£'], 
-                 ['30.501£ to 45.000£', '30.500£ to 45.000£'], 
-                 ['> 45.001£', '> 45.001£']],
-                  widget = widgets.RadioSelect
-    )
-    polOrientation =  models.IntegerField( widget=widgets.RadioSelect,  
-                                          choices=[['1', 'extremely left (1)'], ['2', '2'], ['3', '3'],['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'],['8', '8'], ['9', '9'],  ['10', 'extremely right (10)'] ] ) 
-
-    climate_change_concern1 = make_field('I worry about the climate´s state.')
-    climate_change_concern2 = make_field('Climate protection is important for our future.')
-    climate_change_concern3 = make_field('We must protect the climate´s delicate equilibrium.')
-    climate_change_concern4 = make_field('Climate change has severe consequences for humans and nature.')
-    
-
     nfc_1 = make_field('I would prefer complex to simple problem')
     nfc_2 = make_field('I like to have the responsibility of handling a situation that requires a lot of thinking')
     nfc_3 = make_field('Thinking is not my idea of fun.') # reverse coded
@@ -299,11 +265,6 @@ class Player(BasePlayer):
    
 
 # < 18.000£          > 45.001£ 18.000£ to 23.000£ 23.001£ to 30.500£ 30.501£ to 45.000£     
-
-
-class ClimateConcern(Page):
-    form_model = 'player'
-    form_fields = ['climate_change_concern1', 'climate_change_concern2', 'climate_change_concern3', 'climate_change_concern4']
 
     
 class BehaviorsFood(Page):
@@ -342,10 +303,6 @@ class policyScales(Page):
 class unit(Page):
     form_model = 'player'
     form_fields= ['UnitUnderstanding' , 'generalFeedback']
-    
-class Demographics(Page):
-     form_model = 'player'
-     form_fields= [ 'age', 'gender', 'education', 'income', 'polOrientation' ]
        
 
 class End(Page):
@@ -355,7 +312,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-                  ClimateConcern, policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC,  unit, Demographics, End 
+                policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC,  unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,
