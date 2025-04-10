@@ -22,6 +22,12 @@ SESSION_CONFIGS = [
          app_sequence=['Nina_carbontask'],
          num_demo_participants=10,
      ),
+     
+     dict(
+         name='carbontask_de',
+         app_sequence=['Nina_carbontask_de'],
+         num_demo_participants=10,
+     ),
 
       dict(
          name='study_t1',

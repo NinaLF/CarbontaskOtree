@@ -55,6 +55,9 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     rating0 = models.FloatField( label='How large or small do you think this persons footprint is?', mix=1820, max=5540)
+    
+    attention_rating = models.FloatField( label='Um zu zeigen, dass Sie aufmerksam sind, bitten wir Sie, den Schieberegler ganz nach rechts zu schieben, d.h. zu 5540 ', mix=1820, max=5540)
+
    
     vignetteNumber = models.IntegerField(initial= 0)
     order_behavior_types = models.StringField()
@@ -107,6 +110,32 @@ class task_page00(Page):
     
    
     
+class Attention(Page):
+    form_model = 'player'
+    form_fields = ['attention_rating' ]
+    @staticmethod
+    def vars_for_template(player: Player):
+        round_number = player.round_number
+        # this determines which vignette
+        my_vignette_table =  ['<b>fleisch-basierte Ernährung</b>', '<b> mit dem Trockner </b>', '<b> auf 5540 bewegen </b>', '<b>nur regional</b>', '<b>mit dem Bus</b>', '<b> auf 5540 bewegen </b>' ]
+        my_vignette_table_images = ['diet_image_2', 'household_image_2', 'attention', 'regional_image_1', 'commute_image_2', 'attention']
+        # this determines which order within vignette
+       
+        behavior_types = ["Ernährung", "Wäsche trocknen", "Schieberegler", "Lebensmittel", "Arbeitsweg", "Schieberegler"]
+        
+        player.order_behavior_types = str(behavior_types)
+        return {
+            "current_footprint_table": my_vignette_table,
+            "current_footprint_table_images": my_vignette_table_images,
+            'behaviorTYPES' : behavior_types,
+            'round_number': round_number
+        }
+    @staticmethod
+    def is_displayed(player: Player):
+        return (player.round_number == 7)
+    
+   
+    
 
 # Page sequence
-page_sequence = [task_page00]
+page_sequence = [task_page00, Attention]
