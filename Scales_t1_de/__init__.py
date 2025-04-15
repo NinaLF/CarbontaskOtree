@@ -24,26 +24,6 @@ def make_likert10():
             label= 'label'
         )
 
-def make_likert9():
-        return models.IntegerField(
-            choices=[-1,0,1,2,3,4,5,6,7],
-            widget=widgets.RadioSelect,
-            label= 'label'
-        )
-
-def make_likert5():
-        return models.IntegerField(
-            choices=[1,2,3,4,5],
-            widget=widgets.RadioSelect,
-            label= 'label'
-        )
-def make_likert4():
-        return models.IntegerField(
-            choices=[1,2,3,4],
-            widget=widgets.RadioSelect,
-            label= 'label'
-        )
-
 #endregion
 
 
@@ -74,19 +54,6 @@ class Player(BasePlayer):
     
     pit1 = make_likert10()
     pit2 = make_likert10()
-
-
-    ### Belief
-    belief1Happening= make_likert_n(10)
-
-    beliefHuman1 = make_likert_n(10)
-    beliefHuman2 = make_likert_n(10)
-    beliefHuman3 = make_likert_n(10)
-
-    beliefConseqences1 = make_likert_n(10)
-    beliefConseqences2 = make_likert_n(10)
-    beliefConseqences3 = make_likert_n(10)
-
 
     ## behaviors
 
@@ -154,21 +121,13 @@ class Player(BasePlayer):
         ['MultiplePerDay', '2 oder mehrmals pro Tag'  ]] , label= 'Milchprodukte (z.B. Milch oder Käse)' )
 
     # further behavior items
-    footprint_flying_short = models.IntegerField(min=0, max= 300, 
-                                             label = "Wie viele <b> Kurzstreckenflüge (<3 Stunden)</b> haben Sie in den letzten zwei Jahren durchschnittlich unternommen? <i> Ein Hin- und Rückflug zählt als zwei Flüge. Wenn Sie also von San Francisco nach Los Angeles und zurück geflogen sind, zählt das als 2 Flüge. </i>")
-    
-    footprint_flying_mid = models.IntegerField(min=0, max= 300 , 
-                                           label = "Wie viele <b> Mittelstreckenflüge (3-6 Stunden) </b> haben Sie in den letzten zwei Jahren durchschnittlich unternommen? <i> Ein Hin- und Rückflug zählt als zwei Flüge. Wenn Sie also von New York nach San Francisco und zurück geflogen sind, zählt das als 2 Flüge. </i>")
-    
-    footprint_flying_long = models.IntegerField(min=0, max= 300,
-                                             label= "Wie viele <b> Langstreckenflüge (>6 Stunden) </b> haben Sie in den letzten zwei Jahren durchschnittlich unternommen? <i> Ein Hin- und Rückflug zählt als zwei Flüge. Wenn Sie also von Miami nach London und zurück geflogen sind, zählt das als 2 Flüge. </i>")
     
     
     footprint_commute_car =  models.IntegerField( min=0, max=1000 , 
-                                                 label= "Wie viele Kilometer sind Sie an einem typischen Arbeitstag in den letzten 2 Wochen mit dem Auto gependelt (als Fahrer oder Beifahrer), um zur Arbeit zu gelangen? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Arbeitstag </b> an")
+                                                 label= "Wie viele Kilometer sind Sie an einem typischen <b>Arbeitstag in den letzten 2 Wochen mit dem Auto gependelt (als Fahrer oder Beifahrer)</b>, um zur Arbeit zu gelangen? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Arbeitstag </b> an")
                                                 
     footprint_commute_car2 =  models.IntegerField( min=0, max=1000 , 
-                                                 label= "Wie viele Kilometer sind Sie durchschnittlich für andere Zwecke (als Fahrer oder Beifahrer) für Freizeitaktivitäten, Besorgungen/Einkäufe oder andere Gründe gefahren? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Tag </b> an")
+                                                 label= "Wie viele Kilometer sind Sie durchschnittlich <b>in den letzten 2 Wochen für andere Zwecke (als Fahrer oder Beifahrer) </b>für Freizeitaktivitäten, Besorgungen/Einkäufe oder andere Gründe gefahren? <br> Bitte geben Sie die durchschnittlichen Kilometer <b> pro Tag </b> an")
                                                 
     footprint_commute_car_type=  models.StringField( label = 'Welche Art von Kraftstoff nutzt Ihr Auto?', widget=widgets.RadioSelectHorizontal ,
                                                     choices = [  ['none', 'Ich habe kein Auto' ],
@@ -179,25 +138,10 @@ class Player(BasePlayer):
                                                         ['Diesel', 'Benzin/Diesel/Hybrid' ]]
                                                    )
     footprint_commute_pt =  models.IntegerField(min=0, max=1000 , 
-                                                label="Wie viele Kilometer sind Sie in den letzten 2 Wochen pro Tag mit öffentlichen Verkehrsmitteln (Zug, Bus usw.) gependelt? Bitte berechnen Sie alle privaten Fahrten einschließlich des Arbeitswegs, aber keine Geschäftsreisen <b>basierend auf einem Tag.</b>" )
+                                                label="Wie viele Kilometer sind Sie <br>in den letzten 2 Wochen pro Tag mit öffentlichen Verkehrsmitteln (Zug, Bus usw.) gependelt</b>? Bitte berechnen Sie alle privaten Fahrten einschließlich des Arbeitswegs, aber keine Geschäftsreisen <b>basierend auf einem Tag.</b>" )
                                                
-    footprint_regional =  models.StringField(label = 'Welcher Prozentsatz Ihrer Lebensmittel ist regional (aus Ihrem Land oder Ihrer Region, nicht importiert)?', widget=widgets.RadioSelectHorizontal ,
-                                             choices = [  
-                                                  [ 'less_than' , 'Weniger als ein Viertel'],
-                                                        ['quarter' , 'Etwa ein Viertel'  ],
-                                                        [  'half' , 'Etwa die Hälfte'  ],
-                                                        [  'three_quarter' , 'Etwa drei Viertel' ],
-                                                        [  'more_than' , 'Der größte Teil ist regional'] ]
-                                             )                                       
+                                  
                                                 
-
-   
-
-    footprint_laundry1 =  models.IntegerField( min=0, max=10 , 
-                                                 label= "Wie oft haben Sie in den letzten 4 Wochen durchschnittlich Ihre Wäsche im Trockner getrocknet? <br> Bitte geben Sie die durchschnittliche Anzahl an <b> pro Woche </b>")
-    footprint_laundry2 =  models.IntegerField( min=0, max=10 , 
-                                                 label= "Wie oft haben Sie in den letzten 4 Wochen durchschnittlich Ihre Wäsche luftgetrocknet? <br> Bitte geben Sie die durchschnittliche Anzahl an <b> pro Woche </b>")
-
     ## policy scales
     policy_commute =make_field('Erhöhung oder Einführung von Steuern auf Kraftstoff für Fahrzeuge (z. B. Diesel und Benzin). ')
     policy_flying =make_field(	'Erhöhung oder Einführung von Steuern auf Flugreisen.')
@@ -216,6 +160,12 @@ class Player(BasePlayer):
     nfc_6 = make_field('Ich würde lieber eine Aufgabe lösen, die Intellegenz erfordert, schwierig und bedeutend ist, als eine Aufgabe, die zwar irgendwie wichtig ist, aber nicht viel Nachdenken erfordert.')
 
     numeracy1 = models.IntegerField(min=0, max=100)
+
+    numeracy2a = models.IntegerField(min=0, max=50)
+    numeracy2b = models.IntegerField(min=0, max=70)
+    numeracy3 = models.IntegerField(min=0, max=100)
+
+    responsibility =make_likert10()
 
 
     UnitUnderstanding =  models.IntegerField( widget=widgets.RadioSelect,  label="Wie schwierig war es für Sie, „kg CO<sub>2</sub> “ zu verstehen und sich vorzustellen? ",
@@ -238,11 +188,6 @@ class Player(BasePlayer):
 # < 18.000£          > 45.001£ 18.000£ to 23.000£ 23.001£ to 30.500£ 30.501£ to 45.000£     
 
 
-class ClimateConcern(Page):
-    form_model = 'player'
-    form_fields = ['climate_change_concern1', 'climate_change_concern2', 'climate_change_concern3', 'climate_change_concern4']
-
-    
 class BehaviorsFood(Page):
     form_model = 'player'
     form_fields= ['footprint_food_overall1', 'footprint_food_overall2', 'footprint_food_overall3', 'footprint_food_overall4', 'footprint_food_overall5', 'footprint_food_overall6']
@@ -251,17 +196,12 @@ class BehaviorsFood(Page):
 class BehaviorsTransport(Page):
     form_model = 'player'
     form_fields= ['footprint_commute_car', 'footprint_commute_car2',  'footprint_commute_car_type', 'footprint_commute_pt']
-    
-
-class BehaviorLaundry(Page):
-    form_model = 'player'
-    form_fields= ['footprint_laundry1', 'footprint_laundry2'] 
-     
+         
     
 class Trust(Page):
     form_model = 'player'
-    form_fields= ['pit1', 'pit2']
-    form_field_labels = ['lokale Regierung', 'nationale Regierung']
+    form_fields= ['pit1', 'pit2', 'responsibility']
+    form_field_labels = ['lokale Regierung', 'nationale Regierung', '']
 
 class NFC(Page):
     form_model = 'player'
@@ -270,6 +210,36 @@ class NFC(Page):
 class Numeracy(Page):
     form_model = 'player'
     form_fields= ['numeracy1']
+    
+    def before_next_page(player:Player, timeout_happened):
+        player.numeracy1= player.numeracy1
+
+
+class Numeracy2a(Page):
+    form_model = 'player'
+    form_fields= ['numeracy2a']
+    
+    def is_displayed(player: Player):
+        return player.numeracy1 != 25
+    
+    
+class Numeracy2b(Page):
+    form_model = 'player'
+    form_fields= ['numeracy2b']
+    
+    def is_displayed(player: Player):
+        return player.numeracy1 == 25
+    
+    def before_next_page(player:Player, timeout_happened):
+        player.numeracy2b= player.numeracy2b
+
+class Numeracy3(Page):
+    form_model = 'player'
+    form_fields= ['numeracy3']
+
+    def is_displayed(player: Player):
+        num2b = player.field_maybe_none('numeracy2b')
+        return num2b != 20
    
 
 class policyScales(Page):
@@ -285,10 +255,11 @@ class End(Page):
      form_model = 'player'
        
 
-
+    
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-                  ClimateConcern, policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC, unit, End 
+     policyScales, BehaviorsTransport, BehaviorsFood, Trust,
+     NFC,  Numeracy, Numeracy2a, Numeracy2b, Numeracy3, unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

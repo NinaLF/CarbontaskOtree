@@ -122,6 +122,28 @@
 
 <p> {{formfield 'generalFeedback'}}</p>
 
+<br><br> <br>
+<p style="font-size: 18px; font-weight: bold;"> Inwieweit empfinden Sie eine persönliche Verantwortung, zu versuchen, den Klimawandel zu mindern?</p>
+
+<table style="table-layout: fixed; width: 100%;">
+    <tbody>
+        <tr> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
+    <tr> 
+        <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Überhaupt keine persönliche Verantwortung </th> 
+            <th class="radio-column"> </th> 
+            <th style="font-weight:normal; text-align: center;"  colspan="4" id={{form.responsibility.id}} name={{form.responsibility.name}}>  </th>
+            <th class="radio-column"> </th> 
+            <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Sehr viel persönliche Verantwortung</th> 
+    </tr>
+    <tr style="background-color: rgb(238, 238, 238)">
+       
+        {{ for choice in form.responsibility }}
+        <td>{{ choice }}</td>
+        {{ endfor }}
+    </tr>
+</tbody>
+</table>
+
 <br> <br>
 
 <div class="next-btn radiotable">  

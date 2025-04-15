@@ -24,25 +24,6 @@ def make_likert10():
             label= 'label'
         )
 
-def make_likert9():
-        return models.IntegerField(
-            choices=[-1,0,1,2,3,4,5,6,7],
-            widget=widgets.RadioSelect,
-            label= 'label'
-        )
-
-def make_likert5():
-        return models.IntegerField(
-            choices=[1,2,3,4,5],
-            widget=widgets.RadioSelect,
-            label= 'label'
-        )
-def make_likert4():
-        return models.IntegerField(
-            choices=[1,2,3,4],
-            widget=widgets.RadioSelect,
-            label= 'label'
-        )
 
 #endregion
 
@@ -68,53 +49,12 @@ class Player(BasePlayer):
         label=label,
         widget=widgets.RadioSelectHorizontal,
     )
-    ### Climate Change Concern Scale by Tobler et al. 2012
   
-    ### Climate Change Emotions Scale based on Knauf 2022 and Truelove 2012
-    emoAng1 = make_likert10() ## Anger
-    emoAng2 = make_likert10() ## Anger
-    emoAng3 = make_likert10() ## Anger
-    emoSad1 = make_likert10() ## Sadness
-    emoSad2 = make_likert10() ## Sadness
-    emoSad3 = make_likert10() ## Sadness
-    emoFear1 = make_likert10() ## Fear/
-    emoFear2 = make_likert10() ## Fear
-    emoFear3 = make_likert10() ## Fear
-    emoHope1 = make_likert10() ## Hope
-    emoHope2 = make_likert10() ## Hope
-    emoHope3 = make_likert10() ## Hope
-    emoGuilt1 = make_likert10() ## guilt
-    emoGuilt2 = make_likert10() ## guilt
-    emoGuilt3 = make_likert10() ## guilt
-    emoConcern1 = make_likert10() ## concern
-    emoConcern2 = make_likert10() ## concern
-    emoConcern3 = make_likert10() ## concern
-
-    
-    
-    ### IB Values
-    ibv1 = make_likert9()
-    ibv2 = make_likert9()
-    ibv3 = make_likert9()
-    ibv4 = make_likert9()
 
     ## trust in own and foreign governments
     
     pit1 = make_likert10()
     pit2 = make_likert10()
-
-
-    ### Belief
-    belief1Happening= make_likert_n(10)
-
-    beliefHuman1 = make_likert_n(10)
-    beliefHuman2 = make_likert_n(10)
-    beliefHuman3 = make_likert_n(10)
-
-    beliefConseqences1 = make_likert_n(10)
-    beliefConseqences2 = make_likert_n(10)
-    beliefConseqences3 = make_likert_n(10)
-
 
     ## behaviors
 
@@ -178,21 +118,13 @@ class Player(BasePlayer):
         ['MultiplePerDay', '2 or more times per day'  ]] , label= 'Dairy products (e.g milk or cheese)' )
 
     # further behavior items
-    footprint_flying_short = models.IntegerField(min=0, max= 300, 
-                                                 label = "How many <b> short-distance flights (<3 hours)</b> did you take on average in the past two years? <i> i: one round-trip flight counts as two flights. So if you flew from San Francisco to Los Angeles and back this counts as 2 flights. </i> " )
-    footprint_flying_mid = models.IntegerField(min=0, max= 300 , 
-                                               label = "How many <b> mid-distance flights (3-6 hours) </b> did you take on average in the past two years? <i> i: one round-trip flight counts as two flights. So if you flew from New York to San Francisco and back this counts as 2 flights. </i> ")
-    footprint_flying_long = models.IntegerField(min=0, max= 300,
-                                                 label= "How many <b> long-distance flights (>6 hours) </b> did you take on average in the past two years? <i> i: one round-trip flight counts as two flights. So if you flew from Miami to London and back this counts as 2 flights. </i> " )
 
     footprint_commute_car =  models.IntegerField( min=0, max=1000 , 
-                                                 label= "How many miles by car did you commute on a typical working day in the past 2 weeks (as a driver or passenger) to get to work? <br> Please enter the average miles <b> per working day </b>")
+                                                 label= "How many miles by <b>car did you commute on a typical working day in the past 2 weeks </b>(as a driver or passenger) to get to work? <br> Please enter the average miles <b> per working day </b>")
                                                
     footprint_commute_car2 =  models.IntegerField( min=0, max=1000 , 
-                                                 label= "How many miles by car did you drive on average for other purposes (as a driver or passenger) for leisure activities, chores/groceries or other reasons? <br> Please enter the average miles <b> per day </b>")
-                                               
-                                                 
-    
+                                                 label= "How many miles by <b>car did you drive on average for other purposes </b>(as a driver or passenger) for leisure activities, chores/groceries or other reasons? <br> Please enter the average miles <b> per day </b>")
+                                                                                     
 
     footprint_commute_car_type=  models.StringField( label = 'Which kind of fuel does your car operate on?', widget=widgets.RadioSelectHorizontal ,
                                                     choices = [  ['none', 'I do not have a car' ],
@@ -203,32 +135,9 @@ class Player(BasePlayer):
                                                         ['Diesel', 'Gasoline/Diesel/Hybrid' ]]
                                                    )
     footprint_commute_pt =  models.IntegerField(min=0, max=1000 ,
-                                                 label="How many miles did you commute per week in the past 2 weeks using public transport (train, bus, etc.) or an e-bike? Please calculate all private journeys including the work commute, but not business travels <b>based on one week.</b>" )
+                                                 label="How many miles did you <b>commute per week in the past 2 weeks using public transport (train, bus, etc.) </b>or an e-bike? Please calculate all private journeys including the work commute, but not business travels <b>based on one week.</b>" )
                                          
-    footprint_regional =  models.StringField(label = ' What percentage of your food is regional (from within your country or region, not imported) ? ', widget=widgets.RadioSelectHorizontal ,
-                                             choices = [  
-                                                  [ 'less_than' , 'Less than a quarter'],
-                                                        ['quarter' , 'About a quarter'  ],
-                                                        [  'half' , 'About half'  ],
-                                                        [  'three_quarter' , 'About three quarters' ],
-                                                        [  'more_than' , 'the largest part is regional'] ]
-                                             
-                                             )
-    
-    footprint_electricity =  models.StringField( label = 'This question is about your electricity supply. What does your electricity supply look like?',
-                                             choices = [  [ 'A' , 'I dont know'],
-                                                        ['B',  ' I have a conventional (fossil) supply'] ,
-                                                        ['C',  'I partly have green electricity (mixed)' ] ,
-                                                        ['D',  'I have green electricity entirely ' ] 
-                                                        ], 
-                                                        widget=widgets.RadioSelectHorizontal ,
-                                                       
-                                                )
 
-    footprint_laundry1 =  models.IntegerField( min=0, max=10 , 
-                                                 label= "How often did you on average dry your laundry in the dryer in the past 4 weeks? <br> Please enter the average amount of times <b> per week </b>")
-    footprint_laundry2 =  models.IntegerField( min=0, max=10 , 
-                                                 label= "How often did you on average dry your laundry by air drying it the past 4 weeks? <br> Please enter the average amount of times <b> per week </b>")
     ## policy scales
     policy_commute = make_field('Increase or introduce taxes on fuel for vehicles (i.e. diesel and gasoline)')
     policy_flying = make_field('Increase or introduce taxes on air travel.')
@@ -246,6 +155,11 @@ class Player(BasePlayer):
     nfc_6 = make_field('I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought')
 
     numeracy1 = models.IntegerField(min=0, max=100)
+    numeracy2a = models.IntegerField(min=0, max=50)
+    numeracy2b = models.IntegerField(min=0, max=70)
+    numeracy3 = models.IntegerField(min=0, max=100)
+
+    responsibility =make_likert10()
 
 
     UnitUnderstanding =  models.IntegerField( widget=widgets.RadioSelect,  label="How much difficulty did you have understanding and imagining 'kg' CO<sub>2</sub> ",
@@ -275,17 +189,12 @@ class BehaviorsFood(Page):
 class BehaviorsTransport(Page):
     form_model = 'player'
     form_fields= ['footprint_commute_car', 'footprint_commute_car2',  'footprint_commute_car_type', 'footprint_commute_pt']
-    
-
-class BehaviorLaundry(Page):
-    form_model = 'player'
-    form_fields= ['footprint_laundry1', 'footprint_laundry2'] 
-     
+         
     
 class Trust(Page):
     form_model = 'player'
-    form_fields= ['pit1', 'pit2']
-    form_field_labels = ['local government', 'national government']
+    form_fields= ['pit1', 'pit2', 'responsibility']
+    form_field_labels = ['local government', 'national government' , '']
 
 class NFC(Page):
     form_model = 'player'
@@ -294,6 +203,37 @@ class NFC(Page):
 class Numeracy(Page):
     form_model = 'player'
     form_fields= ['numeracy1']
+    
+    def before_next_page(player:Player, timeout_happened):
+        player.numeracy1= player.numeracy1
+
+
+class Numeracy2a(Page):
+    form_model = 'player'
+    form_fields= ['numeracy2a']
+    
+    def is_displayed(player: Player):
+        return player.numeracy1 != 25
+    
+    
+class Numeracy2b(Page):
+    form_model = 'player'
+    form_fields= ['numeracy2b']
+    
+    def is_displayed(player: Player):
+        return player.numeracy1 == 25
+    
+    def before_next_page(player:Player, timeout_happened):
+        player.numeracy2b= player.numeracy2b
+
+class Numeracy3(Page):
+    form_model = 'player'
+    form_fields= ['numeracy3']
+
+    def is_displayed(player: Player):
+        num2b = player.field_maybe_none('numeracy2b')
+        return num2b != 20
+   
    
 
 class policyScales(Page):
@@ -312,7 +252,8 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-                policyScales, BehaviorsTransport, BehaviorsFood, Trust,  Numeracy, NFC,  unit, End 
+               policyScales, BehaviorsTransport, BehaviorsFood, Trust,
+               NFC,  Numeracy, Numeracy2a, Numeracy2b, Numeracy3, unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

@@ -108,55 +108,24 @@
 
 </style>
 
-
 {% endblock %}
 
 {{ block title }} {{ endblock }}
 {{ block content }}
 
+<p>
+    Bitte beantworten Sie die folgende Frage. Bitte benutzen Sie keinen Taschenrechner, aber Sie können gerne ein Blatt Papier für Notizen verwenden. <br>
+    <br><br> 
+    Stellen Sie sich vor, wir werfen einen gezinkten Würfel (6 Seiten). Die Wahrscheinlichkeit, dass der Würfel eine 6 zeigt, ist doppelt so hoch wie die Wahrscheinlichkeit jeder der anderen Zahlen.<br><br>
+    Von 70 Würfen, bei wie vielen dieser 70 Würfe würde dieser Würfel erwartungsgemäß eine 6 zeigen?
 
-<div class="radiotable" style="padding-top:0vh; padding-left:0vw; ">
-    <p> How knowledgeable do you feel about the effect of different behaviors on carbon footprints? That is, how much do you feel you know about how many CO<sub>2</sub> emissions are caused by differen actions?    </p>
-    <p style="text-indent: 0vw;">
-        Not much at all &nbsp;
-        {{ for choice in form.subjectiveKnowledgePost}}
-            {{ choice }}
-        {{ endfor }}
-        &nbsp; A great deal
-    </p>
-</div> 
-
-<p> {{formfield 'generalFeedback'}}</p>
-
-<br><br> <br>
-<p style="font-size: 18px; font-weight: bold;"> To what extent do you feel a personal responsibility to try to reduce climate change?</p>
-
-<table style="table-layout: fixed; width: 100%;">
-    <tbody>
-        <tr> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
-    <tr> 
-        <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Not at all</th> 
-            <th class="radio-column"> </th> 
-            <th style="font-weight:normal; text-align: center;"  colspan="4" id={{form.responsibility.id}} name={{form.responsibility.name}}>  </th>
-            <th class="radio-column"> </th> 
-            <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Very much </th> 
-    </tr>
-    <tr style="background-color: rgb(238, 238, 238)">
-       
-        {{ for choice in form.responsibility }}
-        <td>{{ choice }}</td>
-        {{ endfor }}
-    </tr>
-</tbody>
-</table>
-
+{{formfield 'numeracy2b' label=''}}
 <br> <br>
 
 <div class="next-btn radiotable">  
-    <div style="float: right; padding-top: 2vh;">
-         {% next_button %} 
+    <div style="float: right; background-color:  #26a69a;  border-color: #26a69a; border-radius: 0%;  background-color: #26a69a; text-transform: uppercase; color: white; box-shadow:  slategray ;">
+        <button class="otree-btn-next btn btn-primary" onclick="document.forms[0].submit();">Weiter</button>
     </div>
-</div> 
+</div>
 
 {{ endblock }}
-
