@@ -154,9 +154,9 @@ class Player(BasePlayer):
 ## https://www.researchgate.net/publication/29870461_Need_for_cognition_Eine_Skala_zur_Erfassung_von_Engagement_und_Freude_bei_Denkaufgaben_Presentation_and_validation_of_a_German_version_of_the_Need_for_Cognition_Scale
     nfc_1 = make_field('Ich würde komplizierte Probleme einfachen Problemen vorziehen.')
     nfc_2 = make_field('Ich trage nicht gerne die Verantwortung für eine Situation, die sehr viel Denken erfordert.')
-    nfc_3 = make_field('Denken entspricht nicht dem, was ich unter Spaß verstehe.') # reverse coded
+    nfc_3 = make_field('Denken entspricht nicht dem, was ich unter Spass verstehe.') # reverse coded
     nfc_4 = make_field('Ich würde lieber etwas tun, das wenig Denken erfordert, als etwas, das mit Sicherheit meine Denkfähigkeit herausfordert.') # reverse coded
-    nfc_5 = make_field('Die Aufgabe, neue Lösungen für Probleme zu finden, macht mir wirklich Spaß.')
+    nfc_5 = make_field('Die Aufgabe, neue Lösungen für Probleme zu finden, macht mir wirklich Spass.')
     nfc_6 = make_field('Ich würde lieber eine Aufgabe lösen, die Intellegenz erfordert, schwierig und bedeutend ist, als eine Aufgabe, die zwar irgendwie wichtig ist, aber nicht viel Nachdenken erfordert.')
 
     numeracy1 = models.IntegerField(min=0, max=100)

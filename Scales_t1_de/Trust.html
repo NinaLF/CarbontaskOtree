@@ -12,7 +12,9 @@
 {% block content %}
 <p style="font-size: 18px; font-weight: bold;"> Wie viel Vertrauen haben Sie in diese Akteure im Bereich des Klimawandels? </p>
 
-<table  style="table-layout: fixed; width: 100%;">
+<br>
+<p style="font-weight: bold; line-height: normal;"> lokale Regierung:</p>
+<table  style="table-layout: fixed; width: 100%; line-height: normal;">
     <tbody>
         <tr > <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
     <tr> 
@@ -30,23 +32,30 @@
         <td>{{ choice }}</td>
         {{ endfor }}
     </tr>
+    </tbody>
+</table>
+<br>
+<p style="font-weight: bold; line-height: normal;">Nationale Regierung</p>
 
+<table  style="table-layout: fixed; width: 100%; line-height: normal;">
+    <tbody>
+        <tr > <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
     <tr> 
-        <th class="radio-column" colspan="2" style="text-align: left; font-weight:normal;">  Überhaupt kein Vertrauen </th> 
+        <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Überhaupt kein Vertrauen </th> 
             <th class="radio-column"> </th> 
             <th style="font-weight:normal; text-align: center;"  colspan="4" id={{form.pit2.id}} name={{form.pit2.name}}>  </th>
             <th class="radio-column"> </th> 
-            <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column">   Sehr viel Vertrauen</th> 
+            <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Sehr viel Vertrauen </th> 
     </tr>
 
 
-    <tr style="background-color: rgb(238, 238, 238); line-height: normal;">
+    <tr style="background-color: rgb(238, 238, 238)" >
        
         {{ for choice in form.pit2 }}
         <td>{{ choice }}</td>
         {{ endfor }}
     </tr>
-</tbody>
+    </tbody>
 </table>
 
 <br><br> <br>
@@ -78,7 +87,7 @@
 </div>
 {% endblock %}
 
-{{formfield_errors form.pit2.name}}
+{{formfield_errors form.pit1.name}}
 {{formfield_errors form.pit2.name}}
 
 
