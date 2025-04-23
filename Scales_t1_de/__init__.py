@@ -174,14 +174,6 @@ class Player(BasePlayer):
     generalFeedback = models.StringField(max_length=3000, blank=True, label='Haben Sie irgendwelche Kommentare, Rückmeldungen oder Ideen? Danke für Ihre Ideen und Ihr Feedback.')
     
     
-
-    subjectiveKnowledgePost = models.IntegerField(widget=widgets.RadioSelect,  label= 'Wie kenntnisreich fühlen Sie sich über die Auswirkungen verschiedener Verhaltensweisen auf den CO<sub>2</sub>-Fußabdruck? Das heißt, wie viel denken Sie wissen Sie, über die Menge an CO<sub>2</sub>-Emissionen, die durch verschiedene Handlungen verursacht wird?',
-                                              choices=[['1', 'überhaupt nicht viel (1)'], ['2', '2'],['3', '3'],['4', '4'],
-                                                       ['5', '5'], ['6', '6'],  ['7', '7'], ['8', '8'],['9', '9'], ['10', 'sehr viel (10)'] ]   )
-
-
-
-
     
    
 
