@@ -49,12 +49,13 @@ class Player(BasePlayer):
     )
 
     income = models.StringField(
-                                label='How high is your <b>yearly personal income before tax </b>?',
-        choices=[['< 18.000£', '< 18.000£'],
-                 ['18.000£ to 23.000£', '18.000£ to 23.000£'], 
-                 ['23.001£ to 30.500£', '23.001£ to 30.500£'], 
-                 ['30.501£ to 45.000£', '30.500£ to 45.000£'], 
-                 ['> 45.001£', '> 45.001£']],
+                                label='Wie hoch ist Ihr <b>persönliches monatliches Nettoeinkommen </b> (d.h. nach Abzügen und Steuern)?',
+        choices=[['<  3.000 CHF', '<  3.000 CHF'],
+                  [' 3.001 CHF bis 5.000 CHF',  ' 3.001 CHF bis 5.000 CHF'], 
+                   [' 5.001 CHF bis 6.000 CHF',  ' 5.001 CHF bis 6.000 CHF'], 
+                 [' 6.001 CHF bis 7.000 CHF',  ' 6.001 CHF bis 7.000 CHF'], 
+                 [' 7.001 CHF bis 9.000 CHF',  ' 7.001 CHF bis 9.000 CHF'], 
+                 ['> 9.001 CHF', '> 9.001 CHF']],
                   widget = widgets.RadioSelect
     )
     polOrientation =  models.IntegerField( widget=widgets.RadioSelect,  

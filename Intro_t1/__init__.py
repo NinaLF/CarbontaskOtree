@@ -51,11 +51,13 @@ class Player(BasePlayer):
 
     income = models.StringField(
                                 label='How high is your <b>yearly personal income before tax </b>?',
-        choices=[['< 18.000£', '< 18.000£'],
-                 ['18.000£ to 23.000£', '18.000£ to 23.000£'], 
-                 ['23.001£ to 30.500£', '23.001£ to 30.500£'], 
-                 ['30.501£ to 45.000£', '30.500£ to 45.000£'], 
-                 ['> 45.001£', '> 45.001£']],
+        choices=[['< 16.000£', '< 16.000£'],
+                 ['16.000£ to 20.000', '16.000£ to 20.000'], 
+                 ['20.001£ to 25.000£', '20.001£ to 25.000£'], 
+                 ['25.001£ to 30.000£', '25.001£ to 30.000£'], 
+                ['30.001£ to 39.000£', '30.001 to 39.000£'], 
+                 ['39.001£ to 48.000£', '39.001 to 48.000£'], 
+                 ['> 48.001£', '> 48.001£']],
                   widget = widgets.RadioSelect
     )
     polOrientation =  models.IntegerField( widget=widgets.RadioSelect,  
