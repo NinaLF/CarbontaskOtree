@@ -24,6 +24,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
+    quota_full = models.IntegerField(initial=0)
+
     def make_field(label):
         return models.IntegerField(
         choices=[1,2,3,4,5,6,7,8,9,10],                           
