@@ -154,10 +154,10 @@ class Player(BasePlayer):
     nfc_5 = make_field('I really enjoy a task that involves coming up with new solutions to problems.')
     nfc_6 = make_field('I would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought')
 
-    numeracy1 = models.IntegerField(min=0, max=100)
-    numeracy2a = models.IntegerField(min=0, max=50)
-    numeracy2b = models.IntegerField(min=0, max=70)
-    numeracy3 = models.IntegerField(min=0, max=100)
+    numeracy1 = models.IntegerField(min=0, max=100,   blank=True)
+    numeracy2a = models.IntegerField(min=0, max=50,   blank=True)
+    numeracy2b = models.IntegerField(min=0, max=70,   blank=True)
+    numeracy3 = models.IntegerField(min=0, max=100,   blank=True)
 
     responsibility =make_likert10()
 
@@ -206,7 +206,7 @@ class Numeracy2a(Page):
     form_fields= ['numeracy2a']
     
     def is_displayed(player: Player):
-        return player.numeracy1 != 25
+        return player.numeracy1 is not None and player.numeracy1 != 25
     
     
 class Numeracy2b(Page):
