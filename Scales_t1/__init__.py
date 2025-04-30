@@ -198,7 +198,7 @@ class Numeracy(Page):
     form_fields= ['numeracy1']
     
     def before_next_page(player:Player, timeout_happened):
-        player.numeracy1= player.numeracy1
+        player.numeracy1= player.field_maybe_none('numeracy1')
 
 
 class Numeracy2a(Page):
