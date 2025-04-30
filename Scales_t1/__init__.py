@@ -236,6 +236,28 @@ class policyScales(Page):
 class unit(Page):
     form_model = 'player'
     form_fields= ['UnitUnderstanding' , 'generalFeedback']
+
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        session = player.session
+        gender = player.participant.vars.get('gender')
+        age = player.participant.vars.get('age')
+
+        # Gender update
+        if gender == 'Female':
+            session.num_female_uk += 1
+        elif gender == 'Male':
+            session.num_male_uk += 1
+
+        # Age bin update
+        if 18 <= age <= 29:
+            session.num_age1_uk += 1
+        elif 30 <= age <= 44:
+            session.num_age2_uk += 1
+        elif 45 <= age <= 59:
+            session.num_age3_uk += 1
+        elif 60 <= age <= 80:
+            session.num_age4_uk += 1
        
 
 class End(Page):
@@ -243,10 +265,9 @@ class End(Page):
        
 
 
-
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-               policyScales, BehaviorsTransport, BehaviorsFood, Trust,
-               NFC,  Numeracy, Numeracy2a, Numeracy2b, Numeracy3, unit, End 
+               policyScales, BehaviorsTransport, BehaviorsFood, Trust,NFC,  Numeracy, Numeracy2a, Numeracy2b, Numeracy3, 
+               unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

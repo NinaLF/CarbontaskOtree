@@ -8,6 +8,15 @@ class C(BaseConstants):
 
 class Subsession(BaseSubsession):
     pass
+def creating_session(subsession: Subsession):
+    session = subsession.session
+    if subsession.round_number == 1:
+        session.num_female_de = 0
+        session.num_male_de = 0
+        session.num_age1_de = 0
+        session.num_age2_de = 0
+        session.num_age3_de = 0
+        session.num_age4_de = 0
 
 
 class Group(BaseGroup):
@@ -97,9 +106,41 @@ class Baseline(Page):
     form_fields= [ 'subjectiveKnowledgePre' ]
     
 class Demographics(Page):
-     form_model = 'player'
-     form_fields= [ 'age', 'gender', 'education', 'income', 'polOrientation' ]
+    form_model = 'player'
+    form_fields= [ 'age', 'gender', 'education', 'income', 'polOrientation' ]
+     
+    @staticmethod
+    def before_next_page(player: Player, timeout_happened):
+        session = player.session
+        participant = player.participant
 
+        if player.gender == 'Female' and session.num_female_de >= 380:
+            player.quota_full = 1
+            participant.quota_full = 1
+        elif player.gender == 'Male' and session.num_male_de >= 380:
+            player.quota_full = 1
+            participant.quota_full = 1
+        
+        age = player.age
+        if 18 <= age <= 29 and session.num_age1_de >= 137:
+            player.quota_full = 1
+        elif 30 <= age <= 44 and session.num_age2_de >= 213:
+            player.quota_full = 1
+        elif 45 <= age <= 59 and session.num_age3_de >= 206:
+            player.quota_full = 1
+        elif 60 <= age <= 80 and session.num_age4_de >= 206:
+            player.quota_full = 1
+
+        participant.quota_full = player.quota_full
+        participant.vars['gender'] = player.gender
+        participant.vars['age'] = player.age
+
+
+class QuotaFull(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.quota_full == 1
+    
 class ClimateConcern(Page):
     form_model = 'player'
     form_fields = ['climate_change_concern1', 'climate_change_concern2', 'attention_check',  'climate_change_concern3', 'climate_change_concern4']
@@ -125,6 +166,6 @@ class Screenout(Page):
 
 # Page sequence
 page_sequence = [
-    Consent, Demographics, ClimateConcern, Screenout, Baseline
+    Consent, Demographics, QuotaFull, ClimateConcern, Screenout, Baseline
     
 ]

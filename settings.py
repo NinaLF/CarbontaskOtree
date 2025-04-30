@@ -11,6 +11,11 @@ SESSION_CONFIGS = [
          app_sequence=['Intervention'],
          num_demo_participants=10,
      ),
+     dict(
+         name='testQuota',
+         app_sequence=['Intro_t1', 'Scales_t1' ],
+         num_demo_participants=10,
+     ),
 
       dict(
          name='scales',
@@ -67,8 +72,11 @@ SESSION_CONFIG_DEFAULTS = dict(
 )
 
 PARTICIPANT_FIELDS = [ 'group_assignment', 'diet', 'electricity', 'recycling', 'food', 'commute', 'vacation',
-                      'task_rounds']
-SESSION_FIELDS = []
+                      'task_rounds', 'quota_full']
+SESSION_FIELDS = [ 'num_female_de', 'num_male_de', 
+                  'num_age1_de', 'num_age2_de', 'num_age3_de', 'num_age4_de',
+                  'num_female_uk', 'num_male_uk',
+                  'num_age1_uk', 'num_age2_uk', 'num_age3_uk', 'num_age4_uk']
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
