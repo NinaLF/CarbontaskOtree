@@ -206,7 +206,7 @@ class Numeracy2a(Page):
     form_fields= ['numeracy2a']
     
     def is_displayed(player: Player):
-        return player.numeracy1 is not None and player.numeracy1 != 25
+        return player.field_maybe_none('numeracy1') not in [None, 25]
     
     
 class Numeracy2b(Page):
