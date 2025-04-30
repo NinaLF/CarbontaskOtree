@@ -202,10 +202,6 @@ class NFC(Page):
 class Numeracy(Page):
     form_model = 'player'
     form_fields= ['numeracy1']
-    
-    def before_next_page(player:Player, timeout_happened):
-        player.numeracy1= player.field_maybe_none('numeracy1')
-
 
 
 class Numeracy2a(Page):
@@ -213,15 +209,14 @@ class Numeracy2a(Page):
     form_fields= ['numeracy2a']
     
     def is_displayed(player: Player):
-        return player.numeracy1 is not None and player.numeracy1 != 25
-    
+        return player.field_maybe_none('numeracy1') not in [None, 25]
     
 class Numeracy2b(Page):
     form_model = 'player'
     form_fields= ['numeracy2b']
     
     def is_displayed(player: Player):
-        return player.numeracy1 == 25
+        return player.field_maybe_none('numeracy1')  in [ 25]
     
     def before_next_page(player:Player, timeout_happened):
         player.numeracy2b= player.numeracy2b
