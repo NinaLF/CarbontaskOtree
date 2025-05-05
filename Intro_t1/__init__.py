@@ -120,18 +120,18 @@ class Demographics(Page):
         if player.gender == 'Female' and session.num_female_uk >= 388:
             player.quota_full = 1
             participant.quota_full = 1
-        elif player.gender == 'Male' and session.num_male_uk >= 372:
+        elif player.gender == 'Male' and session.num_male_uk >= 382:
             player.quota_full = 1
             participant.quota_full = 1
         
         age = player.age
-        if 18 <= age <= 29 and session.num_age1_uk >= 160:
+        if 18 <= age <= 29 and session.num_age1_uk >= 162:
             player.quota_full = 1
-        elif 30 <= age <= 44 and session.num_age2_uk >= 205:
+        elif 30 <= age <= 44 and session.num_age2_uk >= 215:
             player.quota_full = 1
-        elif 45 <= age <= 59 and session.num_age3_uk >= 199:
+        elif 45 <= age <= 59 and session.num_age3_uk >= 200:
             player.quota_full = 1
-        elif 60 <= age <= 80 and session.num_age4_uk >= 199:
+        elif 60 <= age <= 80 and session.num_age4_uk >= 200:
             player.quota_full = 1
 
         participant.quota_full = player.quota_full
