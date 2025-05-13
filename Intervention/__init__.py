@@ -85,7 +85,7 @@ class Group(BaseGroup):
 def creating_session(subsession:Subsession):
 
     import itertools
-    group_assignment = itertools.cycle(["control", "passive", "active"])
+    group_assignment = itertools.cycle(["active", "control","active", "control", "passive"])
     for player in subsession.get_players():
         if subsession.round_number == 1:
             player.participant.group_assignment = next(group_assignment)
