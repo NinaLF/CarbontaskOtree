@@ -128,7 +128,7 @@ class Demographics(Page):
             player.quota_full = 1
         elif 30 <= age <= 44 and session.num_age2_de >= 300:
             player.quota_full = 1
-        elif 45 <= age <= 59 and session.num_age3_de >= 300:
+        elif 45 <= age <= 59 and session.num_age3_de >= 287:
             player.quota_full = 1
         elif 60 <= age <= 80 and session.num_age4_de >= 300:
             player.quota_full = 1
