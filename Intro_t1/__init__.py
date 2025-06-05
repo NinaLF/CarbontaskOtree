@@ -117,10 +117,10 @@ class Demographics(Page):
         session = player.session
         participant = player.participant
 
-        if player.gender == 'Female' and session.num_female_uk >= 500:
+        if player.gender == 'Female' and session.num_female_uk >= 520:
             player.quota_full = 1
             participant.quota_full = 1
-        elif player.gender == 'Male' and session.num_male_uk >= 510:
+        elif player.gender == 'Male' and session.num_male_uk >= 520:
             player.quota_full = 1
             participant.quota_full = 1
         
