@@ -59,6 +59,19 @@ SESSION_CONFIGS = [
          num_demo_participants=10,
      ),
 
+      dict(
+         name='study_t3_de',
+         app_sequence=[ 'Intro_t3_de', 'Nina_instructions_de', 'Nina_carbontask_de', 
+                        'Scales_t3_de'],
+         num_demo_participants=10,
+     ),
+     dict(
+         name='study_t3',
+         app_sequence=[ 'Intro_t3',  'Nina_instructions', 'Nina_carbontask', 
+                        'Scales_t3'],
+         num_demo_participants=10,
+     ),
+
  
 ]
 
