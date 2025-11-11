@@ -1,0 +1,59 @@
+{% block styles %}
+    <link href="{{ static 'global/css/generalStyle.css'}}" rel="stylesheet">
+    <link href="{{ static 'global/css/customStyle.css'}}" rel="stylesheet">
+{% endblock %}
+
+{{ block title }} Information for the task {{ endblock }}
+{{ block content }}
+
+<body>
+
+    <p style="font-size: 21px;"> 
+        A personal carbon footprint refers to the total amount of greenhouse gases (including CO<sub>2</sub>  and methane) that are emitted into the atmosphere as a result of an individual,s behavior. <br> 
+        The carbon footprint thus includes emissions from driving, flying, using electricity, cooling or heating your home, purchasing goods and other sources. <br> 
+       
+        In other words, <b>a personal carbon footprint reflects an individual's total impact on the climate system</b>. 
+        <br>  <br> 
+    
+        <b>A carbon tax puts a price on greenhouse gas emissions</b>. It applies to activities that release emissions, such as using electricity, driving, flying, or producing food. <br>
+        The <b>higher the emissions</b> associated with a product or service, the <b>higher the cost due to the tax</b>. 
+        By making high-emission goods like gasoline, fuel for heating, or beef more expensive, the tax <b>encourages cleaner alternatives and helps reduce emissions</b>.<br>
+    <br>
+        Why does this matter? <br>
+        To meet the Paris Agreement goals (limiting global warming to 1.5–2°C), the UK must <b>cut its annual emissions roughly in half by 2035</b>. This yearly reduction equals about 191 million tons of CO<sub>2</sub> .<br>
+        This will require both policy changes and behavior changes. <br> 
+        <br>
+        On the next pages you will be able to see and explore the <b> emissions different behaviors and behavior changes cause</b>. As well as the  <b>estimated effect of carbon taxes targeting different behaviors and how much CO<sub>2</sub> these can save</b>. <br><br>
+    
+    </p>
+
+    <br>
+    
+
+
+
+<div >
+    <button id="nextst" style="float: right; margin-top: 2vh;" disabled class="otree-btn-next btn btn-primary">Next</button>
+
+</div>
+
+</body>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+
+    enablebtn = function () {
+        document.getElementById("nextst").disabled = false;
+    }
+
+
+
+    window.onload = function () {
+        setTimeout(function () { enablebtn() }, 3 * 1600);
+    }
+</script>
+{% endblock %}

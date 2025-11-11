@@ -126,9 +126,9 @@
     </p>
 </div> 
 
-<p> {{formfield 'generalFeedback'}}</p>
 
-<br><br> <br>
+<br>
+ <br>
 <p style="font-size: 18px; font-weight: bold;"> To what extent do you feel a personal responsibility to try to reduce climate change?</p>
 
 <table style="table-layout: fixed; width: 100%;">
@@ -137,20 +137,43 @@
     <tr> 
         <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Not at all</th> 
             <th class="radio-column"> </th> 
-            <th style="font-weight:normal; text-align: center;"  colspan="4" id={{form.responsibility.id}} name={{form.responsibility.name}}>  </th>
+            <th style="font-weight:normal; text-align: center;"  colspan="4" >  </th>
             <th class="radio-column"> </th> 
             <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Very much </th> 
     </tr>
     <tr style="background-color: rgb(238, 238, 238)">
        
-        {{ for choice in form.responsibility }}
+        {{ for choice in form.responsibility_individuals }}
         <td>{{ choice }}</td>
         {{ endfor }}
     </tr>
 </tbody>
 </table>
+<br><br> 
+<p style="font-size: 18px; font-weight: bold;"> To what extent do you feel a it is the responsibility of governments to try to reduce climate change?</p>
 
-<br> <br>
+<table style="table-layout: fixed; width: 100%;">
+    <tbody>
+        <tr> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
+    <tr> 
+        <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Not at all</th> 
+            <th class="radio-column"> </th> 
+            <th style="font-weight:normal; text-align: center;"  colspan="4" >  </th>
+            <th class="radio-column"> </th> 
+            <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Very much </th> 
+    </tr>
+    <tr style="background-color: rgb(238, 238, 238)">
+       
+        {{ for choice in form.responsibility_system }}
+        <td>{{ choice }}</td>
+        {{ endfor }}
+    </tr>
+</tbody>
+</table>
+<br><br>
+
+<p> {{formfield 'generalFeedback'}}</p>
+<br><br>
 
 <div class="next-btn radiotable">  
     <div style="float: right; padding-top: 2vh;">

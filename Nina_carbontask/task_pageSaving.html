@@ -6,7 +6,7 @@
 {% endblock %}
 
 {{ block title }} 
-Please rate these carbon footprints
+Please rate these 
 {{ endblock }}
 {{ block content }}
 <meta charset="UTF-8">
@@ -178,7 +178,7 @@ Please rate these carbon footprints
 <div class=".question" > 
     <p>
         <br>
-        <b> Think about a person with the lifestyle below. How large do you think the carbon footprint of this person is across an entire year? </b>
+        <b> Think about a person making the following behavior changes. How much emissions do you think this person saves over the course of an entire year? </b>
 
     <br>
 </div>
@@ -192,20 +192,20 @@ Please rate these carbon footprints
 <meta charset="UTF-8">
 
 <div > 
-    <p style=" font-size: 17px;"> Please <b>move the slider to make your estimate</b> about the size of the carbon footprint in tons of CO<sub>2eq</sub>. <br>
-        The minimum and maximum represent the actual range of carbon footprints in this study, so <b>you can use the full range of the slider. </b> 
+    <p style=" font-size: 17px;"> Please <b>click on the slider and move to make your estimate</b> about the savings potential in tons of CO<sub>2eq</sub>. <br>
+        The minimum and maximum represent the actual range of savings possible in this scenario, so <b>you can use the full range of the slider. </b> 
      </p>
-    <input type="text" name="rating0" class="form-field-small" style="background-color: white; border-color: white; color: white; background: transparent; border: none; color: transparent;" >
+    <input type="text" name="ratingSaving" class="form-field-small" style="background-color: white; border-color: white; color: white; background: transparent; border: none; color: transparent;" >
 
     <div class="slider-container">
         <div class="slider-labels">
-            <span>1.96 <br> tons CO<sub>2</sub></span>
-            <span>6.48 <br> tons CO<sub>2</sub></span>
+            <span>0.00 <br> tons CO<sub>2</sub></span>
+            <span>3.38 <br> tons CO<sub>2</sub></span>
         </div>
-        <input type="range" min="1.96" max="6.48" step="0.02"  class="slider" id="carbonSlider">
+        <input type="range" min="0.00" max="3.38" step="0.02"  class="slider" id="carbonSlider">
         <div class="current-value" id="sliderValue"> </div>
     </div>
-    {{ formfield_errors 'rating0' }}
+    {{ formfield_errors 'ratingSaving' }}
 </div>
 
 
@@ -221,8 +221,9 @@ Please rate these carbon footprints
 
 {% block scripts %}
 <meta charset="UTF-8">
+
 <script>
-    var currentBehaviors = "{{current_footprint_table}}"
+    var currentBehaviors = "{{current_footprint_table |safe }}"
     currentBehaviors = eval(currentBehaviors)
     var currentImages = "{{current_footprint_table_images}}"
     currentImages = eval(currentImages)
@@ -234,60 +235,100 @@ Please rate these carbon footprints
     
     random_behavior_order.forEach((random_behavior_order, i) => behaviorTypesDict[random_behavior_order] = behaviorTypes[i]);
     console.log(behaviorTypesDict)
+    
+    function renderBehavior(td, html) {
+        td.style.setProperty('font-weight', 'normal', 'important');
+        td.textContent = '';
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+
+        const appendFrom = (node, isBold) => {
+            node.childNodes.forEach(n => {
+                if (n.nodeType === 3) {
+                    const span = document.createElement('span');
+                    span.textContent = n.nodeValue;
+                    span.style.setProperty('font-weight', isBold ? 'bold' : 'normal', 'important');
+                    td.appendChild(span);
+                } else if (n.nodeType === 1) {
+                    const tag = n.tagName.toLowerCase();
+                    const nextBold = isBold || tag === '<b>' || tag === 'strong';
+                    appendFrom(n, nextBold);
+                }
+            });
+        };
+        appendFrom(tmp, false);
+    }
 
 
     fillTable = function () {
-        console.log("hello istarted")
-        for (let i = 0; i < currentBehaviors.length & i <currentImages.length ; i++) {
-           
-            thisCurrType = behaviorTypes[random_behavior_order[i]]
-            thisCurrBeh = currentBehaviors[i]
-            thisCurrImg = currentImages[i]
-            var mytable = document.getElementById("currentFootprintTable");
+        console.log("hello istarted");
 
-            // Create an empty <tr> element and add it to the 1st position of the table:
-            var row = mytable.insertRow(-1);
+        for (let i = 0; i < currentBehaviors.length && i < currentImages.length; i++) {
 
-            // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
+            const thisCurrType = behaviorTypes[random_behavior_order[i]];
+            const thisCurrBeh  = currentBehaviors[i];
+            const thisCurrImg  = currentImages[i];
 
-            // Add some text to the new cells:
-            cell1.innerHTML = thisCurrType;
-            cell1.classList.add("type")
-            cell2.textContent = thisCurrBeh;
-            cell2.classList.add("behavior")
-            cell2.style.setProperty('font-weight', 'normal', 'important');
+            const mytable = document.getElementById("currentFootprintTable");
+            const row = mytable.insertRow(-1);
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
 
-            imgString = `<img  style="width:55%; "  src=/static/global/images/` + thisCurrImg + `.png>`
-            cell3.innerHTML =  imgString
-            cell3.classList.add("image")
+            cell1.textContent = thisCurrType;
+            cell1.classList.add("type");
 
+            cell2.innerHTML = thisCurrBeh;
+            cell2.classList.add("behavior");
 
+            (function(td, html) {
+                td.textContent = '';
+                td.style.setProperty('font-weight', '400', 'important');
+                const parts = String(html).split(/(<\s*\/?\s*(?:b|strong)\s*>)/gi);
+                let isBold = false;
+                parts.forEach(part => {
+                    const lower = part.toLowerCase().replace(/\s+/g, '');
+                    if (lower === '<b>' || lower === '<strong>') {
+                        isBold = true;
+                    } else if (lower === '</b>' || lower === '</strong>') {
+                        isBold = false;
+                    } else if (part) {
+                        const span = document.createElement('span');
+                        span.textContent = part;
+                        span.style.setProperty('font-weight', isBold ? '700' : '400', 'important');
+                        td.appendChild(span);
+                    }
+                });
+            })(cell2, thisCurrBeh);
+
+            const imgString = `<img style="width:55%;" src="/static/global/images/${thisCurrImg}.png">`;
+            cell3.innerHTML = imgString;
+            cell3.classList.add("image");
         }
-     }
-
-    enablebtn = function () {
-        document.getElementById("nextst").disabled = false;
-    }
-
+    };
 
 
 
     window.onload = function () {
-        fillTable();
-        setTimeout(function () { enablebtn(); }, 3 * 1000);
+        fillTable();  
+
+        // -------------------------------
+        // (1) NEW: simple wait flag
+        // -------------------------------
+        const nextBtn = document.getElementById('nextst');   // <<< NEW
+        let waitOver = false;                                // <<< NEW
+
+        // replace your enablebtn() call
+        setTimeout(function () { waitOver = true; }, 1000);  // <<< CHANGED
 
         const formField   = document.querySelector('input[name="ratingSaving"]');
         const slider      = document.getElementById('carbonSlider');
         const sliderValue = document.getElementById('sliderValue');
 
-        // Start hidden/inactive
-        slider.classList.add('inactive');        // you already hide the thumb via CSS
+        slider.classList.add('inactive');
         slider.dataset.activated = "false";
-        sliderValue.classList.add('hidden');     // hide the number
-        formField.value = "";                    // keep form value empty until first move
+        sliderValue.classList.add('hidden');
+        formField.value = "";
 
         function renderValue() {
             if (slider.dataset.activated === "true") {
@@ -302,7 +343,7 @@ Please rate these carbon footprints
         function activateSlider() {
             if (slider.dataset.activated !== "true") {
                 slider.dataset.activated = "true";
-                slider.classList.remove('inactive'); // reveal thumb
+                slider.classList.remove('inactive');
             }
             renderValue();
             updateSliderColor(slider);
@@ -320,7 +361,6 @@ Please rate these carbon footprints
             slider.dispatchEvent(new Event('input', { bubbles: true }));
         }
 
-        // First click/tap: jump to that spot, activate, and show number
         slider.addEventListener('mousedown', function (e) {
             if (slider.dataset.activated !== "true") {
                 setSliderValueFromEvent(e);
@@ -334,20 +374,23 @@ Please rate these carbon footprints
             }
         }, { passive: true });
 
-        // Any input (keyboard/drag) also activates
+        // -----------------------------------
+        // (2) NEW: enable button when slider moves AND wait is over
+        // -----------------------------------
         slider.addEventListener('input', function() {
-            formField.value = slider.value;  // start syncing only after first input
+            formField.value = slider.value;
             activateSlider();
+
+            if (waitOver) { 
+                nextBtn.disabled = false;        // <<< NEW
+            }
         });
 
-        // Keep your formField→slider sync if you need it:
         formField.addEventListener('input', function() {
             slider.value = formField.value;
             activateSlider();
         });
 
-        // IMPORTANT: do NOT set sliderValue.textContent here.
-        // Also keep the bar gray until activated:
         updateSliderColor(slider);
     };
 
@@ -360,8 +403,7 @@ Please rate these carbon footprints
         slider.style.background =
             `linear-gradient(to right, #e8d13b 0%, #e8d13b ${value * 100}%, #cacaca ${value * 100}%, #cacaca 100%)`;
     }
-
-
 </script>
+
 
 {{ endblock }}

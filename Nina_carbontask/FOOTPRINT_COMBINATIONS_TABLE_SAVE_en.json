@@ -1,0 +1,102 @@
+
+{
+    "FootprintTable": [
+        [
+            "<b>change to only regional</b>", 
+            "no change (does not recycle)", 
+            "<b>change to heat pump </b>", 
+            "<b>change to vegetarian diet</b>",
+            "no change (flies once a year) ", 
+            "<b>change to bus</b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b>change to recycling </b>", 
+            "<b>change to heat pump </b>", 
+            "no change (meat-based diet)",
+            "<b>change to taking train </b>", 
+            "<b>change to bus</b>"
+        ],
+        [
+            "no change (regional and imported) ", 
+            "<b>change to recycling </b>", 
+            "<b>change to heat pump </b>", 
+            "<b>change to vegetarian diet</b>",
+            "no change (flies once a year) ", 
+            "<b>change to bus</b>"
+        ],
+        [
+           "no change (regional and imported) ", 
+            "no change (does not recycle) ", 
+            "no change (mains gas heating) ", 
+            "<b>change to vegetarian diet</b>",
+            "<b>change to taking train </b>", 
+            "<b>change to bus</b>"
+        ],
+        [
+            "no change (regional and imported) ", 
+            "no change (does not recycle) ", 
+            "<b>change to heat pump </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b>change to taking train </b>", 
+            "no change (personal car)"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "no change (does not recycle) ", 
+            "no change (mains gas heating) ", 
+            "no change (meat-based diet)",
+            "<b>change to taking train </b>", 
+            "<b>change to bus</b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b>change to recycling </b>", 
+            "no change (mains gas heating) ", 
+            "<b>change to vegetarian diet</b>",
+            "<b>change to taking train </b>", 
+            "no change (personal car)"
+        ],
+        [
+            "no change (regional and imported) ", 
+            "<b>change to recycling </b>", 
+            "<b>change to heat pump </b>", 
+            "no change (meat-based diet)",
+            "<b>change to taking train </b>", 
+            "no change (personal car)"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "no change (does not recycle) ", 
+            "<b>change to heat pump </b>", 
+            "no change (meat-based diet)",
+            "no change (flies once a year) ", 
+            "no change (personal car)"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b>change to recycling </b>", 
+            "no change (mains gas heating) ", 
+            "<b>change to vegetarian diet</b>",
+            "no change (flies once a year) ", 
+            "no change (personal car)"
+        ],
+        [
+            "no change (regional and imported) ", 
+            "<b>change to recycling </b>", 
+            "no change (mains gas heating) ", 
+            "no change (meat-based diet)",
+            "no change (flies once a year) ", 
+            "<b>change to bus</b>"
+        ],
+        [
+            "no change (regional and imported) ", 
+            "no change (does not recycle) ", 
+            "no change (mains gas heating) ", 
+            "no change (meat-based diet)",
+            "no change (flies once a year) ", 
+            "no change (personal car)"
+        ]
+       
+    ]
+}

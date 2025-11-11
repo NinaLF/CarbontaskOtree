@@ -155,7 +155,7 @@ Please rate these carbon footprints
 </style>
 
 <p style="text-align: left; font-size: 0.9rem;">
-    Round {{round_number}} out of 16
+    Round {{round_number}} out of 12
     <br>
 </p>
 
@@ -177,16 +177,16 @@ Please rate these carbon footprints
 <meta charset="UTF-8">
 
 <div > 
-    <p style=" font-size: 17px; font-weight: bold; "> To demonstrate that you are reading the text attentively, please move the range slider all the way to 5540. </b> 
+    <p style=" font-size: 17px; font-weight: bold; "> To demonstrate that you are reading the text attentively, please move the range slider all the way to 6.48. </b> 
      </p>
     <input type="text" name="attention_rating" class="form-field-small" style="background-color: white; border-color: white; color: white; background: transparent; border: none; color: transparent;" >
 
     <div class="slider-container">
         <div class="slider-labels">
-            <span>1820 <br> kg CO<sub>2</sub></span>
-            <span>5540 <br> kg CO<sub>2</sub></span>
+            <span>0.00 <br> tons CO<sub>2</sub></span>
+            <span>3.38 <br> tons CO<sub>2</sub></span>
         </div>
-        <input type="range" min="1820" max="5540" step="20"  class="slider" id="carbonSlider">
+        <input type="range" min="0.0" max="3.38" step="0.02"  class="slider" id="carbonSlider">
         <div class="current-value" id="sliderValue"> </div>
     </div>
     {{ formfield_errors 'attention_rating' }}

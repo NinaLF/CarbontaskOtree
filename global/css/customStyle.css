@@ -79,10 +79,9 @@
   
   
   
-  
-  
   td{
     padding: 15px 0;
+    font-weight: normal !important;
   }
   
   table.radiotable2 th:first-child,
@@ -90,15 +89,19 @@
   table.radiotable3 th:first-child,
   table.radiotable3 td:first-child  {
     text-align: center;
+    font-weight: normal !important;
+    
   }
   
   /* Alternating row colors */
   table.radiotable tr:nth-child(even) {
     background-color: #c0e3e0;
+    font-weight: normal !important;
   }
   
   table.radiotable2 {
     border-collapse: collapse;
+    font-weight: normal !important;
   }
   
   /* 
@@ -126,6 +129,10 @@
     border-width: 30px;
   }
   
+  #currentFootprintTable td:nth-child(2),
+  #currentFootprintTable .behavior {
+    font-weight: normal !important; /* normal */
+  }
   
   
   /*collapsible tables */
@@ -167,3 +174,18 @@
     transition: max-height 0.6s ease-out;
     -webkit-transition: max-height 0.6s ease-out;
   }
+
+  /* 1) Reset the whole 2nd column to normal */
+#currentFootprintTable td:nth-child(2) {
+  font-weight: 400 !important; /* normal */
+}
+
+/* 2) Allow bold only when you explicitly mark it in the JSON */
+#currentFootprintTable td:nth-child(2) b,
+#currentFootprintTable td:nth-child(2) strong {
+  font-weight: 700 !important; /* bold */
+}
+
+table#currentFootprintTable td:nth-child(2) { font-weight: 400 !important; }
+table#currentFootprintTable td:nth-child(2) b,
+table#currentFootprintTable td:nth-child(2) strong { font-weight: 700 !important; }

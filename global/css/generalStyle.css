@@ -136,3 +136,18 @@ th, td {
     border-color: #2bbbad;
 }
 
+
+/* 1) Reset the whole 2nd column to normal */
+#currentFootprintTable td:nth-child(2) {
+  font-weight: 400 !important; /* normal */
+}
+
+/* 2) Allow bold only when you explicitly mark it in the JSON */
+#currentFootprintTable td:nth-child(2) b,
+#currentFootprintTable td:nth-child(2) strong {
+  font-weight: 700 !important; /* bold */
+}
+
+table#currentFootprintTable td:nth-child(2) { font-weight: 400 !important; }
+table#currentFootprintTable td:nth-child(2) b,
+table#currentFootprintTable td:nth-child(2) strong { font-weight: 700 !important; }

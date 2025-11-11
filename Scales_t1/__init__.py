@@ -145,6 +145,13 @@ class Player(BasePlayer):
     policy_diet = make_field('Increase or introduce taxes on red meat (e.g., beef, lamb, veal).')
     policy_recycling = make_field( 	'Increase or introduce taxes on non-recyclable materials')
     policy_regional = make_field('Increase or introduce taxes on food products imported via plane')
+
+    efficacy_commute = make_field('Increase or introduce taxes on fuel for vehicles (i.e. diesel and gasoline)')
+    efficacy_flying = make_field('Increase or introduce taxes on air travel.')
+    efficacy_electricity = make_field('Increase or introduce taxes on fossil fuels as energy source (i.e. gas, oil, and coal)')  
+    efficacy_diet = make_field('Increase or introduce taxes on red meat (e.g., beef, lamb, veal).')
+    efficacy_recycling = make_field( 'Increase or introduce taxes on non-recyclable materials')
+    efficacy_regional = make_field('Increase or introduce taxes on food products imported via plane')
     
 
     nfc_1 = make_field('I would prefer complex to simple problem')
@@ -159,7 +166,8 @@ class Player(BasePlayer):
     numeracy2b = models.IntegerField(min=0, max=70,   blank=True)
     numeracy3 = models.IntegerField(min=0, max=100,   blank=True)
 
-    responsibility =make_likert10()
+    responsibility_individuals =make_likert10()
+    responsibility_system =make_likert10()
 
 
     UnitUnderstanding =  models.IntegerField( widget=widgets.RadioSelect,  label="How much difficulty did you have understanding and imagining 'kg' CO<sub>2</sub> ",
@@ -186,8 +194,8 @@ class BehaviorsTransport(Page):
     
 class Trust(Page):
     form_model = 'player'
-    form_fields= ['pit1', 'pit2', 'responsibility']
-    form_field_labels = ['local government', 'national government' , '']
+    form_fields= ['pit1', 'pit2', 'responsibility_individuals', 'responsibility_system']
+    form_field_labels = ['local government', 'national government' , '',  '']
 
 class NFC(Page):
     form_model = 'player'
@@ -220,13 +228,17 @@ class Numeracy3(Page):
     form_fields= ['numeracy3']
 
     def is_displayed(player: Player):
-        num2b = player.field_maybe_none('numeracy2b')
+        num2b = player.field_maybe_none('numeracyres2b')
         return num2b != 20
 
 class policyScales(Page):
     form_model = 'player'
     form_fields= ['policy_commute', 'policy_flying', 'policy_electricity', 'policy_diet', 'policy_recycling', 'policy_regional' ]
    
+class policyEfficacy(Page):
+    form_model = 'player'
+    form_fields= ['efficacy_commute', 'efficacy_flying', 'efficacy_electricity', 'efficacy_diet',  'efficacy_recycling',  'efficacy_regional' ]
+    
 class unit(Page):
     form_model = 'player'
     form_fields= ['UnitUnderstanding' , 'generalFeedback']
@@ -260,11 +272,8 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood,
-               policyScales, BehaviorsTransport, BehaviorsFood, Trust,NFC,  Numeracy, Numeracy2a, Numeracy2b, Numeracy3, 
+               policyEfficacy, policyScales, #  BehaviorsTransport, BehaviorsFood,
+                 Trust, NFC, 
+                  #  Numeracy, Numeracy2a, Numeracy2b, Numeracy3, 
                unit, End 
-    # Belief,  Belief1, CCEmotion,
-     #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
-             #    PITrust, IBValues ,
-              #   policyScales,
-               #  DemographicsEnd
                  ]

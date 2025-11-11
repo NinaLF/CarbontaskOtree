@@ -12,7 +12,7 @@
 {% block content %}
 <p style="font-size: 18px; font-weight: bold;"> How much do you trust these actors in climate change ? </p>
 <br>
-<p style="font-weight: bold; line-height: normal;"> Local government:</p>
+<p style="font-weight: bold; line-height: normal; padding-bottom: 0%; "> Local government:
 <table  style="table-layout: fixed; width: 100%; line-height: normal;">
     <tbody>
         <tr > <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
@@ -23,7 +23,7 @@
             <th class="radio-column"> </th> 
             <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Very much </th> 
     </tr>
-
+</p>
 
     <tr style="background-color: rgb(238, 238, 238)" >
        
@@ -66,18 +66,40 @@
     <tr> 
         <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Not at all</th> 
             <th class="radio-column"> </th> 
-            <th style="font-weight:normal; text-align: center;"  colspan="4" id={{form.responsibility.id}} name={{form.responsibility.name}}>  </th>
+            <th style="font-weight:normal; text-align: center;"  colspan="4" >  </th>
             <th class="radio-column"> </th> 
             <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Very much </th> 
     </tr>
     <tr style="background-color: rgb(238, 238, 238)">
        
-        {{ for choice in form.responsibility }}
+        {{ for choice in form.responsibility_individuals }}
         <td>{{ choice }}</td>
         {{ endfor }}
     </tr>
 </tbody>
 </table>
+<br><br> 
+<p style="font-size: 18px; font-weight: bold;"> To what extent do you feel a it is the responsibility of governments to try to reduce climate change?</p>
+
+<table style="table-layout: fixed; width: 100%;">
+    <tbody>
+        <tr> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td></tr>
+    <tr> 
+        <th class="radio-column"  colspan="2" style="text-align: left; font-weight:normal;"> Not at all</th> 
+            <th class="radio-column"> </th> 
+            <th style="font-weight:normal; text-align: center;"  colspan="4" >  </th>
+            <th class="radio-column"> </th> 
+            <th  colspan="2" style="text-align: right; font-weight:normal;"  class="radio-column"> Very much </th> 
+    </tr>
+    <tr style="background-color: rgb(238, 238, 238)">
+       
+        {{ for choice in form.responsibility_system }}
+        <td>{{ choice }}</td>
+        {{ endfor }}
+    </tr>
+</tbody>
+</table>
+
 
 <div class="next-btn radiotable">  
     <div style="float: right; background-color:  #26a69a;  border-color: #26a69a; border-radius: 0%;  background-color: #26a69a; text-transform: uppercase; color: white; box-shadow:  slategray ;">

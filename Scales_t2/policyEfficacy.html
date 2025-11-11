@@ -10,9 +10,12 @@ Some questions on Policies
 
 {% block content %}
 
-<p> <br>  
-      <br>
-    Please indicate whether you <b>strongly oppose or strongly support</b> the following policies.
+<p> Thank you for your answers so far. <br> <br>
+
+    In the following, we will ask for your views on different public policies. Please answer them as truthfully as possible. <br>
+    Many countries have introduced new policies to reduce the risk of climate change. This includes policies that require or create incentives for reductions in greenhouse gas emissions across domains and actors. <br> <br>
+    <br>
+    Please indicate <b> how effective you judge these policies to be at reducing emissions</b>.
     <br>
     <br>
 </p>
@@ -24,7 +27,7 @@ Some questions on Policies
     <button class="accordion" id={{field.id}} name={{field.name}}>  {{field.label}}  </button>
     <div class="accpanel">
         <table style="width:90%; margin-left: auto; margin-right: auto;">
-            <tr style="padding: 5px;"> <td colspan="3" style="text-align: left; padding:0"> strongly oppose </td>  <td colspan="4"> </td>  <td colspan="3" style="text-align: right;"> strongly support </td> </tr>
+            <tr style="padding: 5px;"> <td colspan="3" style="text-align: left; padding:0"> does not reduce <br> emissions at all </td>  <td colspan="4"> </td>  <td colspan="3" style="text-align: right;"> reduces emissions <br> very effectively </td> </tr>
 
             <tr >
                 {{ for choice in field }}            
@@ -49,7 +52,7 @@ Some questions on Policies
 <script>
     var acc = document.getElementsByClassName("accordion");
     var maxid= 6
-    var idarray = ['id_policy_commute', 'id_policy_flying', 'id_policy_electricity', 'id_policy_diet', 'id_policy_recycling', 'id_policy_regional']
+    var idarray = ['id_efficacy_commute', 'id_efficacy_flying', 'id_efficacy_electricity', 'id_efficacy_diet', 'id_efficacy_recycling', 'id_efficacy_regional']
 
     function mark_answered(element){
             nameQuestion = element.children()[0].name
@@ -111,7 +114,7 @@ Some questions on Policies
         $(document).ready(function () {
 
             render_questions()
-            open_individual_question("id_policy_commute", false)
+            open_individual_question("id_efficacy_commute", false)
         for (let i = 0; i < js_vars.form_fields.length; i++) {   
             prop= js_vars.form_fields[i] + 'Label'
             label = js_vars.form_field_labels[i]

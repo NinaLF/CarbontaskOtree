@@ -2,133 +2,101 @@
 {
     "FootprintTable": [
         [
-            "<b>vegetarian diet</b>", 
-            "<b>air dry laundry</b>",
-            "<b> recycles</b>",
-            "<b>only regional</b>", 
-            "<b>by personal car</b>", 
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>vegetarian diet</b>", 
-            "<b>air dry laundry</b>", 
-            "<b> recycles </b>",
-            "<b>regional and imported</b>", 
-            "<b>by bus</b>",
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>meat-based diet</b>", 
-            "<b>air dry laundry</b>", 
-            "<b> does not recycle</b>",
-            "<b>regional and imported</b>", 
-            "<b>by personal car</b>",
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>meat-based diet</b>", 
-            "<b>air dry laundry</b>", 
-            "<b> does not recycle</b>",
-            "<b>only regional</b>",
-            "<b>by bus</b>",
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>vegetarian diet</b>", 
-            "<b>use dryer</b>",
-            "<b> does not recycle</b>",
-            "<b>only regional</b>",
-            "<b>by personal car</b>",
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>vegetarian diet</b>", 
-            "<b>air dry laundry</b>",
-            "<b>  does not recycle</b>",
-            "<b>regional and imported</b>",
-            "<b>by personal car</b>",
-            " <b>flies twice a year</b>"
-        ],
-        [
-            "<b>vegetarian diet</b>", 
-            "<b>use dryer</b>",
-            "<b>  does not recycle</b>",
-            "<b>regional and imported</b>",
-            "<b>by bus</b>",
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>meat-based diet</b>", 
-            "<b>use dryer</b>",
-            "<b> recycles</b>",
-            "<b>regional and imported</b>",
-            "<b>by personal car</b>",
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>vegetarian diet</b>", 
-            "<b>air dry laundry</b>",
-            "<b>  does not recycle</b>",
-            "<b>only regional</b>",
-            "<b>by bus</b>",
-            " <b>flies twice a year</b>"
-        ],
-        [
-            "<b>meat-based diet</b>", 
-            "<b>air dry laundry</b>",
-            "<b> recycles</b>",
-            "<b>only regional</b>",
-            "<b>by personal car</b>",
-            " <b>flies twice a year</b>"
-        ],
-        [
-            "<b>meat-based diet</b>", 
-            "<b>use dryer</b>", 
-            "<b> recycles</b>",
-            "<b>only regional</b>",
-            "<b>by bus</b>", 
-            "<b>takes the train</b> "
-        ],
-        [
-            "<b>meat-based diet</b>", 
-            "<b>air dry laundry</b>",
-            "<b> recycles</b>",
-            "<b>regional and imported</b>",
-            "<b>by bus</b>", 
-            " <b>flies twice a year</b>"
-        ],
-        [
-
+            "<b> only regional </b>", 
+            "<b> does not recycle </b>", 
+            "<b>heat pump </b>", 
             "<b>vegetarian diet</b>",
-            "<b>use dryer</b>",
-            "<b> recycles</b>",
-            "<b>regional and imported</b>",
-            "<b>by personal car</b>", 
-            " <b>flies twice a year</b>"
+            "<b>flies once a year </b>", 
+            "<b> by bus</b>"
         ],
         [
+            "<b> only regional </b>", 
+            "<b> recycles </b>", 
+            "<b>heat pump </b>", 
+            "<b>meat-based diet</b>",
+            "<b> takes the train </b>", 
+            "<b> by bus</b>"
+        ],
+        [
+            "<b> regional and imported </b>", 
+            "<b> recycles </b>", 
+            "<b>heat pump </b>", 
             "<b>vegetarian diet</b>",
-            "<b>use dryer</b>",
-            "<b> recycles</b>",
-            "<b>only regional</b>",
-            "<b>by bus</b>", 
-            " <b>flies twice a year</b>"
+            "<b>flies once a year </b>", 
+            "<b> by bus</b>"
         ],
         [
-            "<b>meat-based diet</b>",
-            "<b>use dryer</b>",
-            "<b>  does not recycle</b>",
-            "<b>only regional</b>",
-            "<b>by personal car</b>",
-            " <b>flies twice a year</b>"
+           "<b> regional and imported </b>", 
+            "<b> does not recycle </b>", 
+            "<b>mains gas heating </b>", 
+            "<b>vegetarian diet</b>",
+            "<b> takes the train </b>", 
+            "<b> by bus</b>"
         ],
         [
+            "<b> regional and imported </b>", 
+            "<b> does not recycle </b>", 
+            "<b>heat pump </b>", 
+            "<b>vegetarian diet</b>",
+            "<b> takes the train </b>", 
+            "<b> by personal car </b>"
+        ],
+        [
+            "<b> only regional </b>", 
+            "<b> does not recycle </b>", 
+            "<b>mains gas heating </b>", 
             "<b>meat-based diet</b>",
-            "<b>use dryer</b>",
-            "<b>  does not recycle</b>",
-            "<b>regional and imported</b>",
-            "<b>by bus</b>", 
-            " <b>flies twice a year</b>"
+            "<b> takes the train </b>", 
+            "<b> by bus</b>"
+        ],
+        [
+            "<b> only regional </b>", 
+            "<b> recycles </b>", 
+            "<b>mains gas heating </b>", 
+            "<b>vegetarian diet</b>",
+            "<b> takes the train </b>", 
+            "<b> by personal car </b>"
+        ],
+        [
+            "<b> regional and imported </b>", 
+            "<b> recycles </b>", 
+            "<b>heat pump </b>", 
+            "<b>meat-based diet</b>",
+            "<b> takes the train </b>", 
+            "<b> by personal car </b>"
+        ],
+        [
+            "<b> only regional </b>", 
+            "<b> does not recycle </b>", 
+            "<b>heat pump </b>", 
+            "<b>meat-based diet</b>",
+            "<b>flies once a year </b>", 
+            "<b> by personal car </b>"
+        ],
+        [
+            "<b> only regional </b>", 
+            "<b> recycles </b>", 
+            "<b>mains gas heating </b>", 
+            "<b>vegetarian diet</b>",
+            "<b>flies once a year </b>", 
+            "<b> by personal car </b>"
+        ],
+        [
+            "<b> regional and imported </b>", 
+            "<b> recycles </b>", 
+            "<b>mains gas heating </b>", 
+            "<b>meat-based diet</b>",
+            "<b>flies once a year </b>", 
+            "<b> by bus</b>"
+        ],
+        [
+            "<b> regional and imported </b>", 
+            "<b> does not recycle </b>", 
+            "<b>mains gas heating </b>", 
+            "<b>meat-based diet</b>",
+            "<b>flies once a year </b>", 
+            "<b> by personal car </b>"
         ]
+       
     ]
 }

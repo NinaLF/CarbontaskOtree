@@ -59,6 +59,13 @@ class Player(BasePlayer):
     policy_diet = make_field('Increase or introduce taxes on red meat (e.g., beef, lamb, veal).')
     policy_recycling = make_field( 	'Increase or introduce taxes on non-recyclable materials')
     policy_regional = make_field('Increase or introduce taxes on food products imported via plane')
+
+    efficacy_commute = make_field('Increase or introduce taxes on fuel for vehicles (i.e. diesel and gasoline)')
+    efficacy_flying = make_field('Increase or introduce taxes on air travel.')
+    efficacy_electricity = make_field('Increase or introduce taxes on fossil fuels as energy source (i.e. gas, oil, and coal)')  
+    efficacy_diet = make_field('Increase or introduce taxes on red meat (e.g., beef, lamb, veal).')
+    efficacy_recycling = make_field( 'Increase or introduce taxes on non-recyclable materials')
+    efficacy_regional = make_field('Increase or introduce taxes on food products imported via plane')
     
 
 
@@ -72,7 +79,8 @@ class Player(BasePlayer):
                                               choices=[['1', 'not much at all (1)'], ['2', '2'],['3', '3'],['4', '4'],
                                                        ['5', '5'], ['6', '6'],  ['7', 'A great deal (7)'] ]   )
     
-    responsibility =make_likert10()
+    responsibility_individuals =make_likert10()
+    responsibility_system =make_likert10()
 
 
 
@@ -86,10 +94,14 @@ class Player(BasePlayer):
 class policyScales(Page):
     form_model = 'player'
     form_fields= ['policy_commute', 'policy_flying', 'policy_electricity', 'policy_diet', 'policy_recycling', 'policy_regional' ]
+
+class policyEfficacy(Page):
+    form_model = 'player'
+    form_fields= ['efficacy_commute', 'efficacy_flying', 'efficacy_electricity', 'efficacy_diet',  'efficacy_recycling',  'efficacy_regional' ]
    
 class unit(Page):
     form_model = 'player'
-    form_fields= [ 'subjectiveKnowledgePost', 'generalFeedback', 'responsibility']
+    form_fields= [ 'subjectiveKnowledgePost', 'generalFeedback', 'responsibility_individuals', 'responsibility_system']
     
    
 
@@ -100,7 +112,7 @@ class End(Page):
 
 
 page_sequence = [ # BehaviorsFlying,  BehaviorsFood2,BehaviorsTransport, BehaviorsFood, BehaviorLaundry,
-                  policyScales, unit, End 
+                  policyEfficacy, policyScales, unit, End 
     # Belief,  Belief1, CCEmotion,
      #            BehaviorsFood, BehaviorsFood2, BehaviorsTransport, BehaviorsFlying, 
              #    PITrust, IBValues ,

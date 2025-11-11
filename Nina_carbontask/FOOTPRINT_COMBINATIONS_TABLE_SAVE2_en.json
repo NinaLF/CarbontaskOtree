@@ -1,0 +1,102 @@
+
+{
+    "FootprintTable": [
+        [
+            "<b>change to only regional</b>", 
+            "<b>  </b>", 
+            "<b>change to heat pump </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b>  </b>", 
+            "<b> change to bus</b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b> change to recycling </b>", 
+            "<b>change to heat pump </b>", 
+            "<b> </b>",
+            "<b> change to taking train </b>", 
+            "<b> change to bus</b>"
+        ],
+        [
+            "<b>    </b>", 
+            "<b> change to recycling </b>", 
+            "<b>change to heat pump </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b>  </b>", 
+            "<b> change to bus</b>"
+        ],
+        [
+           "<b>    </b>", 
+            "<b>  </b>", 
+            "<b>      </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b> change to taking train </b>", 
+            "<b> change to bus</b>"
+        ],
+        [
+            "<b>    </b>", 
+            "<b>  </b>", 
+            "<b>change to heat pump </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b> change to taking train </b>", 
+            "<b>       </b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b>  </b>", 
+            "<b>      </b>", 
+            "<b> </b>",
+            "<b> change to taking train </b>", 
+            "<b> change to bus</b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b> change to recycling </b>", 
+            "<b>      </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b> change to taking train </b>", 
+            "<b>       </b>"
+        ],
+        [
+            "<b>    </b>", 
+            "<b> change to recycling </b>", 
+            "<b>change to heat pump </b>", 
+            "<b> </b>",
+            "<b> change to taking train </b>", 
+            "<b>       </b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b>  </b>", 
+            "<b>change to heat pump </b>", 
+            "<b> </b>",
+            "<b>  </b>", 
+            "<b>       </b>"
+        ],
+        [
+            "<b>change to only regional</b>", 
+            "<b> change to recycling </b>", 
+            "<b>      </b>", 
+            "<b>change to vegetarian diet</b>",
+            "<b>  </b>", 
+            "<b>       </b>"
+        ],
+        [
+            "<b>    </b>", 
+            "<b> change to recycling </b>", 
+            "<b>      </b>", 
+            "<b> </b>",
+            "<b>  </b>", 
+            "<b> change to bus</b>"
+        ],
+        [
+            "<b>    </b>", 
+            "<b>  </b>", 
+            "<b>      </b>", 
+            "<b> </b>",
+            "<b>  </b>", 
+            "<b>       </b>"
+        ]
+       
+    ]
+}

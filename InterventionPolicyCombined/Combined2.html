@@ -1,0 +1,489 @@
+{% block styles %}
+<style>
+  body { font-family: Arial, sans-serif; }
+  h1 { color:#000; font-size: 34px; margin: 10px 0 18px; }
+
+  /* Outer 2-up layout: left = Individual, right = Policy */
+  .twocol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    align-items: start;
+    min-width: 1600px;
+  }
+  @media (max-width: 980px) {
+    .twocol { grid-template-columns: 1fr; max-width: 1500px; }
+  }
+  .panel {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 14px 16px 18px;
+    background: #fff;
+  }
+  .panel h2 { font-weight: normal; font-size: 22px; margin: 4px 0 10px; }
+  .panel p  { font-size: 19px; line-height: 1.45; margin: 0 0 8px; }
+
+  .container { display:flex; flex-direction:row; gap: 12px; }
+  .left-column  { flex: 0 0 66%; }
+  .right-column { flex: 1; display:flex; flex-direction:column; align-items:center; }
+
+  .behavior-container { margin-bottom: 12px; font-size: 17px; }
+  .behavior-label { display:block; margin-bottom: 6px; line-height: 1.2; }
+  select { width: 100%; padding: 6px 8px; font-size: 17px; }
+
+  /* Bars */
+  .progress-bar-container {
+    width: 180px; height: 360px; background:#fff;
+    border-top:3px solid #000; border-bottom:3px solid #000;
+    border-left:none; border-right:none; border-radius:6px;
+    overflow:hidden; display:flex; flex-direction:column-reverse;
+    margin-top: 8px;
+  }
+  .progress-bar-section { width:100%; height:0%; transition:height .35s; }
+
+  /* Colors (match indices 1..6) */
+  .section-1 { background:#CBE4F9; border:1px solid rgba(65,64,64,.9);} /* Diet / Food policy */
+  .section-2 { background:#CDF5F6; border:.4px solid rgba(65,64,64,.9);} /* Laundry / Electricity */
+  .section-3 { background:#F9D8D6; border:1px solid rgba(65,64,64,.9);}  /* Recycling / Waste */
+  .section-4 { background:#EFF9DA; border:.4px solid rgba(65,64,64,.9);} /* Food origin / Imports */
+  .section-5 { background:#F9EBDF; border:.4px solid rgba(65,64,64,.9);} /* Commute / Road fuels */
+  .section-6 { background:#D6CDEA; border:1px solid rgba(65,64,64,.9);}  /* Vacation / Aviation */
+
+  /* Colors (match indices 1..6) */
+  .sel-diet { background:#CBE4F9; border:1px solid rgba(65,64,64,.9);} /* Diet / Food policy */
+  .sel-electricity { background:#CDF5F6; border:.4px solid rgba(65,64,64,.9);} /* Laundry / Electricity */
+  .sel-recyling { background:#F9D8D6; border:1px solid rgba(65,64,64,.9);}  /* Recycling / Waste */
+  .sel-food { background:#EFF9DA; border:.4px solid rgba(65,64,64,.9);} /* Food origin / Imports */
+  .sel-commute { background:#F9EBDF; border:.4px solid rgba(65,64,64,.9);} /* Commute / Road fuels */
+  .sel-vacation { background:#D6CDEA; border:1px solid rgba(65,64,64,.9);}  /* Vacation / Aviation */
+
+  .readout { font-size: 26px; margin-top: 6px; text-align:center; font-weight: bold;}
+
+  /* Errors */
+  .error-panel {
+    border:1px solid #d33; background:#ffe9e9; color:#900;
+    padding:10px; border-radius:6px; margin:10px 0;
+  }
+  .field-errors { color:#b00; font-size: 13px; margin-top: 6px; }
+  .field-errors ul { margin: 4px 0 0 18px; }
+
+  @media (max-width:760px) {
+    .container { flex-direction: column; }
+    .progress-bar-container { width: 140px; height: 300px; }
+    .readout { font-size: 18px; }
+    select { font-size: 14px; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>Which changes have the largest impact on the individual and system level?</h1>
+
+<p style="font-size: 21px;"> 
+        By clicking on the boxes you can select whether different behavior changes are made and carbon taxes put in place.<br> 
+        The associated total emission savings will be updated and shown with the bars on your screen. <br> <br> 
+        The bars will fill with different colors based on the behavior changes and policies selected, each representing the amount of carbon emissions that could be saved.<br><br> 
+        <b> Please explore: </b> you can for example try finding the lowest possible carbon footprint, or the highest.<br> 
+</p>
+
+<div class="twocol">
+
+  <!-- ========== PANEL A: INDIVIDUAL ========== -->
+  <div class="panel" id="panel-indiv">
+    <h2>Individual behaviors → Annual reductions from individual changes (tons CO₂e)</h2>
+    <p>You can select behavior changes by clicking on each behavior. 
+        The bar updates the <b>total estimated annual emission savings</b>, added up for all selected behavior changes.<br> 
+    </p>
+
+    <div class="container">
+      <div class="left-column">
+        <div id="form-indiv">
+
+          <!-- 1 Diet (choices must match Player.diet exactly) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Diet (average calories, 1 year)</label>
+            <select name="diet" class="sel-indiv"  style="background-color: #CBE4F9;" data-index="1">
+              <option value="Meat-based" data-emissions="0.0">Meat-based</option>
+              <option value="Vegetarian"  data-emissions="0.868">Change to vegetarian</option>
+              
+            </select>
+          </div>
+
+          <!-- 2 Laundry / home energy (mapped to Player.laundry choices) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Space heating & hot water (for 1 person) </label>
+            <select name="laundry" class="sel-indiv" style="background-color: #CDF5F6;" data-index="2">
+              <option value="mains gas heating"   data-emissions="0">mains gas heating</option>
+              <option value="via heat pump" data-emissions="0.936">change to heat pump </option>
+              
+            </select>
+          </div>
+
+          <!-- 3 Recycling -->
+          <div class="behavior-container">
+            <label class="behavior-label">Recycling (paper, glass, metals; 1 year)</label>
+            <select name="recycling" class="sel-indiv"  style="background-color: #F9D8D6;"  data-index="3">
+              <option value="Does Not Recycle" data-emissions="0.0">No recycling </option>
+              <option value="Recycles" data-emissions="0.0575">Change to recycling</option>
+            </select>
+          </div>
+
+          <!-- 4 Food origin -->
+          <div class="behavior-container">
+            <label class="behavior-label">Food origin (1 year)</label>
+            <select name="food" class="sel-indiv" style="background-color: #EFF9DA;"  data-index="4">
+              <option value="Regional and Imported" data-emissions="0.0">More than 3/4 imported</option>
+              <option value="Only Regional" data-emissions="0.44">Change to more than 3/4 regional</option>
+
+            </select>
+          </div>
+
+          <!-- 5 Commute -->
+          <div class="behavior-container">
+            <label class="behavior-label">Commute (12.5 miles/day, 5 days/week, 48 weeks)</label>
+            <select name="commute" class="sel-indiv" style="background-color: #F9EBDF;"  data-index="5">
+              
+              <option value="By Bus" data-emissions="1.124">Change to bus</option>
+              <option value="By Car" data-emissions="0.0">By personal car</option>
+            </select>
+          </div>
+
+          <!-- 6 Vacation -->
+          <div class="behavior-container">
+            <label class="behavior-label">Vacation travel</label>
+            <select name="vacation" class="sel-indiv" style="background-color: #D6CDEA;"  data-index="6">
+              <option value="Flies Twice a Year"       data-emissions="0.0">1× round-trip flight (3–6h)</option>
+              <option value="via train (does not fly)" data-emissions="0.6134">Change to train travel </option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="readout" style="font-size: 23px; line-height:25px; font-weight: bold;" ><span id="indiv-top"  style="font-size: 23px; line-height:25px; font-weight: bold;">0.00 </span> tons CO₂ saved</div>
+        <div id="indiv-trees" class="tree-heading" style="font-size: 23px; line-height:25px; text-align:center; " > ≈ x times higher than the level needed to keep warming well below 2 °C</div>
+
+        <div class="progress-bar-container" id="bar-indiv">
+
+          <!-- Order 6..1 so it stacks nicely bottom-up -->
+          <div class="progress-bar-section section-6" id="indiv-sec-6"></div>
+          <div class="progress-bar-section section-5" id="indiv-sec-5"></div>
+          <div class="progress-bar-section section-4" id="indiv-sec-4"></div>
+          <div class="progress-bar-section section-3" id="indiv-sec-3"></div>
+          <div class="progress-bar-section section-2" id="indiv-sec-2"></div>
+          <div class="progress-bar-section section-1" id="indiv-sec-1"></div>
+        </div>
+
+        <div class="readout" id="indiv-bottom">0.00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PANEL B: POLICY ========== -->
+  <div class="panel" id="panel-policy">
+    <h2>Carbon taxes → Collective annual reductions from policy changes (MtCO₂)</h2>
+    <p>You can select which policies are implemented by clicking on each behavior.
+        The bar updates the potential <b>total estimated emissions savings</b>, added up for all selected policies. <br>
+    </p>
+
+    <div class="container">
+      <div class="left-column">
+        <div id="form-policy">
+
+          <!-- 1 Food policy (pairs with Diet) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Food (meat & dairy)</label>
+            <select name="food_policy" class="sel-policy"  style="background-color: #CBE4F9;" data-index="1">
+              <option value="Implemented" data-savings="13600000">Implemented</option>
+              <option value ="No tax"      data-savings="0">No tax</option>
+              
+            </select>
+          </div>
+
+          <!-- 2 Electricity (pairs with Laundry) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Electricity (power generation)</label>
+            <select name="electricity" class="sel-policy" style="background-color: #CDF5F6;" data-index="2">
+              <option value="No tax"      data-savings="0">No tax</option>
+              <option value="Implemented" data-savings="22400000">Implemented</option>
+              
+              
+            </select>
+          </div>
+
+          <!-- 3 Waste (pairs with Recycling) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Waste (landfill)</label>
+            <select name="waste" class="sel-policy" style="background-color: #F9D8D6;"  data-index="3">
+              <option value="Implemented" data-savings="600000">Implemented</option>
+              <option value="No tax"      data-savings="0">No tax</option>
+
+            </select>
+          </div>
+
+          <!-- 4 Imports (pairs with Food origin) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Imported foods (food miles)</label>
+            <select name="imports" class="sel-policy"  style="background-color: #EFF9DA;"  data-index="4">
+              <option value="No tax"      data-savings="0">No tax</option>
+              <option value="Implemented" data-savings="1500000">Implemented</option>
+            </select>
+          </div>
+
+          <!-- 5 Road fuels (pairs with Commute) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Road fuels (petrol & diesel)</label>
+            <select name="road_fuels" class="sel-policy" style="background-color: #F9EBDF;"  data-index="5">
+              <option value="Implemented" data-savings="23500000">Implemented</option>
+              <option value="No tax"      data-savings="0">No tax</option>
+            
+            </select>
+          </div>
+
+          <!-- 6 Aviation (pairs with Vacation) -->
+          <div class="behavior-container">
+            <label class="behavior-label">Aviation (air travel)</label>
+            <select name="aviation" class="sel-policy" style="background-color: #D6CDEA;"  data-index="6">
+              <option value="Implemented" data-savings="4000000">Implemented</option>
+              <option value="No tax"      data-savings="0">No tax</option>
+
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div style="font-size: 23px; line-height:25px; font-weight: bold; " class="readout"><span id="policy-top">0.0</span> tons CO₂ saved </div>
+        <div style="font-size: 23px; line-height:25px; text-align: center; "  id="policy-days" class="uk-days-heading">click on the behaviors to find out</div>
+
+
+        <div class="progress-bar-container" id="bar-policy">
+          <div class="progress-bar-section section-6" id="policy-sec-6"></div>
+          <div class="progress-bar-section section-5" id="policy-sec-5"></div>
+          <div class="progress-bar-section section-4" id="policy-sec-4"></div>
+          <div class="progress-bar-section section-3" id="policy-sec-3"></div>
+          <div class="progress-bar-section section-2" id="policy-sec-2"></div>
+          <div class="progress-bar-section section-1" id="policy-sec-1"></div>
+        </div>
+
+        <div class="readout" id="policy-bottom">0.0</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Next button -->
+<div>
+  <button id="nextst" style="float:right; margin-top: 2vh;" disabled class="otree-btn-next btn btn-primary">Next</button>
+</div>
+
+<script>
+  /* ---------- INDIVIDUAL BAR ---------- */
+  const indivSections = [
+    null,
+    document.getElementById('indiv-sec-1'),
+    document.getElementById('indiv-sec-2'),
+    document.getElementById('indiv-sec-3'),
+    document.getElementById('indiv-sec-4'),
+    document.getElementById('indiv-sec-5'),
+    document.getElementById('indiv-sec-6')
+  ];
+  const indivTop = document.getElementById('indiv-top');
+  const indivBottom = document.getElementById('indiv-bottom');
+
+  const indivTrees = document.getElementById('indiv-trees');     // NEW
+  const TREES_PER_TON = 6.4795;           
+
+  function updateIndividual() {
+    const selects = document.querySelectorAll('#panel-indiv .sel-indiv');
+    const vals = [0,0,0,0,0,0]; let total_indiv = 0;
+
+    selects.forEach(sel => {
+      const idx = parseInt(sel.dataset.index, 10);
+      const v = parseFloat(sel.selectedOptions[0]?.dataset?.emissions || '0');
+      if (idx >= 1 && idx <= 6 && Number.isFinite(v)) { vals[idx-1] = v; total_indiv += v; }
+    });
+
+    const indivMax = 4.0389;
+    total_indiv = Math.max(0, Math.min(indivMax, total_indiv));
+    indivTop.textContent = total_indiv.toFixed(2);
+    indivBottom.textContent = total_indiv.toFixed(2);
+
+    if (indivTrees) {
+      if (total_indiv > 0) {
+        const seedlings = (total_indiv / TREES_PER_TON).toFixed(2)*100;
+        indivTrees.textContent = ` ≈ ${seedlings.toLocaleString()}% reduction of individual carbon footprint)`;
+      } else {
+        indivTrees.textContent = ` ≈ % reduction of individual carbon footprint `;
+      }
+    }
+
+
+
+    const totalHeight = (total_indiv / indivMax) * 100;
+    const sumVals = vals.reduce((a,b)=>a+b,0);
+    for (let i=1;i<=6;i++) {
+      const sec = indivSections[i];
+      const part = (sumVals>0 && totalHeight>0) ? (vals[i-1]/sumVals)*totalHeight : 0;
+      if (sec) sec.style.height = part + '%';
+    }
+  }
+
+  /* ---------- POLICY BAR ---------- */
+  const policySections = [
+    null,
+    document.getElementById('policy-sec-1'),
+    document.getElementById('policy-sec-2'),
+    document.getElementById('policy-sec-3'),
+    document.getElementById('policy-sec-4'),
+    document.getElementById('policy-sec-5'),
+    document.getElementById('policy-sec-6')
+  ];
+  const policyTop = document.getElementById('policy-top');
+  const policyBottom = document.getElementById('policy-bottom');
+  const policyDays = document.getElementById('policy-days');   // NEW
+  const DAILY_UK_EMISSIONS_MT = 125000000 ;  
+  
+  // UK number formatter: 191,000,000
+  const fmtUK0 = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
+
+  function updatePolicy() {
+    const selects = document.querySelectorAll('#panel-policy .sel-policy');
+    const vals = [0,0,0,0,0,0]; 
+    let total = 0;
+
+    selects.forEach(sel => {
+      const idx = parseInt(sel.dataset.index, 10);
+      const v = parseFloat(sel.selectedOptions[0]?.dataset?.savings || '0');
+      if (idx >= 1 && idx <= 6 && Number.isFinite(v)) {
+        vals[idx - 1] = v;
+        total += v;
+      }
+    });
+
+    const policyMax = 65600000; // 6.8 + 11.1 + 0.3 + 0.7 + 11.8 + 2.0
+    total = Math.max(0, Math.min(policyMax, total));
+
+    // Display with commas
+    policyTop.textContent = fmtUK0.format(total);
+    policyBottom.textContent = fmtUK0.format(total);
+
+    // (rest of your update logic for bars/sections can remain unchanged)
+  
+
+    if (policyDays) {
+      if (total > 0) {
+        // DAILY_UK_EMISSIONS_MT should be the total UK emissions (MtCO₂) for this comparison
+        const percent = (total / DAILY_UK_EMISSIONS_MT) * 100;
+        policyDays.textContent = `≈ ${percent.toFixed(2)}% of total emission caused by consumers in UK`;
+      } else {
+        policyDays.textContent = 'click on the behaviors to find out';
+      }
+    }
+
+    const totalHeight = (total / policyMax) * 100;
+    const sumVals = vals.reduce((a,b)=>a+b,0);
+    for (let i=1;i<=6;i++) {
+      const sec = policySections[i];
+      const part = (sumVals>0 && totalHeight>0) ? (vals[i-1]/sumVals)*totalHeight : 0;
+      if (sec) sec.style.height = part + '%';
+    }
+  }
+
+  /* ---------- LINKING (individual -> policy) ---------- */
+  
+  // Pairing kept for future use / clarity (not used to sync levels anymore)
+   const linkMap = {
+    diet:      'food_policy',
+    laundry:   'electricity',
+    recycling: 'waste',
+    food:      'imports',
+    commute:   'road_fuels',
+    vacation:  'aviation',
+  };
+
+  // Track if a policy select was manually changed by the user (so we don't override it)
+  const policyTouched = new Map();
+
+  function getPolicySelectByName(policyName) {
+    return document.querySelector(`#form-policy select.sel-policy[name="${policyName}"]`);
+  }
+
+  // Set policy to its first <option> (HTML order), dispatch change if it actually changed
+  function setPolicyToFirstOption(sel) {
+    if (!sel) return;
+    const prev = sel.selectedIndex;
+    // Force first option (index 0)
+    sel.selectedIndex = 0;
+    if (sel.selectedIndex !== prev) {
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  // Called when an individual <select> changes
+  function onIndividualChanged(indivSel) {
+    const name = indivSel.getAttribute('name');
+    const policyName = linkMap[name];
+    if (!policyName) {
+      // just recompute bars
+      updateIndividual();
+      updatePolicy();
+      return;
+    }
+
+    const policySel = getPolicySelectByName(policyName);
+
+    // If user hasn't touched this policy yet, align it to its first option (HTML order).
+    if (policySel && !policyTouched.get(policySel)) {
+      setPolicyToFirstOption(policySel);
+    }
+
+    // Always keep the bars fresh
+    updateIndividual();
+    updatePolicy();
+  }
+
+  /* ---------- Event wiring ---------- */
+  // Individual changes: link to policy (first option unless user touched) and update bars
+  document.querySelectorAll('#form-indiv .sel-indiv').forEach(sel => {
+    sel.addEventListener('change', () => onIndividualChanged(sel));
+  });
+
+  // Policy changes: mark as touched and update bars (don’t affect individual levels)
+  document.querySelectorAll('#form-policy .sel-policy').forEach(sel => {
+    sel.addEventListener('change', () => {
+      policyTouched.set(sel, true);
+      updatePolicy();
+      updateIndividual();
+    });
+  });
+
+  // On load:
+  // 1) Ensure policies start at their first option (HTML order), neutralizing browser form-restore.
+  // 2) Do NOT auto-link levels by “Implemented/No tax”; we only keep pairs + defaults.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#form-policy .sel-policy').forEach(sel => {
+      sel.selectedIndex = 0; // first option wins
+    });
+    // Initial readouts
+    updateIndividual();
+    updatePolicy();
+  });
+  
+  /* ---------- Initial draw & enable Next ---------- */
+  document.addEventListener('DOMContentLoaded', () => {
+    updateIndividual();
+    updatePolicy();
+    setTimeout(() => {
+      const btn = document.getElementById('nextst');
+      if (btn) btn.disabled = false;
+    }, 10000);
+  });
+</script>
+
+{% endblock %}
+
+
