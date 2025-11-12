@@ -161,7 +161,7 @@ class Attention(Page):
     def vars_for_template(player: Player):
         round_number = player.round_number
         # this determines which vignette
-        my_vignette_table =  ['no change (meat-based diet)', '<b>change to heat pump </b>', '<b> slider to 3.37 </b>', '<b>change to regional</b>', 'no change (by car) ', '<b> slider to 3.37 </b>' ]
+        my_vignette_table =  ['no change (meat-based diet)', '<b>change to heat pump </b>', '<b> slider to 3.38 </b>', '<b>change to regional</b>', 'no change (by car) ', '<b> slider to 3.38 </b>' ]
         my_vignette_table_images = ['diet_image_2', 'heating_image_2', 'attention', 'regional_image_1', 'commute_image_1', 'attention']
         # this determines which order within vignette
        
