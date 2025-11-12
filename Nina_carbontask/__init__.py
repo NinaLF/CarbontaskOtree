@@ -182,5 +182,5 @@ class Attention(Page):
     
 
 # Page sequence
-page_sequence = [ #task_page00,Attention
+page_sequence = [
                  task_pageSaving, Attention]
