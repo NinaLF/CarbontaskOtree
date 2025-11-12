@@ -159,7 +159,7 @@
         By clicking on the boxes you can select whether different carbon taxes are implemented or not <br> 
         The associated total carbon emission savings of the selected carbon taxes will be updated on the right side of your screen. <br> <br> 
         The bars will fill with different colors based on the policies selected, each representing the amount of yearly estimated emission savings in the UK from carbon taxes.<br><br> 
-        <b> Please explore: </b> <br> 
+        <b> Please construct savings as close to 30 million tons as possible: </b> <br> 
     </p>
     <br>
 
@@ -305,16 +305,20 @@
                 const sectionHeight = (value / totalFootprint) * totalHeight;
                 sections[index].style.height = `${sectionHeight}%`;
             });
+
+            const nextButton = document.getElementById("nextst");
+            if (parseFloat(totalFootprint) >=28000000 && parseFloat(totalFootprint) <= 32000000 ) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
         }
 
         // Initial calculation
         updateTotalFootprint();
 
-        window.onload = function () {
-            setTimeout(function () {
-                document.getElementById("nextst").disabled = false;
-            }, 10000); // 15 seconds delay increase when actually starting the study
-        };
+        
     </script>
 
     <div >

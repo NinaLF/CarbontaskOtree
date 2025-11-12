@@ -84,7 +84,7 @@
         By clicking on the boxes you can select whether different behavior changes are made and carbon taxes put in place.<br> 
         The associated total emission savings will be updated and shown with the bars on your screen. <br> <br> 
         The bars will fill with different colors based on the behavior changes and policies selected, each representing the amount of carbon emissions that could be saved.<br><br> 
-        <b> Please explore: </b> you can for example try finding the lowest possible carbon footprint, or the highest.<br> 
+        <b> Please construct the highest possible savings: </b> <br> 
 </p>
 
 <div class="twocol">
@@ -330,7 +330,16 @@
       const part = (sumVals>0 && totalHeight>0) ? (vals[i-1]/sumVals)*totalHeight : 0;
       if (sec) sec.style.height = part + '%';
     }
+    const nextButton = document.getElementById("nextst");
+            if (parseFloat(total_indiv) >= 4 && parseFloat(total_indiv) <= 5) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        
   }
+  
 
   /* ---------- POLICY BAR ---------- */
   const policySections = [
@@ -391,6 +400,14 @@
       const part = (sumVals>0 && totalHeight>0) ? (vals[i-1]/sumVals)*totalHeight : 0;
       if (sec) sec.style.height = part + '%';
     }
+    const nextButton = document.getElementById("nextst");
+            if (parseFloat(total) >= 65600000 && parseFloat(total) <= 80000000 ) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        
   }
 
   /* ---------- LINKING (individual -> policy) ---------- */
@@ -468,20 +485,15 @@
     document.querySelectorAll('#form-policy .sel-policy').forEach(sel => {
       sel.selectedIndex = 0; // first option wins
     });
+    
     // Initial readouts
     updateIndividual();
     updatePolicy();
   });
+
+    
+        
   
-  /* ---------- Initial draw & enable Next ---------- */
-  document.addEventListener('DOMContentLoaded', () => {
-    updateIndividual();
-    updatePolicy();
-    setTimeout(() => {
-      const btn = document.getElementById('nextst');
-      if (btn) btn.disabled = false;
-    }, 10000);
-  });
 </script>
 
 {% endblock %}

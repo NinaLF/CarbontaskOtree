@@ -147,13 +147,13 @@ class Player(BasePlayer):
     imports = models.StringField(choices = [ "No tax", "Implemented"])
     waste = models.StringField(choices = ["Implemented", "No tax" ] )
 
-    controlQuestion1 = models.StringField(label="How much tons CO<sub>2</sub> does the highest footprint emit for these combinations?",
-                                          choices=["3.54", "4.07", "4.24","5.54", "6.48" ])
+    controlQuestion1 = models.StringField(label="How much tons CO<sub>2</sub> does the highest combination save?",
+                                          choices=["1.22", "2.02", "3.66","4.04", "4.44" ])
     
-    controlQuestion2 = models.StringField(label="Which behavior change contributes most to the overall size of the footprint (i.e., causes the highest <b>change</b> in the carbon footprint)?",
-                                          choices=["Meat or plant-based diet", "Heat pump or mains gas heating", "Recycling or not","Regional or imported food", "Car or bus commute", "Flying once or taking train"  ] )
+    controlQuestion2 = models.StringField(label="Which behavior change saves the most emissions?",
+                                          choices=["Changing to a plant-based diet", "Changing to heat pump", "Changing to recycling","Changing to mainly regional food", "Changing to bus commute", "Changing to taking the train"  ] )
     
-    controlQuestion1pol = models.StringField(label="Which carbon tax targeting a behavior would contribute most to the overall emission savings ?",
+    controlQuestion1pol = models.StringField(label="Which carbon tax targeting a behavior contributes most to the overall emission savings ?",
                                           choices=["Carbon tax on food (red meat)", "Carbon tax on electricity (power generation)", "Carbon tax on waste (landfill)","Carbon tax on imported foods", "Carbon tax on road fuels", "Carbon tax on private aviation"  ] )
     
 

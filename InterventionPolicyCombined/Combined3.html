@@ -85,7 +85,7 @@
         By clicking on the boxes you can select whether different behavior changes are made and carbon taxes put in place.<br> 
         The associated total emission savings will be updated and shown with the bars on your screen. <br> <br> 
         The bars will fill with different colors based on the behavior changes and policies selected, each representing the amount of carbon emissions that could be saved.<br><br> 
-        <b> Please explore: </b> you can for example try finding the lowest possible carbon footprint, or the highest.<br> 
+        <b> Please construct savings of around 3 tons and 30 million tons respectively: </b> <br> 
 </p>
 
 <div class="twocol">
@@ -276,6 +276,17 @@
   </div>
 </div>
 
+<p>
+    <br>
+    {{ formfield 'controlQuestion1' }} <br>
+
+    {{ formfield 'controlQuestion2' }} <br>
+    {{ formfield 'controlQuestion1pol' }} <br>
+    
+
+
+</p>
+
 <!-- Next button -->
 <div>
   <button id="nextst" style="float:right; margin-top: 2vh;" disabled class="otree-btn-next btn btn-primary">Next</button>
@@ -331,6 +342,14 @@
       const part = (sumVals>0 && totalHeight>0) ? (vals[i-1]/sumVals)*totalHeight : 0;
       if (sec) sec.style.height = part + '%';
     }
+    const nextButton = document.getElementById("nextst");
+            if (parseFloat(total_indiv) >= 2.8 && parseFloat(total_indiv) <= 3.3) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        
   }
 
   /* ---------- POLICY BAR ---------- */
@@ -392,6 +411,15 @@
       const part = (sumVals>0 && totalHeight>0) ? (vals[i-1]/sumVals)*totalHeight : 0;
       if (sec) sec.style.height = part + '%';
     }
+
+    const nextButton = document.getElementById("nextst");
+            if (parseFloat(total) >= 28000000 && parseFloat(total) <= 32000000 ) {
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        
   }
 
   /* ---------- LINKING (individual -> policy) ---------- */
